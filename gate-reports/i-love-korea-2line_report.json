@@ -1,0 +1,948 @@
+{
+  "chk_extract": {
+    "rc": 0,
+    "stdout": "extracted 614210 bytes of staredit\\scenario.chk -> /tmp/opencode/t0042/m9-extracted.chk\nhead: 56455220020000003b00495645520200",
+    "stderr": ""
+  },
+  "container": {
+    "extracted_chk_bytes": 614210,
+    "controller_written_chk_bytes": 614210,
+    "extracted_equals_written": true,
+    "era": 6,
+    "dim": [
+      256,
+      256
+    ],
+    "mtxm_equals_tile": true,
+    "mtxm_bytes": 131072,
+    "isom_bytes": 265224,
+    "isom_bytes_distinct": [
+      0,
+      16
+    ],
+    "str_name": "i-love-korea",
+    "distinct_values": [
+      64,
+      192
+    ]
+  },
+  "coverage": {
+    "glyph_tiles": 20600,
+    "total_tiles": 65536,
+    "coverage_pct": 31.43
+  },
+  "components": [
+    {
+      "label": "I",
+      "x0": 53,
+      "x1": 76,
+      "y0": 8,
+      "y1": 119,
+      "w": 24,
+      "h": 112,
+      "area": 1408,
+      "line": 1,
+      "kind": "letter"
+    },
+    {
+      "label": "heart",
+      "x0": 93,
+      "x1": 202,
+      "y0": 11,
+      "y1": 116,
+      "w": 110,
+      "h": 106,
+      "area": 8440,
+      "line": 1,
+      "kind": "silhouette"
+    },
+    {
+      "label": "K",
+      "x0": 12,
+      "x1": 51,
+      "y0": 136,
+      "y1": 247,
+      "w": 40,
+      "h": 112,
+      "area": 1792,
+      "line": 2,
+      "kind": "letter"
+    },
+    {
+      "label": "O",
+      "x0": 60,
+      "x1": 99,
+      "y0": 136,
+      "y1": 247,
+      "w": 40,
+      "h": 112,
+      "area": 2048,
+      "line": 2,
+      "kind": "letter"
+    },
+    {
+      "label": "R",
+      "x0": 108,
+      "x1": 147,
+      "y0": 136,
+      "y1": 247,
+      "w": 40,
+      "h": 112,
+      "area": 2304,
+      "line": 2,
+      "kind": "letter"
+    },
+    {
+      "label": "E",
+      "x0": 156,
+      "x1": 195,
+      "y0": 136,
+      "y1": 247,
+      "w": 40,
+      "h": 112,
+      "area": 2304,
+      "line": 2,
+      "kind": "letter"
+    },
+    {
+      "label": "A",
+      "x0": 204,
+      "x1": 243,
+      "y0": 136,
+      "y1": 247,
+      "w": 40,
+      "h": 112,
+      "area": 2304,
+      "line": 2,
+      "kind": "letter"
+    }
+  ],
+  "feature_floor_ok": true,
+  "letter_height_tiles": 112,
+  "lines": {
+    "line1": {
+      "labels": [
+        "I",
+        "heart"
+      ],
+      "y0": 8,
+      "y1": 119
+    },
+    "line2": {
+      "labels": [
+        "K",
+        "O",
+        "R",
+        "E",
+        "A"
+      ],
+      "y0": 136,
+      "y1": 247
+    }
+  },
+  "thinnest_letter_stroke_tiles": 8,
+  "thinnest_letter_stroke_tiles_note": "min horizontal ink run inside each letter window",
+  "gaps_tiles_line1": [
+    {
+      "between": [
+        "I",
+        "heart"
+      ],
+      "x_gap_tiles": 16
+    }
+  ],
+  "gaps_tiles_line2": [
+    {
+      "between": [
+        "K",
+        "O"
+      ],
+      "x_gap_tiles": 8
+    },
+    {
+      "between": [
+        "O",
+        "R"
+      ],
+      "x_gap_tiles": 8
+    },
+    {
+      "between": [
+        "R",
+        "E"
+      ],
+      "x_gap_tiles": 8
+    },
+    {
+      "between": [
+        "E",
+        "A"
+      ],
+      "x_gap_tiles": 8
+    }
+  ],
+  "interline_gap_tiles": 16,
+  "body_crop_open": [
+    18,
+    112,
+    146,
+    240
+  ],
+  "body_crop_reopen": [
+    18,
+    112,
+    146,
+    240
+  ],
+  "booth_artifacts": {
+    "booth64": {
+      "size": [
+        64,
+        64
+      ],
+      "scale": 0.5,
+      "source": "located body crop",
+      "interp": "single-step LANCZOS uniform"
+    },
+    "booth32": {
+      "size": [
+        32,
+        32
+      ],
+      "scale": 0.25,
+      "source": "located body crop",
+      "interp": "single-step LANCZOS uniform"
+    }
+  },
+  "thumbnail_tone_composition": {
+    "crop": [
+      18,
+      112,
+      146,
+      240
+    ],
+    "total_px": 16384,
+    "ground_px": 11161,
+    "glyph_px": 5149,
+    "nonground_px": 74,
+    "distinct_ground_tones": 1,
+    "distinct_glyph_tones": 1,
+    "distinct_other_tones": 1,
+    "ground_dominant": [
+      176,
+      176,
+      176
+    ],
+    "glyph_dominant": [
+      36,
+      40,
+      56
+    ],
+    "ground_share_pct": 68.12,
+    "glyph_share_pct": 31.43,
+    "other_share_pct": 0.45,
+    "wcag_dominant_pair": 6.745,
+    "wcag_worst_ground_against_glyph_dominant": 6.745,
+    "other_tones_top": [
+      {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "px": 74
+      }
+    ]
+  },
+  "reopen_body_diff": {
+    "crop": [
+      18,
+      112,
+      146,
+      240
+    ],
+    "threshold": 16,
+    "differing_px": 0,
+    "diff_region_bbox": null,
+    "total_px": 16384,
+    "diff_pct": 0.0
+  },
+  "body_chrome_share": {
+    "crop": [
+      18,
+      112,
+      146,
+      240
+    ],
+    "map_tone_share_pct": 99.54833984375,
+    "nontone_px": 74,
+    "nontone_share_pct": 0.45
+  },
+  "viewport_indicator_overlay": {
+    "nontone_px_in_body": 74,
+    "covers_glyph_positions": [],
+    "sample": [
+      {
+        "px": [
+          18,
+          112
+        ],
+        "tile": [
+          0,
+          0
+        ],
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "covers_glyph": []
+      },
+      {
+        "px": [
+          19,
+          112
+        ],
+        "tile": [
+          2,
+          0
+        ],
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "covers_glyph": []
+      },
+      {
+        "px": [
+          20,
+          112
+        ],
+        "tile": [
+          4,
+          0
+        ],
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "covers_glyph": []
+      },
+      {
+        "px": [
+          21,
+          112
+        ],
+        "tile": [
+          6,
+          0
+        ],
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "covers_glyph": []
+      },
+      {
+        "px": [
+          22,
+          112
+        ],
+        "tile": [
+          8,
+          0
+        ],
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "covers_glyph": []
+      },
+      {
+        "px": [
+          23,
+          112
+        ],
+        "tile": [
+          10,
+          0
+        ],
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "covers_glyph": []
+      },
+      {
+        "px": [
+          24,
+          112
+        ],
+        "tile": [
+          12,
+          0
+        ],
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "covers_glyph": []
+      },
+      {
+        "px": [
+          25,
+          112
+        ],
+        "tile": [
+          14,
+          0
+        ],
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "covers_glyph": []
+      }
+    ],
+    "note": "non-map-tone pixels inside the body crop; tile coords are body-local*2",
+    "dominant_overlay_rgb": [
+      255,
+      255,
+      255
+    ],
+    "overlay_vs_ground_contrast": 2.169
+  },
+  "canvas25_tone_composition": {
+    "crop": [
+      155,
+      105,
+      1878,
+      832
+    ],
+    "total_px": 1252621,
+    "ground_px": 612999,
+    "glyph_px": 627260,
+    "nonground_px": 12362,
+    "distinct_ground_tones": 6,
+    "distinct_glyph_tones": 12,
+    "distinct_other_tones": 5,
+    "ground_dominant": [
+      176,
+      176,
+      176
+    ],
+    "glyph_dominant": [
+      36,
+      40,
+      56
+    ],
+    "ground_share_pct": 48.94,
+    "glyph_share_pct": 50.08,
+    "other_share_pct": 0.99,
+    "wcag_dominant_pair": 6.745,
+    "wcag_worst_ground_against_glyph_dominant": 5.889,
+    "other_tones_top": [
+      {
+        "rgb": [
+          245,
+          245,
+          245
+        ],
+        "px": 5099
+      },
+      {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "px": 4157
+      },
+      {
+        "rgb": [
+          106,
+          106,
+          106
+        ],
+        "px": 2436
+      },
+      {
+        "rgb": [
+          227,
+          227,
+          227
+        ],
+        "px": 624
+      },
+      {
+        "rgb": [
+          244,
+          4,
+          4
+        ],
+        "px": 46
+      }
+    ]
+  },
+  "grid_pitch": {
+    "open_100pct": {
+      "lines": 34,
+      "first": [
+        422,
+        454,
+        486,
+        518,
+        550,
+        582
+      ],
+      "median_pitch_px": 32
+    },
+    "zoom25": {
+      "lines": 0,
+      "first": [],
+      "median_pitch_px": null
+    }
+  },
+  "ink_retention_booth64": [
+    {
+      "label": "I",
+      "px_window": [
+        13,
+        2,
+        19,
+        30
+      ],
+      "ink_px": 88,
+      "expected_ink_px": 88,
+      "ink_vs_expect": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "thinnest_run_px": 2,
+      "survives": true
+    },
+    {
+      "label": "heart",
+      "px_window": [
+        23,
+        2,
+        51,
+        29
+      ],
+      "ink_px": 524,
+      "expected_ink_px": 527,
+      "ink_vs_expect": 0.994,
+      "rows_with_ink": 26,
+      "expected_rows": 27,
+      "vertical_coverage": 0.963,
+      "thinnest_run_px": 2,
+      "survives": true
+    },
+    {
+      "label": "K",
+      "px_window": [
+        3,
+        34,
+        13,
+        62
+      ],
+      "ink_px": 112,
+      "expected_ink_px": 112,
+      "ink_vs_expect": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "thinnest_run_px": 2,
+      "survives": true
+    },
+    {
+      "label": "O",
+      "px_window": [
+        15,
+        34,
+        25,
+        62
+      ],
+      "ink_px": 128,
+      "expected_ink_px": 128,
+      "ink_vs_expect": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "thinnest_run_px": 2,
+      "survives": true
+    },
+    {
+      "label": "R",
+      "px_window": [
+        27,
+        34,
+        37,
+        62
+      ],
+      "ink_px": 144,
+      "expected_ink_px": 144,
+      "ink_vs_expect": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "thinnest_run_px": 2,
+      "survives": true
+    },
+    {
+      "label": "E",
+      "px_window": [
+        39,
+        34,
+        49,
+        62
+      ],
+      "ink_px": 144,
+      "expected_ink_px": 144,
+      "ink_vs_expect": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "thinnest_run_px": 2,
+      "survives": true
+    },
+    {
+      "label": "A",
+      "px_window": [
+        51,
+        34,
+        61,
+        62
+      ],
+      "ink_px": 144,
+      "expected_ink_px": 144,
+      "ink_vs_expect": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "thinnest_run_px": 2,
+      "survives": true
+    }
+  ],
+  "ink_retention_real_booth64": [
+    {
+      "label": "I",
+      "px_window": [
+        13,
+        2,
+        20,
+        30
+      ],
+      "ink_px": 60,
+      "expected_ink_px_area_model": 88,
+      "ink_vs_area": 0.682,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "heart",
+      "px_window": [
+        23,
+        2,
+        51,
+        30
+      ],
+      "ink_px": 518,
+      "expected_ink_px_area_model": 527,
+      "ink_vs_area": 0.983,
+      "rows_with_ink": 26,
+      "expected_rows": 28,
+      "vertical_coverage": 0.929,
+      "reads": true
+    },
+    {
+      "label": "K",
+      "px_window": [
+        3,
+        34,
+        13,
+        62
+      ],
+      "ink_px": 112,
+      "expected_ink_px_area_model": 112,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "O",
+      "px_window": [
+        15,
+        34,
+        25,
+        62
+      ],
+      "ink_px": 128,
+      "expected_ink_px_area_model": 128,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "R",
+      "px_window": [
+        27,
+        34,
+        37,
+        62
+      ],
+      "ink_px": 144,
+      "expected_ink_px_area_model": 144,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "E",
+      "px_window": [
+        39,
+        34,
+        49,
+        62
+      ],
+      "ink_px": 144,
+      "expected_ink_px_area_model": 144,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "A",
+      "px_window": [
+        51,
+        34,
+        61,
+        62
+      ],
+      "ink_px": 144,
+      "expected_ink_px_area_model": 144,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 28,
+      "expected_rows": 28,
+      "vertical_coverage": 1.0,
+      "reads": true
+    }
+  ],
+  "ink_retention_real_thumbnail128": [
+    {
+      "label": "I",
+      "px_window": [
+        26,
+        4,
+        39,
+        60
+      ],
+      "ink_px": 352,
+      "expected_ink_px_area_model": 352,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 56,
+      "expected_rows": 56,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "heart",
+      "px_window": [
+        46,
+        5,
+        102,
+        59
+      ],
+      "ink_px": 2109,
+      "expected_ink_px_area_model": 2110,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 53,
+      "expected_rows": 54,
+      "vertical_coverage": 0.981,
+      "reads": true
+    },
+    {
+      "label": "K",
+      "px_window": [
+        6,
+        68,
+        26,
+        124
+      ],
+      "ink_px": 448,
+      "expected_ink_px_area_model": 448,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 56,
+      "expected_rows": 56,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "O",
+      "px_window": [
+        30,
+        68,
+        50,
+        124
+      ],
+      "ink_px": 512,
+      "expected_ink_px_area_model": 512,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 56,
+      "expected_rows": 56,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "R",
+      "px_window": [
+        54,
+        68,
+        74,
+        124
+      ],
+      "ink_px": 576,
+      "expected_ink_px_area_model": 576,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 56,
+      "expected_rows": 56,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "E",
+      "px_window": [
+        78,
+        68,
+        98,
+        124
+      ],
+      "ink_px": 576,
+      "expected_ink_px_area_model": 576,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 56,
+      "expected_rows": 56,
+      "vertical_coverage": 1.0,
+      "reads": true
+    },
+    {
+      "label": "A",
+      "px_window": [
+        102,
+        68,
+        122,
+        124
+      ],
+      "ink_px": 576,
+      "expected_ink_px_area_model": 576,
+      "ink_vs_area": 1.0,
+      "rows_with_ink": 56,
+      "expected_rows": 56,
+      "vertical_coverage": 1.0,
+      "reads": true
+    }
+  ],
+  "f2_artifact_provenance": {
+    "added_by": "dispatch F2, 2026-11-21 21:38, Tails, controller-side only, no target contact",
+    "reason": "M10 at ## Review doc:3198 requires the source capture to be named for every booth artifact. This block records provenance next to the measured values and changes no measured value.",
+    "deliverable_container": {
+      "file": "/tmp/opencode/t0042/i-love-korea.scm",
+      "bytes": 614561,
+      "sha256": "16fe455d46fd88671a98a79f3db65d934400ce0d4edd98f677313e6668d38ba9",
+      "str_name": "i-love-korea",
+      "glyph_tiles": 20600,
+      "status": "accepted for booth use by M10, booth-reachable name"
+    },
+    "superseded_containers": [
+      {
+        "file": "/tmp/opencode/t0042/superseded-i-love-korea.scm",
+        "bytes": 614561,
+        "sha256": "82589b4205f5deb8ed123273f1c6b5262472806bb90373d6b267c8f27e2319a0",
+        "str_name": "i-love-korea",
+        "glyph_tiles": 19666,
+        "note": "M7 single-row build, content-superseded"
+      },
+      {
+        "file": "/tmp/opencode/t0042/superseded-i-love-korea-2line.scm",
+        "bytes": 614567,
+        "sha256": "e7ad27b2f4e7c6d12771b410edd289821fe438d7e4f2bc62caacb40a0b63efab",
+        "str_name": "i-love-korea-2line",
+        "glyph_tiles": 20600,
+        "note": "name-superseded duplicate, MTXM identical cell for cell to the accepted build; renamed by F2 under the ratified superseded- scheme"
+      }
+    ],
+    "artifact_source_capture": {
+      "i-love-korea-2line-thumbnail128.png": "crop (18,112)-(146,240) of m9-open.png, the 100 percent capture",
+      "i-love-korea-2line-booth64.png": "single-step Lanczos 0.5 of that crop, nothing else",
+      "i-love-korea-2line-booth32.png": "single-step Lanczos 0.25 of that crop, nothing else"
+    },
+    "recut_verification_F2": {
+      "thumbnail128_recut_vs_published_px_diff": 0,
+      "booth64_recut_sha256": "f9446f81dd86c724b110ff98df337165b2cd65d15a2016ba2607a02e41d3143c",
+      "booth32_recut_sha256": "0fdee8346af637e409ecab92c822fd66c54f8a36826b9f6b02c2ef7f296a141c",
+      "booth64_px_diff": 0,
+      "booth64_max_channel_delta": 0,
+      "booth32_px_diff": 0,
+      "booth32_max_channel_delta": 0,
+      "nearest_neighbour_px_diff_booth64": 2658,
+      "nearest_neighbour_max_delta_booth64": 109,
+      "nearest_neighbour_px_diff_booth32": 808,
+      "nearest_neighbour_max_delta_booth32": 96,
+      "inpaint_control": {
+        "booth64_px_moved_by_removing_overlay": 126,
+        "booth64_max_channel_delta": 57,
+        "booth32_px_moved_by_removing_overlay": 43,
+        "booth32_max_channel_delta": 29,
+        "glyph_tone_px_delta_per_element_booth64": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "glyph_tone_px_delta_per_element_booth32": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "near_white_px_inside_glyph_blocks_booth64": 0,
+        "near_white_px_inside_glyph_blocks_booth32": 0
+      }
+    },
+    "viewport_indicator_px_on_glyph_per_capture": {
+      "m9-open.png": 0,
+      "m9-reopen.png": 0,
+      "m9-zoom25.png": 33,
+      "m9-jump.png": 102,
+      "note": "the two 25 percent captures carry 308 indicator px inside the body crop each, 33 and 102 of them on glyph cells, and their crops differ from the published thumbnail by 306 and 382 px. They are not artifact sources."
+    },
+    "superseded_build_artifacts_on_the_controller": {
+      "i-love-korea-mm.png": "byte-identical to crop (18,112)-(146,240) of m7-open.png",
+      "i-love-korea-booth64.png": "exact single-step Lanczos 0.5 of that thumbnail",
+      "note": "the plain-named artifacts belong to the superseded M7 build. D2 must not publish them as the accepted map's artifacts."
+    }
+  }
+}

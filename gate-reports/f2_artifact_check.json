@@ -1,0 +1,319 @@
+{
+ "containers": {
+  "accepted": {
+   "file": "/tmp/opencode/t0042/i-love-korea.scm",
+   "bytes": 614561,
+   "sha256": "16fe455d46fd88671a98a79f3db65d934400ce0d4edd98f677313e6668d38ba9",
+   "chk_extract_sha256": "f55e9d9e17daf4de86ee57c6b32dd079a754b7327363ea278e7fb432ac39f976",
+   "str_name": "",
+   "mtxm_bytes": 131072,
+   "distinct_low": [
+    64,
+    192
+   ],
+   "glyph_tiles": 20600
+  },
+  "2line": {
+   "file": "/tmp/opencode/t0042/i-love-korea-2line.scm",
+   "bytes": 614567,
+   "sha256": "e7ad27b2f4e7c6d12771b410edd289821fe438d7e4f2bc62caacb40a0b63efab",
+   "chk_extract_sha256": "600c75929599088d81feda76e7b0561dfc5bab3b9107cf848183d96fac131f61",
+   "str_name": "",
+   "mtxm_bytes": 131072,
+   "distinct_low": [
+    64,
+    192
+   ],
+   "glyph_tiles": 20600
+  },
+  "superseded_m7": {
+   "file": "/tmp/opencode/t0042/superseded-i-love-korea.scm",
+   "bytes": 614561,
+   "sha256": "82589b4205f5deb8ed123273f1c6b5262472806bb90373d6b267c8f27e2319a0",
+   "chk_extract_sha256": "5dda6941018958c854ee4aee7426f28e4a65e0d7505c6aa87270d53272f153c0",
+   "str_name": "",
+   "mtxm_bytes": 131072,
+   "distinct_low": [
+    64,
+    192
+   ],
+   "glyph_tiles": 19666
+  }
+ },
+ "tile_identity": {
+  "accepted_vs_2line_identical": true,
+  "accepted_vs_superseded_m7_identical": false,
+  "first_differing_tile_accepted_vs_2line": null
+ },
+ "chk_identity": {
+  "extracted_2line_matches_written_chk": true,
+  "extracted_accepted_matches_written_chk": true,
+  "extracted_accepted_matches_m9_extracted": true,
+  "extracted_superseded_matches_written_chk": true
+ },
+ "mask128_glyph_px": 5149,
+ "captures": {
+  "100pct_open": {
+   "capture": "/tmp/opencode/t0042/m9-open.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "body_crop": [
+    18,
+    112,
+    146,
+    240
+   ],
+   "crop_vs_published_thumbnail128_px_diff": 0,
+   "mask_match_px_of_16384": 16384,
+   "indicator_px": 74,
+   "indicator_on_glyph_px": 0,
+   "indicator_on_ground_px": 74,
+   "indicator_bbox_body_local": [
+    0,
+    0,
+    26,
+    11
+   ],
+   "top_tones": [
+    {
+     "rgb": [
+      176,
+      176,
+      176
+     ],
+     "px": 11161
+    },
+    {
+     "rgb": [
+      36,
+      40,
+      56
+     ],
+     "px": 5149
+    },
+    {
+     "rgb": [
+      255,
+      255,
+      255
+     ],
+     "px": 74
+    }
+   ]
+  },
+  "100pct_reopen": {
+   "capture": "/tmp/opencode/t0042/m9-reopen.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "body_crop": [
+    18,
+    112,
+    146,
+    240
+   ],
+   "crop_vs_published_thumbnail128_px_diff": 0,
+   "mask_match_px_of_16384": 16384,
+   "indicator_px": 74,
+   "indicator_on_glyph_px": 0,
+   "indicator_on_ground_px": 74,
+   "indicator_bbox_body_local": [
+    0,
+    0,
+    26,
+    11
+   ],
+   "top_tones": [
+    {
+     "rgb": [
+      176,
+      176,
+      176
+     ],
+     "px": 11161
+    },
+    {
+     "rgb": [
+      36,
+      40,
+      56
+     ],
+     "px": 5149
+    },
+    {
+     "rgb": [
+      255,
+      255,
+      255
+     ],
+     "px": 74
+    }
+   ]
+  },
+  "zoom25": {
+   "capture": "/tmp/opencode/t0042/m9-zoom25.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "body_crop": [
+    18,
+    112,
+    146,
+    240
+   ],
+   "crop_vs_published_thumbnail128_px_diff": 306,
+   "mask_match_px_of_16384": 16351,
+   "indicator_px": 308,
+   "indicator_on_glyph_px": 33,
+   "indicator_on_ground_px": 275,
+   "indicator_bbox_body_local": [
+    0,
+    0,
+    107,
+    47
+   ],
+   "top_tones": [
+    {
+     "rgb": [
+      176,
+      176,
+      176
+     ],
+     "px": 10960
+    },
+    {
+     "rgb": [
+      36,
+      40,
+      56
+     ],
+     "px": 5116
+    },
+    {
+     "rgb": [
+      255,
+      255,
+      255
+     ],
+     "px": 308
+    }
+   ]
+  },
+  "overview_jump": {
+   "capture": "/tmp/opencode/t0042/m9-jump.png",
+   "size": [
+    1920,
+    1080
+   ],
+   "body_crop": [
+    18,
+    112,
+    146,
+    240
+   ],
+   "crop_vs_published_thumbnail128_px_diff": 382,
+   "mask_match_px_of_16384": 16282,
+   "indicator_px": 308,
+   "indicator_on_glyph_px": 102,
+   "indicator_on_ground_px": 206,
+   "indicator_bbox_body_local": [
+    9,
+    39,
+    116,
+    86
+   ],
+   "top_tones": [
+    {
+     "rgb": [
+      176,
+      176,
+      176
+     ],
+     "px": 11029
+    },
+    {
+     "rgb": [
+      36,
+      40,
+      56
+     ],
+     "px": 5047
+    },
+    {
+     "rgb": [
+      255,
+      255,
+      255
+     ],
+     "px": 308
+    }
+   ]
+  }
+ },
+ "artifacts": {
+  "booth64": {
+   "recut_file": "/tmp/opencode/t0042/f2-recut/booth64_recut.png",
+   "size": [
+    64,
+    64
+   ],
+   "source_capture": "/tmp/opencode/t0042/m9-open.png",
+   "source_crop": [
+    18,
+    112,
+    146,
+    240
+   ],
+   "interp": "single-step LANCZOS uniform",
+   "published_file": "i-love-korea-2line-booth64.png",
+   "published_sha256": "f9446f81dd86c724b110ff98df337165b2cd65d15a2016ba2607a02e41d3143c",
+   "recut_sha256": "f9446f81dd86c724b110ff98df337165b2cd65d15a2016ba2607a02e41d3143c",
+   "byte_identical_to_published": true,
+   "lanczos_vs_published_px_diff": 0,
+   "lanczos_vs_published_max_channel_delta": 0,
+   "nearest_vs_published_px_diff": 2658,
+   "nearest_vs_published_max_channel_delta": 109,
+   "indicator_px_carried_by_recut": 0
+  },
+  "booth32": {
+   "recut_file": "/tmp/opencode/t0042/f2-recut/booth32_recut.png",
+   "size": [
+    32,
+    32
+   ],
+   "source_capture": "/tmp/opencode/t0042/m9-open.png",
+   "source_crop": [
+    18,
+    112,
+    146,
+    240
+   ],
+   "interp": "single-step LANCZOS uniform",
+   "published_file": "i-love-korea-2line-booth32.png",
+   "published_sha256": "0fdee8346af637e409ecab92c822fd66c54f8a36826b9f6b02c2ef7f296a141c",
+   "recut_sha256": "0fdee8346af637e409ecab92c822fd66c54f8a36826b9f6b02c2ef7f296a141c",
+   "byte_identical_to_published": true,
+   "lanczos_vs_published_px_diff": 0,
+   "lanczos_vs_published_max_channel_delta": 0,
+   "nearest_vs_published_px_diff": 808,
+   "nearest_vs_published_max_channel_delta": 96,
+   "indicator_px_carried_by_recut": 0
+  }
+ },
+ "counterproof_not_artifact_sources": {
+  "zoom25": {
+   "crop_vs_published_thumbnail128_px_diff": 306,
+   "booth64_from_this_crop_vs_published_px_diff": 639,
+   "indicator_on_glyph_px": 33
+  },
+  "overview_jump": {
+   "crop_vs_published_thumbnail128_px_diff": 382,
+   "booth64_from_this_crop_vs_published_px_diff": 960,
+   "indicator_on_glyph_px": 102
+  }
+ }
+}

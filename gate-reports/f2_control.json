@@ -1,0 +1,628 @@
+{
+ "str_name_accepted": "i-love-korea",
+ "str_name_2line": "i-love-korea-2line",
+ "str_name_superseded_m7": "i-love-korea",
+ "components": [
+  {
+   "tiles": 1408,
+   "cols": [
+    53,
+    76
+   ],
+   "rows": [
+    8,
+    119
+   ],
+   "w": 24,
+   "h": 112
+  },
+  {
+   "tiles": 8440,
+   "cols": [
+    93,
+    202
+   ],
+   "rows": [
+    11,
+    116
+   ],
+   "w": 110,
+   "h": 106
+  },
+  {
+   "tiles": 1792,
+   "cols": [
+    12,
+    51
+   ],
+   "rows": [
+    136,
+    247
+   ],
+   "w": 40,
+   "h": 112
+  },
+  {
+   "tiles": 2048,
+   "cols": [
+    60,
+    99
+   ],
+   "rows": [
+    136,
+    247
+   ],
+   "w": 40,
+   "h": 112
+  },
+  {
+   "tiles": 2304,
+   "cols": [
+    108,
+    147
+   ],
+   "rows": [
+    136,
+    247
+   ],
+   "w": 40,
+   "h": 112
+  },
+  {
+   "tiles": 2304,
+   "cols": [
+    156,
+    195
+   ],
+   "rows": [
+    136,
+    247
+   ],
+   "w": 40,
+   "h": 112
+  },
+  {
+   "tiles": 2304,
+   "cols": [
+    204,
+    243
+   ],
+   "rows": [
+    136,
+    247
+   ],
+   "w": 40,
+   "h": 112
+  }
+ ],
+ "glyph_tiles": 20600,
+ "indicator_in_crop": {
+  "px": 74,
+  "on_glyph": 0,
+  "on_ground": 74
+ },
+ "inpaint_control": {
+  "booth64": {
+   "total_diff_px": 126,
+   "max_channel_delta": 57,
+   "n_px": 4096,
+   "per_element": [
+    {
+     "cols": [
+      53,
+      76
+     ],
+     "rows": [
+      8,
+      119
+     ],
+     "tiles": 1408,
+     "artifact_box": [
+      13,
+      2,
+      20,
+      30
+     ],
+     "diff_px_in_box": 16,
+     "diff_px_in_box_on_glyph": 12
+    },
+    {
+     "cols": [
+      93,
+      202
+     ],
+     "rows": [
+      11,
+      116
+     ],
+     "tiles": 8440,
+     "artifact_box": [
+      23,
+      2,
+      51,
+      30
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      12,
+      51
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 1792,
+     "artifact_box": [
+      3,
+      34,
+      13,
+      62
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      60,
+      99
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2048,
+     "artifact_box": [
+      15,
+      34,
+      25,
+      62
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      108,
+      147
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "artifact_box": [
+      27,
+      34,
+      37,
+      62
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      156,
+      195
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "artifact_box": [
+      39,
+      34,
+      49,
+      62
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      204,
+      243
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "artifact_box": [
+      51,
+      34,
+      61,
+      62
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    }
+   ],
+   "glyph_tone_census": [
+    {
+     "cols": [
+      53,
+      76
+     ],
+     "rows": [
+      8,
+      119
+     ],
+     "tiles": 1408,
+     "ideal_px": 88.0,
+     "glyph_blocks": 116,
+     "glyph_tone_px_as_published": 60,
+     "glyph_tone_px_inpainted": 60,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      93,
+      202
+     ],
+     "rows": [
+      11,
+      116
+     ],
+     "tiles": 8440,
+     "ideal_px": 527.5,
+     "glyph_blocks": 576,
+     "glyph_tone_px_as_published": 501,
+     "glyph_tone_px_inpainted": 501,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      12,
+      51
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 1792,
+     "ideal_px": 112.0,
+     "glyph_blocks": 112,
+     "glyph_tone_px_as_published": 112,
+     "glyph_tone_px_inpainted": 112,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      60,
+      99
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2048,
+     "ideal_px": 128.0,
+     "glyph_blocks": 128,
+     "glyph_tone_px_as_published": 128,
+     "glyph_tone_px_inpainted": 128,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      108,
+      147
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "ideal_px": 144.0,
+     "glyph_blocks": 144,
+     "glyph_tone_px_as_published": 144,
+     "glyph_tone_px_inpainted": 144,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      156,
+      195
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "ideal_px": 144.0,
+     "glyph_blocks": 144,
+     "glyph_tone_px_as_published": 144,
+     "glyph_tone_px_inpainted": 144,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      204,
+      243
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "ideal_px": 144.0,
+     "glyph_blocks": 144,
+     "glyph_tone_px_as_published": 144,
+     "glyph_tone_px_inpainted": 144,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    }
+   ]
+  },
+  "booth32": {
+   "total_diff_px": 43,
+   "max_channel_delta": 29,
+   "n_px": 1024,
+   "per_element": [
+    {
+     "cols": [
+      53,
+      76
+     ],
+     "rows": [
+      8,
+      119
+     ],
+     "tiles": 1408,
+     "artifact_box": [
+      6,
+      1,
+      10,
+      15
+     ],
+     "diff_px_in_box": 10,
+     "diff_px_in_box_on_glyph": 8
+    },
+    {
+     "cols": [
+      93,
+      202
+     ],
+     "rows": [
+      11,
+      116
+     ],
+     "tiles": 8440,
+     "artifact_box": [
+      11,
+      1,
+      26,
+      15
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      12,
+      51
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 1792,
+     "artifact_box": [
+      1,
+      17,
+      7,
+      31
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      60,
+      99
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2048,
+     "artifact_box": [
+      7,
+      17,
+      13,
+      31
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      108,
+      147
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "artifact_box": [
+      13,
+      17,
+      19,
+      31
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      156,
+      195
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "artifact_box": [
+      19,
+      17,
+      25,
+      31
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    },
+    {
+     "cols": [
+      204,
+      243
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "artifact_box": [
+      25,
+      17,
+      31,
+      31
+     ],
+     "diff_px_in_box": 0,
+     "diff_px_in_box_on_glyph": 0
+    }
+   ],
+   "glyph_tone_census": [
+    {
+     "cols": [
+      53,
+      76
+     ],
+     "rows": [
+      8,
+      119
+     ],
+     "tiles": 1408,
+     "ideal_px": 22.0,
+     "glyph_blocks": 36,
+     "glyph_tone_px_as_published": 8,
+     "glyph_tone_px_inpainted": 8,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      93,
+      202
+     ],
+     "rows": [
+      11,
+      116
+     ],
+     "tiles": 8440,
+     "ideal_px": 131.875,
+     "glyph_blocks": 159,
+     "glyph_tone_px_as_published": 120,
+     "glyph_tone_px_inpainted": 120,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      12,
+      51
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 1792,
+     "ideal_px": 28.0,
+     "glyph_blocks": 54,
+     "glyph_tone_px_as_published": 2,
+     "glyph_tone_px_inpainted": 2,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      60,
+      99
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2048,
+     "ideal_px": 32.0,
+     "glyph_blocks": 56,
+     "glyph_tone_px_as_published": 8,
+     "glyph_tone_px_inpainted": 8,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      108,
+      147
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "ideal_px": 36.0,
+     "glyph_blocks": 60,
+     "glyph_tone_px_as_published": 12,
+     "glyph_tone_px_inpainted": 12,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      156,
+      195
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "ideal_px": 36.0,
+     "glyph_blocks": 50,
+     "glyph_tone_px_as_published": 22,
+     "glyph_tone_px_inpainted": 22,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    },
+    {
+     "cols": [
+      204,
+      243
+     ],
+     "rows": [
+      136,
+      247
+     ],
+     "tiles": 2304,
+     "ideal_px": 36.0,
+     "glyph_blocks": 60,
+     "glyph_tone_px_as_published": 12,
+     "glyph_tone_px_inpainted": 12,
+     "delta_px": 0,
+     "near_white_px_in_glyph_blocks": 0
+    }
+   ]
+  }
+ }
+}

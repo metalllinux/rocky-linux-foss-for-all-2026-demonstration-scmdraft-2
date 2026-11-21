@@ -55,6 +55,19 @@ _ILK_HEART_CX = 63.0   # heart centre x
 _ILK_HEART_CY = 128.0  # heart centre y, mid-row
 _ILK_HEART_HALF = 31.0 # heart scale, measured width about 60 tiles
 
+# Map 6 two-line rebuild constants (dispatch M9), in tiles. See the function docstring for
+# how each was chosen. M9 supersedes the M7 single-row build per the ## Status decision of
+# 2026-11-21 15:20 and the B1 booth-geometry gate of 2026-11-21 18:40.
+_ILK2_S_X = 8          # tiles per font cell horizontally: every letter stroke is 8 tiles
+_ILK2_S_Y = 16         # tiles per font cell vertically: letter height 7*16 = 112 tiles/line
+_ILK2_L1_Y = 8         # top edge of line 1 (I + heart), (256 - 224 - gap) split, top margin 8
+_ILK2_L2_Y = 136       # top edge of line 2 (KOREA): 8 + 112 + 16 gap = 136, bottom margin 8
+_ILK2_X_I = 53         # left edge of the I-beam on line 1 (3 cells * 8 = 24 tiles wide)
+_ILK2_X_KOREA = 12     # left edge of KOREA (29 cells * 8 = 232 tiles wide), side margins 12
+_ILK2_HEART_CX = 148.0 # heart centre x on line 1
+_ILK2_HEART_CY = 70.0  # heart centre y, centred on the 8..119 line-1 band
+_ILK2_HEART_HALF = 48.0 # heart scale, measured bbox 110 wide x 106 tall
+
 
 def _heart(cx, cy, half):
     """Filled heart silhouette centred at (cx, cy), spanning about 2*half tiles, from the
@@ -129,6 +142,45 @@ def i_love_korea():
     return m
 
 
+def i_love_korea_2line():
+    """Dispatch M9, map 6 `i-love-korea` two-line rebuild. Supersedes the M7 single-row
+    build (the `superseded-i-love-korea.scm` on disk reproduces byte-for-byte from
+    i_love_korea() above). Layout per the ## Status decision of 2026-11-21 15:20, gated by
+    the B1 booth measurement of 2026-11-21 18:40.
+
+    Layout. Two lines. Line 1 reads a large capital `I` then a filled heart for the `<3`.
+    Line 2 reads `KOREA` in capitals. This is the layout M8's read measured as passing, and
+    the fit-to-line zoom B1 names (one 112-tile-tall line fills the 23.56-tile-tall main
+    canvas viewport at about 0.21 scale, 6.74 px per tile).
+
+    Stroke width. `S_X` 8 makes every letter stroke 8 tiles thick (one tile per pixel, no
+    drag brush): KOREA vertical stems and I-beam stem are 8 tiles, the serif bars and E
+    arms are 8 tiles tall. B1's derived arithmetic puts an 8-tile stroke at 53.9 px and
+    9.54 mm at that zoom, 16 to 32 arcmin across the 1 to 2 m band, 3.4 times the shipped
+    5-tile figure. Heart kept well above the 10-tile minimum-dimension floor (bbox 110x106).
+
+    Vertical fit. Each line is 7 rows * 16 = 112 tiles. Two lines 224, ground margins 8 top
+    and 8 bottom, 16-tile gap between the lines, total 256 exactly. Ground margins are at
+    least 8 tiles on every side (measured margins 12, 12, 8, 8). Capitals only. No internal
+    counter in the heart, no second tone anywhere. Feature floor is the minimum-dimension
+    reading F1 settled, every kept component at least 10 tiles on both axes.
+
+    The builder does not declare this map legible; M10 decides that.
+    """
+    m = [[0] * W for _ in range(H)]
+    parts = [
+        _glyph.render("I", _ILK2_S_X, _ILK2_S_Y, _ILK2_X_I, _ILK2_L1_Y),
+        _heart(_ILK2_HEART_CX, _ILK2_HEART_CY, _ILK2_HEART_HALF),
+        _glyph.render("KOREA", _ILK2_S_X, _ILK2_S_Y, _ILK2_X_KOREA, _ILK2_L2_Y),
+    ]
+    for p in parts:
+        for y in range(H):
+            for x in range(W):
+                if p[y][x]:
+                    m[y][x] = 1
+    return m
+
+
 MASKS = {"rocky-logo": rocky_logo, "rocky-with-heart": rocky_with_heart, "tux": _tux.tux,
          "republic-of-korea": _korea.republic_of_korea,
          # M5 rebuild: Natural Earth 10m admin-0 rings, 10-tile component floor, no internal
@@ -136,7 +188,9 @@ MASKS = {"rocky-logo": rocky_logo, "rocky-with-heart": rocky_with_heart, "tux": 
          # reproduces byte-for-byte from the same registry.
          "republic-of-korea-10m": _korea10.republic_of_korea_10m,
          # M7: map 6, single-row letterform design, see the function docstring.
-         "i-love-korea": i_love_korea}
+         "i-love-korea": i_love_korea,
+         # M9: map 6 two-line rebuild, 8-tile strokes, 112-tile letter height per line.
+         "i-love-korea-2line": i_love_korea_2line}
 
 
 def _stats(m):

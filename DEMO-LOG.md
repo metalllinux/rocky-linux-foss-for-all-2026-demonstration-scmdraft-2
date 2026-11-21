@@ -1339,3 +1339,315 @@ carried forward as `M8` recorded it.
 **Inverse for this step.** `rm -rf /tmp/opencode/t0042/publish /tmp/opencode/t0042/d0_stage.py
 /tmp/opencode/t0042/d0_classify.py /tmp/opencode/t0042/d0_stage_plan.tsv`. Nothing outside those paths
 was created or changed, and no target state was touched.
+
+## 2026-11-21 18:07 — Dispatch D0 step 2, interim booth record published to the documentation repo (`Tails`)
+
+**Step.** Controller-side only, no target contact. Cloned the booth repo with
+`GIT_ASKPASS=/tmp/opencode/git-askpass-tc.sh git clone https://github.com/metalllinux/foss-for-all-booth-demonstration-scmdraft-2.git /tmp/opencode/t0042/booth-repo`,
+which returned exactly the recorded `Initial commit` `7e0d58d`, `LICENSE` 1063 B and `README.md` 129 B,
+so the clone matched the `## Status` verification of 2026-11-21 16:20. Copied the staged tree in, added
+`DEMO-LOG.md` and the three planning docs from the team repo at commit `2b29d7e`, generated `MANIFEST.md`
+and `PUBLISH-STATUS.md` from the tree as written by `python3 /tmp/opencode/t0042/d0_report.py`, committed
+`3da0937162a5f00ba76078f0a82142910b8c7f32`, and pushed with
+`GIT_ASKPASS=/tmp/opencode/git-askpass-tc.sh git push origin main`, which answered `7e0d58d..3da0937 main -> main`.
+No credential appears in any argv, commit message, log line or file written by this step. The token was
+supplied only through the askpass helper, which reads it from `~/AI/secrets/token.md` at run time.
+
+**Verified on the remote after the push, not assumed.** `git ls-remote` answers
+`3da0937162a5f00ba76078f0a82142910b8c7f32 refs/heads/main`. A fresh clone of the pushed repo
+(`/tmp/opencode/t0042/booth-verify`) holds 580 files, `git ls-tree -r HEAD` count, and `sha256sum` in that
+fresh clone reproduces all six deliverable maps at their recorded values, `foss-for-all` `e856f0e1...`,
+`rocky-logo` `447360ce...`, `rocky-with-heart` `b9b056c2...`, `tux` `79002eacd5d6...`, `republic-of-korea`
+`c773a534a564...`, `i-love-korea` `82589b4205f5...`. `README.md` `e278208f88b9...` and `LICENSE`
+`5c620b9317b6...` are byte-unchanged and `git diff --stat 7e0d58d HEAD -- README.md LICENSE` is empty, so
+the existing prose and the licence file were not rewritten. `git log` on the remote clone shows the two
+commits, `3da0937` on top of `7e0d58d`.
+
+**Visibility unchanged, checked rather than assumed.** The REST call, token supplied through a stdin
+`curl --config` so it is in no argv and no file, answers `"id": 1455994123`, `"private": true`,
+`"visibility": "private"`, `"default_branch": "main"`, `"pushed_at": "2026-11-21T09:07:30Z"`. An
+unauthenticated probe of the same path still answers `404`. The same response reports `"size": 1` KiB
+against a 150 MiB push, which is GitHub's lagging cached field rather than evidence about the push, and it
+is recorded as such because `git ls-remote` and the fresh clone both return the pushed commit.
+
+**Manifest cross-checked against git itself.** A script re-read `MANIFEST.md`, re-hashed every listed file
+in the working tree, and compared the path set against `git ls-tree -r HEAD`. Result, 579 rows, 579 unique
+paths, zero hash or size mismatches, zero paths in the tree that the manifest omits, zero paths the manifest
+lists that are not in the tree. The only file the manifest does not list is `MANIFEST.md` itself, stated in
+its header, because a file cannot hold its own hash.
+
+**Categories published.** The six deliverable maps, the two superseded builds, the code (81 files, the
+team's own Python, C and shell), 9 gate reports, 65 booth artifacts, 166 editor captures, 13 calibration
+renders, the live segment (3 maps, 4 replayable command lists, 207 captures), 10 montages, 6 measurement
+transcripts, the three planning docs, `DEMO-LOG.md`, `MANIFEST.md`, `PUBLISH-STATUS.md`.
+
+**Categories not copied, named in full.** shipped StarCraft map data, 4 files, `base-map.scx`, `maps/rc.scm`,
+`maps/bn.scm` and `live-seed.scm`, the last proven by `sha256sum` to be byte-identical to the shipped map
+`(2)River Crossing.scm`. Harvested reference CHKs under `ts-harvest/`, 170 files. CHK and SCX intermediates,
+62 files. Probe and calibration maps, 38 files. StormLib upstream library, 905 files. The Natural Earth
+upstream GeoJSON dataset, 5 files. Imported upstream code, `starcraft_mpq_io.py` and the `richchk` fragments,
+3 files. Compiled ELF binaries the team built from the C sources that landed, `chkdump`, `mkmpq`,
+`rdp-input`, `rdp-shot`, 4 files. Build, launch and error logs and bulk per-row tileset probe captures, 66
+files. `__pycache__`, 15 files. Raw PPM desktop sanity capture, 1 file. Scratch notes and partial hash
+lists, 4 files. `colorbase.bin`, 1 file, provenance unrecoverable. The credential scratch file `rdp-args`,
+1 file. Three categories the brief excluded that had nothing on the controller to exclude, any ISO or
+disk image, zero files, SCMDraft or Wine binaries and prefixes, zero files, they exist on the target only,
+and game data, MPQ archives and unit or sprite assets, zero files. Full reasons are in `MANIFEST.md` and
+`PUBLISH-STATUS.md` in the booth repo.
+
+**Credential finding, carried forward for the operator.** The plaintext target RDP credential sits in
+`/tmp/opencode/t0042/rdp-args`, a 79 B scratch argument file for the team's own RDP input injector. It is
+in no commit, `git log --all -S` on the value returns zero commits, in no landed file, `grep -rl` for the
+value over the booth clone returns nothing, and in no document in either repository. It was withheld by an
+explicit rule rather than by luck. The rotation decision is the operator's, and deleting the scratch file
+would not rotate the credential itself. `Robotnik` should carry this into `## Security` and `## Status`,
+which this agent does not write.
+
+**Checks that did not run, named.** No target contact, so the six maps' copies on the target were not
+re-hashed in this dispatch, they were last verified on the target by `M7` at 2026-11-21 14:28. No visual
+read of the 166 editor captures published here. No licence ruling on the published captures, which are
+downscaled renders of Blizzard tileset tones, that belongs to `R4` and `R5`. No re-check of which published
+captures carry the viewport-indicator overlay `M8` measured at 8 glyph positions. SCMDraft 2's own
+map-validation dialog, still run on no map in this task.
+
+**Inverse for this step.** The booth repo has no revert path short of a revert commit, and this task does
+not force-push, so the inverse is `git revert 3da0937` pushed to `main`, which leaves `7e0d58d` as the tip
+content. On the controller, `rm -rf /tmp/opencode/t0042/publish /tmp/opencode/t0042/booth-repo
+/tmp/opencode/t0042/booth-verify /tmp/opencode/t0042/d0_stage.py /tmp/opencode/t0042/d0_classify.py
+/tmp/opencode/t0042/d0_reasons.py /tmp/opencode/t0042/d0_report.py /tmp/opencode/t0042/d0_stage_plan.tsv`.
+No target state was touched, no visibility setting was changed, no repo, package or registry change was
+made on any machine.
+
+## 2026-11-21 18:20-18:40, dispatch B1, booth geometry on the target panel (Tails)
+
+Booth geometry measured from the target's own EDID and from one real SCMDraft 2 capture on the panel,
+ahead of `M9`, no map change and no map rebuild. Target `scmdraft2-map-creator` (`192.168.1.99`), kernel
+`6.12.0-211.74.1.el10_2.x86_64`.
+
+**Step 1, panel identity and size from the target's EDID and mode information.** Connected output is the
+built-in laptop panel, sysfs connector `card1-eDP-1`, `status: connected` (`card1-DP-1` and `card1-DP-2`
+disconnected), from `ls /sys/class/drm/` and each `<output>/status`. `xxd /sys/class/drm/card1-eDP-1/edid`
+gives the 128-byte EDID, manufacturer bytes 0x08-0x09 (`09 e5`) decode to `BOE`, product bytes 0x0A-0x0B
+(`4a 09`) are `0x094a`. `gdbus call --session --dest org.gnome.Mutter.DisplayConfig --object-path
+/org/gnome/Mutter/DisplayConfig --method org.gnome.Mutter.DisplayConfig.GetCurrentState` confirms
+`('eDP-1','BOE','0x094a','0x00000000')`, `is-builtin: true`, current mode `1920x1080@60.004` at scale
+1.0. EDID basic display bytes 0x15 = 34 cm and 0x16 = 19 cm give a **340 x 190 mm** panel, diagonal
+389.487 mm (15.33 in), **0.177083 mm/px horizontal** and **0.175926 mm/px vertical** at 1920x1080, the
+small h/v difference being EDID's whole-centimetre rounding.
+
+**Step 2, the two views from a real capture.** SCMDraft 2 launched for viewing with
+`/tmp/t0042-run.sh ~/scmdraft-maps/i-love-korea/i-love-korea.scm` (pid 151870), profile dialog dismissed
+with `./rdp-input rdp-args key 0x1C`, one capture via the GNOME Shell Screenshot D-Bus call to
+`/tmp/b1-editor.png` fetched to `/tmp/opencode/t0042/b1-editor.png`, 1920x1080 unscaled, title bar showing
+the `i-love-korea` path and Zoom combo `100%`, status bar `Ice World\Snow`. Overview thumbnail body is
+**128x128 px for the whole 256x256 map**, 0.500000 screen px per tile, 0.0885 mm per tile, 22.67 x 22.52
+mm on the panel, origin (18,112) reproducing `M6`/`M8` and the 128 figure resting on `M8`'s 16384-pixel
+point-sample reconstruction. Main canvas at 100 percent zoom measured by direct grid-line detection at a
+**32.0 px pitch** on both axes, viewport x167..1879 and y110..863, **1713x754 px = 53.53 x 23.56 tiles**,
+32 screen px per tile, 5.667 mm per tile horizontal and 5.630 mm vertical.
+
+**Step 3, on-screen size and angular subtence.** 5-tile stroke, main canvas 160 px = 28.333 mm, 1.623 /
+1.082 / 0.812 deg at 1 / 1.5 / 2 m; thumbnail 2.5 px = 0.4427 mm, 0.0254 / 0.0169 / 0.0127 deg, the
+thumbnail stroke falling below the about 1 arcmin reference acuity by 2 m, which is the mechanism behind
+the `M8` 64 px failures. 238-tile glyph height, thumbnail 119 px = 20.935 mm, 1.200 / 0.800 / 0.600 deg;
+main canvas 7616 px = 1339.85 mm, taller than the 190 mm panel, so at 100 percent zoom only 23.56 tiles
+of its 238-tile height are on screen at once and the rest is panned. The 1 to 2 m distances are a bounded
+band, not a measured venue fact.
+
+**Step 4, the 64 px and 32 px bounds restated.** Both are thumbnail-class whole-map bounds (0.5 and 0.25
+of the 128 px body), 0.25 and 0.125 px per tile, whole-map 11.333 mm and 5.667 mm, 5-tile stroke 0.38 to
+0.76 and 0.19 to 0.38 arcmin across the band. The main-canvas booth view has no whole-map 64/32 px bound,
+it renders at 32 px per tile, and the shipped 5-tile stroke there is 160 px = 28.3 mm = 0.812 to 1.623 deg.
+So the `M8` 64 px blocker is thumbnail-class, and on the booth medium (the main canvas, panned) the shipped
+single-row build survives at the measured stroke size.
+
+**Checks that did not run, named.** No blind human viewer check at the named distances, the venue distance
+at Centerfield EAST 18F is unmeasured. No in-game StarCraft minimap capture, the playability path is
+blocked on this target, the thumbnail proxy stands. No independent re-read of these numbers, a `Shadow`
+read is not part of `B1`. No per-pixel WCAG on this dispatch, `S1` re-measures contrast. Canvas width
+measured 1713 px here against the 1735 px recorded by `L3`/`L4`/`M1`, the 22 px difference is this launch's
+dock and scrollbar chrome and is recorded, not reconciled.
+
+**Exact inverse.** SCMDraft opened for viewing only, maps not saved, teardown `kill 151870`,
+`pkill -u howard -f "ScmDraft 2.exe"`, `pkill -u howard -x wineserver`, all verified `NONE`, no other
+process killed. Target captures removed `rm -f /tmp/b1-capture.png /tmp/b1-editor.png`, verified
+`NO_CAPTURES`. Controller files `b1-capture.png`, `b1-editor.png`, `b1_measure.py`, `b1_measure2.py`,
+`b1_measure3.py`, `b1_thumb.py`, `b1_calc.py` under `/tmp/opencode/t0042`, inverse `rm -f` each.
+Deliverables byte-stable after the viewing open, target `sha256sum` reproduces `i-love-korea`
+`82589b4205f5...`, `foss-for-all` `e856f0e1...`, `rocky-logo` `447360ce...`, `rocky-with-heart`
+`b9b056c2...`, `tux` `79002eacd5d6...`, `republic-of-korea` `c773a534a564...`. No map changed, no map
+rebuilt.
+
+## 2026-11-21 19:05, Dispatch M9 step 1, controller-side two-line mask and build (`Tails`)
+
+Rebuilt the `i-love-korea` mask as the two-line variant per the `## Status` decision of 2026-11-21
+15:20 and the `B1` booth-geometry gate of 2026-11-21 18:40. No target contact in this step. New
+function `rocky.i_love_korea_2line()` and constants `_ILK2_*` added to `/tmp/opencode/t0042/rocky.py`;
+the M7 single-row `i_love_korea()` is byte-unchanged so the superseded build still reproduces.
+
+Layout, measured from the module (`python3 -c` bbox read): two lines, line 1 `I` (bbox x53-76 y8-119,
+24w x 112h) then a filled heart (bbox x93-202 y11-116, 110w x 106h), line 2 `KOREA` (bbox x12-243
+y136-247, 232w x 112h). `S_X` 8 so every letter stroke is 8 tiles, `S_Y` 16 so letter height is 112
+tiles per line. Ground margins 12, 12, 8, 8 (all >= 8). Feature floor (minimum-dimension reading, both
+axes >= 10 tiles) holds for I, heart and KOREA. Design coverage 20600/65536 = 31.43 percent.
+
+Build, `build_ts.py silhouette ts-harvest/ref-era6.chk /tmp/opencode/t0042/i-love-korea 192 64 64
+i-love-korea-2line`, era 6, chk 614210 B, MTXM==TILE 65536, ISOM 265224 of 0x10, distinct terrain
+values [64, 192]. New deliverable `/tmp/opencode/t0042/i-love-korea.scm` 614561 B at SHA-256
+`16fe455d46fd88671a98a79f3db65d934400ce0d4edd98f677313e6668d38ba9`.
+
+Renamed the shipped M7 single-row build to the `superseded-` prefix per the ratified three-name scheme
+and the brief ("keep the shipped single-row build on disk under the `superseded-` prefix").
+`mv i-love-korea.scm superseded-i-love-korea.scm` and `mv i-love-korea.chk superseded-i-love-korea.chk`;
+the superseded build is 614561 B at SHA-256 `82589b4205f5deb8ed123273f1c6b5262472806bb90373d6b267c8f27e2319a0`,
+unchanged by the rename. Inverse of the controller rename,
+`mv superseded-i-love-korea.scm i-love-korea.scm && mv superseded-i-love-korea.chk i-love-korea.chk`.
+
+Checks not run in this step, target placement, real SCMDraft render, booth artifacts, re-open identity.
+
+## 2026-11-21 19:28-19:44, Dispatch M9 steps 2-3, two-line rebuild placed on target, real renders measured (`Tails`)
+
+Placed the two-line `i-love-korea` rebuild on the target and measured its four gate numbers from
+its own real SCMDraft 2 renders. No editor save performed; the launch is the viewing launch
+`/tmp/t0042-run.sh` with an absolute path. Target `scmdraft2-map-creator` (192.168.1.99), kernel
+6.12.0-211.74.1.el10_2.x86_64.
+
+**Rename and placement.** On the target, `mv i-love-korea.scm superseded-i-love-korea.scm` then the new
+build scp'd to `i-love-korea.scm`. Superseded M7 single-row build 614561 B at SHA-256
+`82589b4205f5deb8ed123273f1c6b5262472806bb90373d6b267c8f27e2319a0`, mtime unchanged. New build 614561 B at
+SHA-256 `16fe455d46fd88671a98a79f3db65d934400ce0d4edd98f677313e6668d38ba9`. Target rename inverse,
+`mv "$HOME/scmdraft-maps/i-love-korea/superseded-i-love-korea.scm" "$HOME/scmdraft-maps/i-love-korea/i-love-korea.scm"`.
+
+**Launch and captures (pid 152909).** Profile dismissed with `rdp-input key 0x1C`. Captures `m9-open.png`
+(default zoom, Zoom combo reads `100%`), `m9-zoom25.png` (after opening the Zoom combo at (385,90) and walking
+it down with extended Down-arrow `keyx 0x50` x6 then Enter; the Zoom combo reads `25%` highlighted, so zoom
+applied, unlike the maps 2/3 attempts), `m9-jump.png` (overview-jump click (81,175) centring the viewport, line 2
+`KOREA` framed), `m9-reopen.png` (after kill and relaunch). Status bar reads `Ice World\Snow` in every frame.
+
+**Fit-to-line zoom, stated honestly.** B1 derived the fit-to-line zoom as about 21 percent (6.74 px/tile) for a
+112-tile line, which is below this build's 25 percent zoom floor (floor = 8 px/tile), so the exact fit-to-line
+zoom is not reachable in the editor. The closest capturable main-canvas frame is the 25 percent floor frame
+(`m9-zoom25.png`, line 1 `I` then heart framed). At 25 percent the main-canvas viewport is 8 px/tile = 1.417 mm/tile,
+754 px tall = 94.25 tiles; a 112-tile line exceeds it by 17.75 tiles, so a whole line does not fit vertically at any
+permitted zoom and the frame carries a partial line. Grid-line pitch on `m9-zoom25.png` did not isolate a clean
+ground band (the design fills the sampled region), so px/tile at 25 percent is taken from the Zoom combo reading
+(25 percent x 32 px) rather than a fresh grid measurement.
+
+**Gate numbers measured on this map's own real render (report `/tmp/opencode/t0042/i-love-korea-2line_report.json`).**
+Coverage 20600/65536 = 31.43 percent. Overview thumbnail body crop located at (18,112)-(146,240) 128x128 px
+(ground 11161 / glyph 5149 / non-tone 74 px), glyph share 31.43 percent matches mask coverage exactly. WCAG on the
+real thumbnail render 6.745 dominant pair ground (176,176,176) against glyph (36,40,56), worst pair also 6.745.
+WCAG on the main-canvas 25 percent frame 6.745 (glyph share 50.08 percent). Booth artifacts uniform single-step
+Lanczos of the located body crop at 0.5 (`i-love-korea-2line-booth64.png` 64x64) and 0.25
+(`i-love-korea-2line-booth32.png` 32x32). Re-open identity: open vs reopen body crop differs 0 px over 16384 px
+(threshold 16), disk 614561 B `16fe455d46fd...` mtime 2026-11-21 19:28:35 unchanged by viewing and re-open.
+
+**Stroke, gap and height in tiles (for the editor's 2x2 top-left point-sample thumbnail, M8 fact).** Every letter
+stroke is 8 tiles (thinnest measured ink run inside a letter window 8 tiles). Line-1 gap I to heart 16 tiles, line-2
+letter gaps 8 tiles each, interline gap 16 tiles. Letter height 112 tiles per line. Heart bbox 110x106 tiles, feature
+floor (both axes >= 10 tiles) holds for all seven shapes.
+
+**Viewport-indicator overlay check.** The body crop carries 74 non-map-tone pixels, dominant (255,255,255), contrast
+2.169 against ground (the same overlay M8 reported at 2.169). All 74 land on ground, none covers a glyph window, so
+this map's booth64/booth32 are chrome-free against the overlay; the artifact is not called chrome-free without this
+check.
+
+**Per-letter ink retention at the 64 px artifact (real booth64, thresholded glyph tone).** All seven read:
+I ink 60 px vertical coverage 1.0, heart 518 px 0.929, K 112 px 1.0, O 128 px 1.0, R 144 px 1.0, E 144 px 1.0,
+A 144 px 1.0. At the 128 px real thumbnail every shape reads at ink-vs-area 1.0. This is the measured contrast to the
+shipped build's `M8` 64 px failures on `I`, `O`, `E`; the builder does not declare either map legible, `M10` decides.
+
+**Angular subtence of an 8-tile stroke, derived from B1's mm/px, bounded band 1 / 1.5 / 2 m, not a venue fact.**
+At 25 percent (8 px/tile, 1.417 mm/tile) an 8-tile stroke is 64 px = 11.333 mm, 0.646 / 0.431 / 0.323 deg
+(38.8 / 25.8 / 19.4 arcmin). At 100 percent (32 px/tile) the same stroke is 256 px = 45.34 mm. In the overview
+thumbnail (0.5 px/tile) it is 4 px = 0.708 mm. In the 64 px booth artifact (0.25 px/tile) it is 2 px = 0.354 mm.
+
+**Checks not run, named.** No grid-pitch measurement at 25 percent zoom (the design fills the sampled band, px/tile
+taken from the combo reading). No blind human reader or independent agent re-read these artifacts, that is `M10`. No
+literal in-game StarCraft minimap render, the playability path is blocked on this target, the editor overview thumbnail
+is the whole-map real render. SCMDraft 2 map-format validation dialog not run, the dialog-button injection blocker
+stands. No per-tile elevation class established for the 64/192 pair, the pair is render-validated, not harvest-validated.
+The fit-to-line 21 percent zoom is below the editor floor and was not captured at that exact zoom.
+
+**Exact inverse and teardown.** SCMDraft opened for viewing only, no map saved; teardown `pkill -f 'ScmDraft 2'`,
+`pkill -f 'start.exe /exec'`, wineserver left (not killed beyond the SCMDraft kill), verified `NO_SCM_RUNNING`. Target
+captures removed `rm -f /tmp/m9-*.png /tmp/t0042-run.log`, verified `captures-removed`. Controller files this step
+created: `m9-open.png`, `m9-zoom25.png`, `m9-jump.png`, `m9-reopen.png`, `m9_target.py`, `m9_measure.py`,
+`m9-extracted.chk`, `i-love-korea-2line.scm`/`i-love-korea-2line.chk` (intermediate build),
+`i-love-korea-2line-thumbnail128.png`, `i-love-korea-2line-booth64.png`, `i-love-korea-2line-booth32.png`,
+`i-love-korea-2line_report.json`, inverse `rm -f` each. Target deliverables verified byte-stable after the run:
+`sha256sum` reproduces `i-love-korea` `16fe455d46fd...`, `foss-for-all` `e856f0e1...`, `rocky-logo` `447360ce...`,
+`rocky-with-heart` `b9b056c2...`, `tux` `79002eacd5d6...`, `republic-of-korea` `c773a534a564...`, and the superseded
+`superseded-i-love-korea.scm` `82589b4205f5...`.
+
+## 2026-11-21 21:38 — Dispatch F2, the three `M10` record and artifact findings closed, controller-side only, no target contact, no map content changed (`Tails`)
+
+**Scope.** The three findings `M10` wrote for `Tails` at `## Review` doc:3174, doc:3198 and doc:3212. Two controller containers
+renamed, one planning-doc capture label corrected, one gate report given a provenance block. No file on 192.168.1.99 was read or
+written, no map content changed, the accepted `~/scmdraft-maps/i-love-korea/i-love-korea.scm` was not opened, moved, or rewritten.
+Scripts `/tmp/opencode/t0042/f2_check.py` and `/tmp/opencode/t0042/f2_control.py`, reports `f2_artifact_check.json` and
+`f2_control.json`, re-cut artifacts under `/tmp/opencode/t0042/f2-recut/`. No builder module imported by either.
+
+**Whether an entry is owed, stated rather than assumed.** The brief says to add an entry only if a target artifact actually
+changes. No file on the target changed and no published booth artifact's bytes changed. A deliverable-class artifact did change,
+its name, and it is the file dispatch `D2` publishes, so this entry is written and the condition is recorded rather than glossed.
+
+**Finding 1, the duplicate `i-love-korea-2line` name is closed under the ratified `superseded-` scheme.** Command,
+`sha256sum i-love-korea.scm i-love-korea-2line.scm superseded-i-love-korea.scm` before, then `mv i-love-korea-2line.scm
+superseded-i-love-korea-2line.scm` and `mv i-love-korea-2line.chk superseded-i-love-korea-2line.chk`, then `sha256sum` again.
+Plain `i-love-korea.scm` 614561 B `16fe455d46fd88671a98a79f3db65d934400ce0d4edd98f677313e6668d38ba9` is the accepted build and
+stays at the plain booth-reachable name. `superseded-i-love-korea.scm` 614561 B `82589b4205f5deb8ed123273f1c6b5262472806bb90373d6b267c8f27e2319a0`
+is the `M7` single-row build. The renamed pair is `superseded-i-love-korea-2line.scm` 614567 B
+`e7ad27b2f4e7c6d12771b410edd289821fe438d7e4f2bc62caacb40a0b63efab` and its CHK 614216 B `600c75929599088d81feda76e7b0561dfc5bab3b9107cf848183d96fac131f61`,
+SHAs identical to before the rename and mtimes unchanged at 19:19. Measured before renaming, the `-2line` container's `MTXM` is
+identical cell for cell to the accepted build, 20600 glyph tiles, distinct values `[64, 192]`, while its internal `STR` map name
+is `i-love-korea-2line` against `i-love-korea`; the name-length field at `STR` block offset 2 reads 19 against 13 and the name
+string sits at block offset 2048, which accounts for the whole 6-byte size difference. **So the prefix marks a name-superseded
+duplicate rather than a content-superseded build, recorded because `D2` publishes from these names.**
+
+**Finding 2, the `m9-jump.png` label is corrected in the `M9` record.** Derived from my own viewport-indicator census of the
+capture, body-local x 9-116, y 39-86, that is map cols 18-233 and rows 78-173 at 25 percent. Line 2 occupies rows 136-247 and
+cols 12-243, so the frame carries rows 136-173, 38 of 112, with `K` cols 12-17 and `A` cols 234-243 clipped, and line 1 rows
+78-119, the lower 42 rows. It is not a `KOREA` reveal frame and `S1` must not script the overview click at (81,175) as one. The
+label at `## Implementation` is corrected in place with the correction marked, and the frame arithmetic `S1` needs, including the
+16 to 17 letter-bottom rows that one vertical position at row 136 leaves unseen, is written in `## Implementation`.
+
+**Finding 3, the booth artifacts re-cut from the 100 percent capture only and re-verified, nothing overwritten.** Crop
+(18,112)-(146,240) of `m9-open.png` matches my own mask decimated by the editor's top-left-of-2x2 rule at 16384 of 16384 px in
+both `m9-open.png` and `m9-reopen.png`, glyph 5149 px. Re-cut at single-step LANCZOS 0.5 and 0.25 into `f2-recut/`, both
+byte-identical to the published `i-love-korea-2line-booth64.png` (`f9446f81dd86c724...`) and `i-love-korea-2line-booth32.png`
+(`0fdee8346af637e4...`), 0 px differing and 0 maximum channel delta; NEAREST on the same crop differs 2658 px (delta 109) and 808
+px (delta 96), so the uniform single-step Lanczos claim holds and the published files were left untouched. Indicator census, my
+own, same 128x128 rectangle in all four captures, `m9-open.png` 74 indicator px and **0 on glyph**, `m9-reopen.png` 74 and 0,
+`m9-zoom25.png` 308 and **33 on glyph** with its crop 306 px from the published thumbnail, `m9-jump.png` 308 and **102 on glyph**
+with its crop 382 px from it, which is the recorded reason those two captures are not artifact sources. Inpaint control, replacing
+the 74 overlay px with ground tone and re-running the same resize moves 126 of 4096 px in booth64 and 43 of 1024 in booth32, and
+the glyph-tone count of every one of the seven elements is unchanged, delta 0, with 0 near-white pixels inside glyph blocks.
+`i-love-korea-2line_report.json` gains a `f2_artifact_provenance` block naming the source capture for each artifact, the accepted
+and superseded containers with their SHAs, and the per-capture indicator counts, with no measured value altered. Also verified for
+`D2`, `i-love-korea-mm.png` is byte-identical to the crop (18,112)-(146,240) of `m7-open.png` and `i-love-korea-booth64.png` is
+exact Lanczos 0.5 of it, so the plain-named artifacts belong to the superseded `M7` build.
+
+**Inverse.** Undo the rename, `mv /tmp/opencode/t0042/superseded-i-love-korea-2line.scm /tmp/opencode/t0042/i-love-korea-2line.scm`
+and `mv /tmp/opencode/t0042/superseded-i-love-korea-2line.chk /tmp/opencode/t0042/i-love-korea-2line.chk`. Remove what this step
+created, `rm -rf /tmp/opencode/t0042/f2-recut /tmp/opencode/t0042/f2_check.py /tmp/opencode/t0042/f2_control.py
+/tmp/opencode/t0042/f2_artifact_check.json /tmp/opencode/t0042/f2_control.json`. The report block is additive, the report's
+measured values are unchanged and were re-read after the edit. Revert this entry and the planning-doc edits by git. No target
+state was changed, so nothing on 192.168.1.99 needs an inverse.
+
+**Checks that did not run, named.** No target contact, so the target's `i-love-korea` map size, mtime and SHA-256 and the
+byte-stability of the other five deliverables are not re-verified here and remain `M9`'s claim. SCMDraft 2's own map-validation
+dialog, still run on no map, `V1`. No blind reader and no independent re-read of this pass. The Zoom combo list was not opened and
+no typed zoom below 25 percent was tested. No builder script was run, WCAG contrast was not re-derived, the superseded `M7`
+artifacts were not re-cut or renamed, and the panel EDID geometry was not re-measured. The line-2 framing positions named for
+`S1` are arithmetic on measured viewport and mask extents, no capture at those positions exists yet.
+
+## 2026-11-21 22:43 — Dispatch D2 step 1, remote renamed and verified, staging re-run with the accepted `i-love-korea` set (`Tails`, controller-side only, no target contact)
+
+**Rename verified from the API before anything was pushed.** New path `https://api.github.com/repos/metalllinux/rocky-linux-foss-for-all-2026-demonstration-scmdraft-2` answers `200` with `"id": 1455994123`, `"private": true`, `"visibility": "private"`, `"default_branch": "main"`, `"pushed_at": "2026-11-21T09:07:30Z"` (still the `D0` push). Old path answers `301 Moved Permanently` with body `{"message": "Moved Permanently", "url": "https://api.github.com/repositories/1455994123", ...}`, so it is a redirect to the same repository, not a second repo, exactly as the correction stated. Same id on both paths, same repo. Token consumed through `curl --config -` on stdin, the value in no argv, file, log or commit. The clone's `origin` moved to the new URL and `git ls-remote origin refs/heads/main` answers `3da0937162a5f00ba76078f0a82142910b8c7f32`, so the starting state is `D0`'s commit.
+
+**Staging.** `python3 /tmp/opencode/t0042/d2_stage.py`, a wrapper that imports `d0_stage.classify` unchanged and applies five named deltas (superseded `i-love-korea` builds to `maps/superseded/`, the four `M7`-era `i-love-korea` booth artifacts to `booth-artifacts/superseded/` names unchanged, the `f2-recut` PNG set to `booth-artifacts/f2-recut/`, the two `f2` JSON reports to `gate-reports/`, `i-love-korea-2line-thumbnail128.png` with the booth artifacts). Walk landed 598 files 171354582 B into `/tmp/opencode/t0042/publish/`, plan at `/tmp/opencode/t0042/d2_stage_plan.tsv`. Six deliverable maps re-verified against their recorded SHAs before staging, all byte-exact, `i-love-korea` at the accepted `16fe455d46fd88671a98a79f3db65d934400ce0d4edd98f677313e6668d38ba9`. Every `.chk` withheld unchanged including `m9-extracted.chk` and the `F2` `x-*.chk` extractions, chk holds 62 to 68.
+
+**Inverse.** `rm -rf /tmp/opencode/t0042/publish /tmp/opencode/t0042/d2_stage.py /tmp/opencode/t0042/d2_report.py /tmp/opencode/t0042/d2_verify.py /tmp/opencode/t0042/d2_stage_plan.tsv`, revert this entry by git, restore the clone remote `git remote set-url origin https://github.com/metalllinux/foss-for-all-booth-demonstration-scmdraft-2.git`. No target state touched.
+
+**Checks not run.** No target contact, so target-side map hashes are not re-verified here, they remain `M9`'s claim.

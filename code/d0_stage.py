@@ -37,53 +37,7 @@ LIVE_MAPS = ["live-demo-ice.scm", "live-demo-ice-after.scm", "l5c-saved.scm"]
 
 # Categories withheld, with the reason that lands in MANIFEST.md and
 # PUBLISH-STATUS.md. Reason keys are stable strings used by the report writers.
-HOLD_REASONS = {
-    "shipped-starcraft-data":
-        "Copy of shipped StarCraft map data. base-map.scx is Blizzard's stock "
-        "Brood War map, maps/rc.scm is the shipped map (2)River Crossing.scm, and "
-        "live-seed.scm is byte-identical to maps/rc.scm. Not this team's authorship.",
-    "harvested-reference-chks":
-        "Harvested reference CHK sections extracted from Blizzard-published maps "
-        "under ts-harvest/. Extracts of a Blizzard map, not this team's authorship.",
-    "chk-or-scx-intermediate":
-        "CHK/SCX intermediates. The .scm containers that landed hold the same map "
-        "data, and every .chk here is either an extract of a shipped Blizzard map "
-        "or a decompressed copy of a .scm that landed.",
-    "probe-map":
-        "Throwaway calibration and probe maps from the tileset and save-path "
-        "probing stages. Superseded by the calibration renders and gate reports "
-        "that landed, and several are seeded from shipped StarCraft maps.",
-    "upstream-library":
-        "StormLib checkout, an upstream third-party library. Not this team's "
-        "authorship, licence not yet ruled by Charmy and Flicky (R4 and R5).",
-    "upstream-dataset":
-        "Natural Earth GeoJSON downloaded from nvkelso/natural-earth-vector at "
-        "tag v5.1.2. Upstream data, re-publishing it verbatim is outside this "
-        "dispatch's include list; the landed record cites the repo, tag, commit, "
-        "and per-file git blob SHAs instead.",
-    "upstream-code":
-        "richchk source fragments and starcraft_mpq_io.py imported from upstream "
-        "projects. Not this team's authorship, licence not yet ruled (R4 and R5).",
-    "compiled-binary":
-        "ELF binaries built on the controller from the C sources that landed "
-        "(chkdump, mkmpq, rdp-input, rdp-shot). Build artifacts, machine-specific.",
-    "build-artifact":
-        "__pycache__ bytecode caches.",
-    "build-log-or-probe":
-        "Build and launch logs and the bulk per-row tileset probe captures from "
-        "the calibration stage, superseded by the calibration renders that landed.",
-    "credential":
-        "Scratch file holding a live target RDP credential in plaintext. Never "
-        "published. Flagged to the operator for rotation.",
-    "transient-note":
-        "One-off scratch notes superseded by DEMO-LOG.md and MANIFEST.md.",
-    "undocumented-binary":
-        "Opaque intermediate binary with no generating script left on the "
-        "controller, so its provenance cannot be stated honestly.",
-    "raw-desktop-capture":
-        "Uncompressed PPM desktop sanity captures from the earliest control "
-        "stage, superseded by the PNG capture sets that landed.",
-}
+from d0_reasons import HOLD_REASONS  # single source of truth for withheld reasons
 
 C_SRC_RE = re.compile(r"\.c$")
 SH_RE = re.compile(r"^(run_|mkargs|read_|t0042-run|l1_run|l1_setup|shot)")
