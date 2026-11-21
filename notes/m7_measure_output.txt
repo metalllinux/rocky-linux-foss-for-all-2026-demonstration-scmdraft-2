@@ -1,0 +1,266 @@
+/tmp/opencode/t0042/m7_measure.py:383: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  n = sum(mask.getdata())
+container: {"extracted_chk_bytes": 614210, "controller_written_chk_bytes": 614210, "extracted_equals_written": true, "era": 6, "dim": [256, 256], "mtxm_bytes": 131072, "tile_bytes": 131072, "mtxm_equals_tile": true, "isom_bytes": 265224, "isom_bytes_distinct": [0, 16], "unit_section_bytes": 0, "dood_section_present": false, "mrgn_bytes": 1280, "str_name": "i-love-korea", "distinct_values": [64, 192]}
+gate1 coverage: {"glyph_tiles": 19666, "coverage_pct": 30.01, "bbox_x": [8, 247], "bbox_w": 240, "bbox_y": [9, 246], "bbox_h": 238, "components_8conn": 7, "components_4conn": 20, "components_4conn_areas": [3516, 3060, 2550, 2380, 1870, 1360, 850, 850, 510, 510, 510, 340, 170, 170, 170, 170, 170, 170, 170, 170], "enclosed_ground_tiles_4conn": 4590, "perimeter_boundary_edges": 5082, "rows_with_2plus_runs": 238, "runs": 2216, "largest_enclosed_ground_gap_tiles": 85, "narrowest_run_tiles": 2}
+glyph metrics: {"floor_rule": "minimum-dimension reading per F1: every kept component at least 10 tiles on both axes", "letterform_components_8conn": [{"label": "I", "bbox": [8, 9, 22, 246], "w": 15, "h": 238, "tiles": 1870, "min_h_run_tiles": 5, "min_v_run_tiles": 34, "floor_min_dim_10": "KEEP"}, {"label": "heart", "bbox": [28, 90, 97, 157], "w": 70, "h": 68, "tiles": 3516, "min_h_run_tiles": 2, "min_v_run_tiles": 14, "floor_min_dim_10": "KEEP"}, {"label": "K", "bbox": [103, 9, 127, 246], "w": 25, "h": 238, "tiles": 2380, "min_h_run_tiles": 5, "min_v_run_tiles": 34, "floor_min_dim_10": "KEEP"}, {"label": "O", "bbox": [133, 9, 157, 246], "w": 25, "h": 238, "tiles": 2720, "min_h_run_tiles": 5, "min_v_run_tiles": 34, "floor_min_dim_10": "KEEP"}, {"label": "R", "bbox": [163, 9, 187, 246], "w": 25, "h": 238, "tiles": 3060, "min_h_run_tiles": 5, "min_v_run_tiles": 34, "floor_min_dim_10": "KEEP"}, {"label": "E", "bbox": [193, 9, 217, 246], "w": 25, "h": 238, "tiles": 3060, "min_h_run_tiles": 5, "min_v_run_tiles": 34, "floor_min_dim_10": "KEEP"}, {"label": "A", "bbox": [223, 9, 247, 246], "w": 25, "h": 238, "tiles": 3060, "min_h_run_tiles": 5, "min_v_run_tiles": 34, "floor_min_dim_10": "KEEP"}], "glyph_height_tiles": 238, "letter_stroke_min_tiles": 5, "letter_bar_thickness_tiles": 34, "heart_bbox_tiles": [70, 68], "heart_min_run_tiles": 2, "separator_gaps_tiles": [5, 5, 5, 5, 5, 5], "margins_tiles": {"left": 8, "right": 8, "top": 9, "bottom": 9}}
+body locate: {"method": "per-row byte regex over a PIL map-tone mask, runs of 40 px or more clustered by rounded x-extent, the block grown vertically while rows still overlap its x-window by 60 px or more (the m5 viewport-indicator correction). The bbox-inside-panel-window alternative was tried and rejected, its report entry names why: it returns the chrome window because scrollbar greys pass the ground-tone class.", "bbox_method_rejected": [7, 90, 249, 329], "cluster_method_open_top5": [{"bbox": [18, 124, 145, 239], "rows": 116, "dims": [128, 116]}, {"bbox": [45, 112, 145, 123], "rows": 12, "dims": [101, 12]}, {"bbox": [36, 325, 143, 631], "rows": 8, "dims": [108, 307]}, {"bbox": [164, 107, 1914, 1046], "rows": 3, "dims": [1751, 940]}, {"bbox": [7, 110, 155, 718], "rows": 3, "dims": [149, 609]}], "cluster_method_reopen_top5": [{"bbox": [18, 124, 145, 239], "rows": 116, "dims": [128, 116]}, {"bbox": [45, 112, 145, 123], "rows": 12, "dims": [101, 12]}, {"bbox": [36, 325, 143, 631], "rows": 8, "dims": [108, 307]}, {"bbox": [164, 107, 1914, 1046], "rows": 3, "dims": [1751, 940]}, {"bbox": [7, 110, 155, 718], "rows": 3, "dims": [149, 609]}], "panel_cluster_open": [18, 124, 145, 239, 116], "panel_cluster_reopen": [18, 124, 145, 239, 116], "earlier_reads_rect": [18, 112, 145, 239]}
+body crop: {"crop": [18, 112, 146, 240], "crop_reopen": [18, 112, 146, 240], "side_px": 128, "tiles_per_px": 2.0, "note": "128x128 square crop from the located, expanded top-left; uniform on both axes"}
+gate2 body: {"crop": [18, 112, 146, 240], "total_px": 16384, "ground_px": 11764, "glyph_px": 4546, "nonground_px": 74, "distinct_ground_tones": 1, "distinct_glyph_tones": 1, "distinct_other_tones": 1, "ground_dominant": [176, 176, 176], "glyph_dominant": [36, 40, 56], "ground_share_pct": 71.8, "glyph_share_pct": 27.75, "other_share_pct": 0.45, "wcag_dominant_pair": 6.745, "wcag_worst_ground_against_glyph_dominant": 6.745, "other_tones_top": [{"rgb": [255, 255, 255], "px": 74}]}
+gate2 body reopen: {"crop": [18, 112, 146, 240], "total_px": 16384, "ground_px": 11764, "glyph_px": 4546, "nonground_px": 74, "distinct_ground_tones": 1, "distinct_glyph_tones": 1, "distinct_other_tones": 1, "ground_dominant": [176, 176, 176], "glyph_dominant": [36, 40, 56], "ground_share_pct": 71.8, "glyph_share_pct": 27.75, "other_share_pct": 0.45, "wcag_dominant_pair": 6.745, "wcag_worst_ground_against_glyph_dominant": 6.745, "other_tones_top": [{"rgb": [255, 255, 255], "px": 74}]}
+gate2 main canvas: {"crop": [155, 105, 1878, 832], "total_px": 313768, "ground_px": 210095, "glyph_px": 100636, "nonground_px": 3037, "distinct_ground_tones": 6, "distinct_glyph_tones": 17, "distinct_other_tones": 4, "ground_dominant": [176, 176, 176], "glyph_dominant": [36, 40, 56], "ground_share_pct": 66.96, "glyph_share_pct": 32.07, "other_share_pct": 0.97, "wcag_dominant_pair": 6.745, "wcag_worst_ground_against_glyph_dominant": 5.328, "other_tones_top": [{"rgb": [245, 245, 245], "px": 1458}, {"rgb": [255, 255, 255], "px": 905}, {"rgb": [106, 106, 106], "px": 362}, {"rgb": [227, 227, 227], "px": 312}]}
+gate4 reopen diff: {"crop": [18, 112, 146, 240], "threshold": 16, "differing_px": 0, "diff_region_bbox": null, "total_px": 16384, "diff_pct": 0.0} {"crop": [0, 0, 1920, 1080], "threshold": 16, "differing_px": 3255, "diff_region_bbox": [434, 409, 902, 863], "total_px": 2073600, "diff_pct": 0.157}
+gate3 booth: [{"artifact": "i-love-korea-mm.png", "size": [128, 128], "map_tone_share_pct": 99.55, "nontone_share_pct": 0.45, "nontone_px": 74}, {"artifact": "i-love-korea-booth64.png", "size": [64, 64], "map_tone_share_pct": 85.28, "nontone_share_pct": 14.72, "nontone_px": 603}, {"artifact": "i-love-korea-booth32.png", "size": [32, 32], "map_tone_share_pct": 69.53, "nontone_share_pct": 30.47, "nontone_px": 312}]
+gate3 booth64 composition: {"glyph_share_pct": 20.97, "ground_share_pct": 64.31, "other_share_pct": 14.72, "wcag_dominant_pair": 6.745, "wcag_worst_ground_against_glyph_dominant": 4.416}
+gate3 booth32 composition: {"glyph_share_pct": 14.84, "ground_share_pct": 54.69, "other_share_pct": 30.47}
+survival mask-4x: {
+ "method": "shipped MTXM mask resized 256->64 single-step Lanczos, threshold >= 128",
+ "components_after_4x_8conn": 7,
+ "components_after_4x_4conn": 15,
+ "per_letterform": [
+  {
+   "label": "I",
+   "px_window": [
+    2,
+    2,
+    6,
+    62
+   ],
+   "ink_px": 156,
+   "expected_ink_px": 116.9,
+   "ink_vs_expect": 1.335,
+   "rows_with_ink": 60,
+   "expected_rows": 60,
+   "vertical_coverage": 1.0,
+   "thinnest_run_px": 2,
+   "survives": true
+  },
+  {
+   "label": "heart",
+   "px_window": [
+    7,
+    22,
+    25,
+    40
+   ],
+   "ink_px": 215,
+   "expected_ink_px": 219.8,
+   "ink_vs_expect": 0.978,
+   "rows_with_ink": 16,
+   "expected_rows": 18,
+   "vertical_coverage": 0.889,
+   "thinnest_run_px": 3,
+   "survives": true
+  },
+  {
+   "label": "K",
+   "px_window": [
+    25,
+    2,
+    32,
+    62
+   ],
+   "ink_px": 152,
+   "expected_ink_px": 148.8,
+   "ink_vs_expect": 1.022,
+   "rows_with_ink": 60,
+   "expected_rows": 60,
+   "vertical_coverage": 1.0,
+   "thinnest_run_px": 1,
+   "survives": true
+  },
+  {
+   "label": "O",
+   "px_window": [
+    33,
+    2,
+    40,
+    62
+   ],
+   "ink_px": 204,
+   "expected_ink_px": 170.0,
+   "ink_vs_expect": 1.2,
+   "rows_with_ink": 60,
+   "expected_rows": 60,
+   "vertical_coverage": 1.0,
+   "thinnest_run_px": 1,
+   "survives": true
+  },
+  {
+   "label": "R",
+   "px_window": [
+    40,
+    2,
+    47,
+    62
+   ],
+   "ink_px": 188,
+   "expected_ink_px": 191.2,
+   "ink_vs_expect": 0.983,
+   "rows_with_ink": 60,
+   "expected_rows": 60,
+   "vertical_coverage": 1.0,
+   "thinnest_run_px": 1,
+   "survives": true
+  },
+  {
+   "label": "E",
+   "px_window": [
+    48,
+    2,
+    55,
+    62
+   ],
+   "ink_px": 221,
+   "expected_ink_px": 191.2,
+   "ink_vs_expect": 1.156,
+   "rows_with_ink": 60,
+   "expected_rows": 60,
+   "vertical_coverage": 1.0,
+   "thinnest_run_px": 2,
+   "survives": true
+  },
+  {
+   "label": "A",
+   "px_window": [
+    55,
+    2,
+    62,
+    62
+   ],
+   "ink_px": 170,
+   "expected_ink_px": 191.2,
+   "ink_vs_expect": 0.889,
+   "rows_with_ink": 60,
+   "expected_rows": 60,
+   "vertical_coverage": 1.0,
+   "thinnest_run_px": 1,
+   "survives": true
+  }
+ ],
+ "components_after_8x_8conn": 17
+}
+survival booth64: {
+ "method": "glyph-tone-classified pixel map of the real booth64 artifact (0.25 px per tile of the real overview render), per-letterform windows from the shipped MTXM",
+ "components_after_4x_8conn": 17,
+ "per_letterform": [
+  {
+   "label": "I",
+   "px_window": [
+    2,
+    2,
+    6,
+    62
+   ],
+   "ink_px": 62,
+   "expected_ink_px": 116.9,
+   "ink_vs_expect": 0.53,
+   "rows_with_ink": 16,
+   "expected_rows": 60,
+   "vertical_coverage": 0.267,
+   "thinnest_run_px": 2,
+   "survives": false
+  },
+  {
+   "label": "heart",
+   "px_window": [
+    7,
+    22,
+    25,
+    40
+   ],
+   "ink_px": 212,
+   "expected_ink_px": 219.8,
+   "ink_vs_expect": 0.965,
+   "rows_with_ink": 16,
+   "expected_rows": 18,
+   "vertical_coverage": 0.889,
+   "thinnest_run_px": 3,
+   "survives": true
+  },
+  {
+   "label": "K",
+   "px_window": [
+    25,
+    2,
+    32,
+    62
+   ],
+   "ink_px": 99,
+   "expected_ink_px": 148.8,
+   "ink_vs_expect": 0.666,
+   "rows_with_ink": 59,
+   "expected_rows": 60,
+   "vertical_coverage": 0.983,
+   "thinnest_run_px": 1,
+   "survives": true
+  },
+  {
+   "label": "O",
+   "px_window": [
+    33,
+    2,
+    40,
+    62
+   ],
+   "ink_px": 48,
+   "expected_ink_px": 170.0,
+   "ink_vs_expect": 0.282,
+   "rows_with_ink": 16,
+   "expected_rows": 60,
+   "vertical_coverage": 0.267,
+   "thinnest_run_px": 3,
+   "survives": false
+  },
+  {
+   "label": "R",
+   "px_window": [
+    40,
+    2,
+    47,
+    62
+   ],
+   "ink_px": 158,
+   "expected_ink_px": 191.2,
+   "ink_vs_expect": 0.826,
+   "rows_with_ink": 59,
+   "expected_rows": 60,
+   "vertical_coverage": 0.983,
+   "thinnest_run_px": 1,
+   "survives": true
+  },
+  {
+   "label": "E",
+   "px_window": [
+    48,
+    2,
+    55,
+    62
+   ],
+   "ink_px": 114,
+   "expected_ink_px": 191.2,
+   "ink_vs_expect": 0.596,
+   "rows_with_ink": 26,
+   "expected_rows": 60,
+   "vertical_coverage": 0.433,
+   "thinnest_run_px": 1,
+   "survives": false
+  },
+  {
+   "label": "A",
+   "px_window": [
+    55,
+    2,
+    62,
+    62
+   ],
+   "ink_px": 166,
+   "expected_ink_px": 191.2,
+   "ink_vs_expect": 0.868,
+   "rows_with_ink": 59,
+   "expected_rows": 60,
+   "vertical_coverage": 0.983,
+   "thinnest_run_px": 1,
+   "survives": true
+  }
+ ]
+}

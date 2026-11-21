@@ -1,0 +1,49 @@
+=== pre-state, four accepted maps plus the map this dispatch replaces ===
+foss-for-all: expect e856f0e1  614561 2026-11-20 06:03:19.167490448 +0900  |  e856f0e1d62ec8f7ecfccf8f0d5f08aee0d5798ef972ea9fee996bbf3bfd3eb0  /home/howard/scmdraft-maps/foss-for-all/foss-for-all.scm
+rocky-logo: expect 447360ce  614559 2026-11-20 08:17:08.844079337 +0900  |  447360ce8077e54293bf37857402860fdb6b918eb335ca95426c7d2abc656e83  /home/howard/scmdraft-maps/rocky-logo/rocky-logo.scm
+rocky-with-heart: expect b9b056c2  614565 2026-11-20 08:17:09.092077607 +0900  |  b9b056c27a67851508dae01493ccd92ee4df4d70846f2ab8b9cb635fe141f0d8  /home/howard/scmdraft-maps/rocky-with-heart/rocky-with-heart.scm
+tux: expect 79002eacd5d6  614552 2026-11-20 20:33:23.756219969 +0900  |  79002eacd5d673c531d6e2e417dddb6c00b02d9a9b9577fab7d43373f682bca4  /home/howard/scmdraft-maps/tux/tux.scm
+republic-of-korea (old): expect 50e55299dd86  MISSING
+
+=== step 3.1 rename the 110m build on the target ===
+inverse: mv "$HOME/scmdraft-maps/republic-of-korea/superseded-republic-of-korea-110m.scm" "$HOME/scmdraft-maps/republic-of-korea/republic-of-korea.scm"
+plain name already absent, rename already applied, nothing to do
+renamed file:  614566 2026-11-21 00:05:59.923893980 +0900  |  50e55299dd86fafbcf5976f841992dd326e3d9b56c4d27fecbfdebfd06ea03ca  /home/howard/scmdraft-maps/republic-of-korea/superseded-republic-of-korea-110m.scm
+
+=== step 3.2 place the rebuilt map at the plain name ===
+inverse: rm -f "$HOME/scmdraft-maps/republic-of-korea/republic-of-korea.scm"
+placed:  614566 2026-11-21 10:49:37.044704167 +0900  |  c773a534a564d4b3bd13bb9eede10838daa1729784a693f28e6185e779c40976  /home/howard/scmdraft-maps/republic-of-korea/republic-of-korea.scm
+
+=== step 3.3 launch, dismiss profile, capture the overview render ===
+launched pid 148555 map=/home/howard/scmdraft-maps/republic-of-korea/republic-of-korea.scm
+   rdp event: key 0x1C
+   rdp done.
+captured m5-open.png
+
+=== step 3.4 overview-jump click onto the design, capture the main-canvas frame ===
+   rdp event: click (110, 140)
+   rdp done.
+captured m5-jump.png
+
+=== step 3.5 kill and re-open the same disk file ===
+148557 /usr/lib64/wine/../../bin/wineserver
+killed
+launched pid 148952 map=/home/howard/scmdraft-maps/republic-of-korea/republic-of-korea.scm
+   rdp event: key 0x1C
+   rdp done.
+captured m5-reopen.png
+148557 /usr/lib64/wine/../../bin/wineserver
+killed
+
+=== post-state, map unchanged by viewing and re-open (no editor save performed) ===
+republic-of-korea (new): 614566 2026-11-21 10:49:37.044704167 +0900  |  c773a534a564d4b3bd13bb9eede10838daa1729784a693f28e6185e779c40976  /home/howard/scmdraft-maps/republic-of-korea/republic-of-korea.scm
+superseded 110m build: 614566 2026-11-21 00:05:59.923893980 +0900  |  50e55299dd86fafbcf5976f841992dd326e3d9b56c4d27fecbfdebfd06ea03ca  /home/howard/scmdraft-maps/republic-of-korea/superseded-republic-of-korea-110m.scm
+foss-for-all: expect e856f0e1  614561 2026-11-20 06:03:19.167490448 +0900  |  e856f0e1d62ec8f7ecfccf8f0d5f08aee0d5798ef972ea9fee996bbf3bfd3eb0  /home/howard/scmdraft-maps/foss-for-all/foss-for-all.scm
+rocky-logo: expect 447360ce  614559 2026-11-20 08:17:08.844079337 +0900  |  447360ce8077e54293bf37857402860fdb6b918eb335ca95426c7d2abc656e83  /home/howard/scmdraft-maps/rocky-logo/rocky-logo.scm
+rocky-with-heart: expect b9b056c2  614565 2026-11-20 08:17:09.092077607 +0900  |  b9b056c27a67851508dae01493ccd92ee4df4d70846f2ab8b9cb635fe141f0d8  /home/howard/scmdraft-maps/rocky-with-heart/rocky-with-heart.scm
+tux: expect 79002eacd5d6  614552 2026-11-20 20:33:23.756219969 +0900  |  79002eacd5d673c531d6e2e417dddb6c00b02d9a9b9577fab7d43373f682bca4  /home/howard/scmdraft-maps/tux/tux.scm
+
+=== teardown of this dispatch's target captures ===
+inverse-applied: rm -f /tmp/m5-*.png /tmp/t0042-run.log
+captures-removed
+NO_SCM_RUNNING

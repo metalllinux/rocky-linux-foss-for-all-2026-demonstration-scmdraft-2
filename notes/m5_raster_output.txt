@@ -1,0 +1,106 @@
+=== upstream geometry ===
+110m: Polygon polygons 1 rings 1 pairs 19 distinct 18 lon 126.117398..129.468304 lat 34.390046..38.612243
+   props: {'name': None, 'name_long': None, 'formal_en': None, 'ISO_A2': 'KR', 'adm0_a3': None, 'featurecla': 'Admin-0 country', 'scalerank': 1, 'min_zoom': None, 'continent': None, 'region_un': None}
+50m: MultiPolygon polygons 11 rings 11 pairs 260 distinct 249 lon 126.007520..130.934277 lat 33.201514..38.623437
+   props: {'name': None, 'name_long': None, 'formal_en': None, 'ISO_A2': 'KR', 'adm0_a3': None, 'featurecla': 'Admin-0 country', 'scalerank': 1, 'min_zoom': None, 'continent': None, 'region_un': None}
+10m: MultiPolygon polygons 53 rings 53 pairs 3060 distinct 3007 lon 124.613617..131.862522 lat 33.197577..38.624335
+   props: {'name': None, 'name_long': None, 'formal_en': None, 'ISO_A2': 'KR', 'adm0_a3': None, 'featurecla': 'Admin-0 country', 'scalerank': 0, 'min_zoom': None, 'continent': None, 'region_un': None}
+
+=== masks ===
+110m-centre: coverage 24.46% bbox 122w x 187h comps 1 enclosed 0 perimeter 680 rows>=2runs 1 runs 2 maxgap 8 narrowest 2
+110m-subpixel: coverage 24.27% bbox 120w x 187h comps 1 enclosed 0 perimeter 676 rows>=2runs 1 runs 2 maxgap 8 narrowest 2
+50m-centre: coverage 24.19% bbox 177w x 240h comps 8 enclosed 0 perimeter 1188 rows>=2runs 64 runs 172 maxgap 62 narrowest 1
+50m-subpixel: coverage 23.91% bbox 177w x 240h comps 10 enclosed 0 perimeter 1172 rows>=2runs 67 runs 181 maxgap 63 narrowest 1
+10m-centre: coverage 24.97% bbox 227w x 241h comps 26 enclosed 97 perimeter 2044 rows>=2runs 100 runs 370 maxgap 76 narrowest 1
+10m-subpixel: coverage 24.39% bbox 226w x 241h comps 31 enclosed 56 perimeter 2080 rows>=2runs 104 runs 419 maxgap 73 narrowest 1
+
+build candidate: coverage 24.16% bbox 126w x 241h comps 3 enclosed 0 perimeter 1550 rows>=2runs 81 kept 3 dropped 28
+
+kept components above the floor:
+   area  15413 x77-202 y10-201 126w x 192h
+   area    296 x79-107 y234-250 29w x 17h
+   area     68 x163-172 y169-183 10w x 15h
+dropped components (top 10 by area):
+   area    29 x73-79 y174-183 7w x 10h
+   area    19 x86-93 y59-62 8w x 4h
+   area    17 x76-82 y164-169 7w x 6h
+   area    14 x70-73 y180-185 4w x 6h
+   area    13 x246-249 y58-61 4w x 4h
+   area    11 x74-77 y187-191 4w x 5h
+   area    11 x92-95 y205-209 4w x 5h
+   area    10 x24-28 y38-40 5w x 3h
+   area    10 x114-117 y193-196 4w x 4h
+   area     7 x82-85 y46-47 4w x 2h
+
+=== comparison vs shipped 25.01 percent mask ===
+110m-centre: IoU 0.9668 edge mean 7.805 worst 107
+110m-subpixel: IoU 0.9662 edge mean 7.83 worst 107
+50m-centre: IoU 0.8807 edge mean 8.226 worst 160
+50m-subpixel: IoU 0.8788 edge mean 8.255 worst 159
+10m-centre: IoU 0.8789 edge mean 13.416 worst 159
+10m-subpixel: IoU 0.878 edge mean 12.585 worst 159
+10m-shipped: IoU 0.8872 edge mean 7.029 worst 159
+
+=== decimation survival ===
+shipped-110m-centre @128: cov 25.36% rows>=2runs 1 maxgap 4
+shipped-110m-centre @64: cov 25.22% rows>=2runs 0 maxgap 0
+shipped-110m-centre @32: cov 25.0% rows>=2runs 0 maxgap 0
+110m-centre @128: cov 24.71% rows>=2runs 1 maxgap 4
+110m-centre @64: cov 24.76% rows>=2runs 0 maxgap 0
+110m-centre @32: cov 24.61% rows>=2runs 0 maxgap 0
+110m-subpixel @128: cov 24.47% rows>=2runs 1 maxgap 4
+110m-subpixel @64: cov 24.61% rows>=2runs 0 maxgap 0
+110m-subpixel @32: cov 24.12% rows>=2runs 0 maxgap 0
+50m-centre @128: cov 24.51% rows>=2runs 30 maxgap 29
+50m-centre @64: cov 24.32% rows>=2runs 10 maxgap 4
+50m-centre @32: cov 24.12% rows>=2runs 2 maxgap 1
+50m-subpixel @128: cov 24.22% rows>=2runs 32 maxgap 29
+50m-subpixel @64: cov 23.97% rows>=2runs 11 maxgap 4
+50m-subpixel @32: cov 23.63% rows>=2runs 2 maxgap 1
+10m-centre @128: cov 25.56% rows>=2runs 41 maxgap 35
+10m-centre @64: cov 25.07% rows>=2runs 14 maxgap 4
+10m-centre @32: cov 24.51% rows>=2runs 1 maxgap 2
+10m-subpixel @128: cov 24.96% rows>=2runs 43 maxgap 36
+10m-subpixel @64: cov 24.39% rows>=2runs 14 maxgap 4
+10m-subpixel @32: cov 24.22% rows>=2runs 0 maxgap 0
+10m-shipped @128: cov 24.6% rows>=2runs 34 maxgap 9
+10m-shipped @64: cov 24.27% rows>=2runs 13 maxgap 4
+10m-shipped @32: cov 24.32% rows>=2runs 0 maxgap 0
+
+=== probes (110m-centre / 10m-subpixel / 10m-floored) ===
+Incheon / Han estuary mouth          exp sea   col   93 row   58  110m glyph   10m ground  shipped ground
+Ganghwa Strait west of Ganghwado     exp sea   col   89 row   53  110m glyph   10m glyph   shipped glyph
+Asan Bay inner                       exp sea   col  101 row   92  110m glyph   10m glyph   shipped glyph
+Seosan / Seosancheon bay head        exp sea   col   90 row   93  110m glyph   10m glyph   shipped glyph
+Taean peninsula coast                exp land  col   84 row   93  110m glyph   10m glyph   shipped glyph
+Geum estuary at Gunsan               exp sea   col  100 row  127  110m glyph   10m glyph   shipped glyph
+Yeongjiang / Hwangnyong bay mouth    exp sea   col   88 row  144  110m ground  10m ground  shipped ground
+Mokpo / Yeongsan estuary             exp sea   col   88 row  182  110m glyph   10m glyph   shipped glyph
+Seosanman coast west of Yeonggwang   exp sea   col   75 row  169  110m ground  10m ground  shipped ground
+Gwangyang Bay inner                  exp sea   col  132 row  174  110m glyph   10m glyph   shipped glyph
+Haenam coast                         exp sea   col  102 row  188  110m glyph   10m glyph   shipped glyph
+Jinhae Bay inner                     exp sea   col  168 row  164  110m glyph   10m ground  shipped ground
+Busan coast                          exp land  col  183 row  166  110m glyph   10m ground  shipped ground
+Namhae strait coast                  exp sea   col  142 row  180  110m glyph   10m glyph   shipped glyph
+Pohang neck                          exp land  col  195 row  125  110m glyph   10m glyph   shipped glyph
+Ulsan coast                          exp land  col  193 row  146  110m glyph   10m glyph   shipped glyph
+Gangneung east coast                 exp land  col  185 row   49  110m ground  10m ground  shipped ground
+Donghae / Mukho inlet                exp sea   col  185 row   58  110m glyph   10m glyph   shipped glyph
+Ulleungdo island                     exp land  col  250 row   61  110m ground  10m ground  shipped ground
+NE corner near Seokjin               exp land  col  163 row   13  110m ground  10m ground  shipped ground
+NE tip at the Tumen mouth            exp land  col  190 row   20  110m ground  10m ground  shipped ground
+Jeju main body                       exp land  col   93 row  242  110m ground  10m glyph   shipped glyph
+Jeju strait (mainland side)          exp sea   col   93 row  217  110m ground  10m ground  shipped ground
+
+=== Jeju rings in the upstream data ===
+50m poly10-0: pairs 16 lon 126.165625..126.931250 lat 33.201514..33.553223 (0.7656 x 0.3517 deg)
+10m poly3-0: pairs 60 lon 126.161143..126.953624 lat 33.197577..33.563797 (0.7925 x 0.3662 deg)
+
+recorded map extent: lon 123.9474..131.0526 lat 33.1000..38.8500
+10m rings outside that extent or off the peninsula:
+  poly17-0 pairs 17 lon 124.6136..124.7437 lat 37.9200..37.9887 col [23.9, 28.6] row [38.2, 41.2] outside_extent False off_peninsula True
+  poly23-0 pairs 21 lon 125.3923..125.4592 lat 34.6286..34.6984 col [51.9, 54.3] row [184.1, 187.2] outside_extent False off_peninsula True
+  poly35-0 pairs 9 lon 125.6792..125.7062 lat 37.6518..37.6793 col [62.2, 63.1] row [51.9, 53.1] outside_extent False off_peninsula True
+  poly36-0 pairs 19 lon 124.6735..124.7258 lat 37.8000..37.8476 col [26.1, 27.9] row [44.5, 46.6] outside_extent False off_peninsula True
+  poly37-0 pairs 13 lon 125.0897..125.1374 lat 34.0469..34.0959 col [41.0, 42.7] row [210.8, 213.0] outside_extent False off_peninsula True
+  poly52-0 pairs 4 lon 131.8601..131.8625 lat 37.2416..37.2440 col [284.0, 284.1] row [71.2, 71.3] outside_extent True off_peninsula True

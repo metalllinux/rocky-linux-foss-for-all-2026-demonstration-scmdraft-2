@@ -1,0 +1,93 @@
+
+=== 110m: /tmp/opencode/t0042/m5-upstream/ne_110m_admin_0_countries.geojson ===
+file type FeatureCollection features in file 177, KOR matches 1
+  props: {'ISO_A2': 'KR', 'featurecla': 'Admin-0 country', 'scalerank': 1}
+  geometry Polygon rings 1 coordinate pairs 19 distinct vertices 18
+    poly0: pairs 19 closed True distinct 18 lon 126.117398..129.468304 lat 34.390046..38.612243
+  overall bbox lon 126.117398..129.468304 lat 34.390046..38.612243
+
+=== 50m: /tmp/opencode/t0042/m5-upstream/ne_50m_admin_0_countries.geojson ===
+file type FeatureCollection features in file 242, KOR matches 1
+  props: {'ISO_A2': 'KR', 'featurecla': 'Admin-0 country', 'scalerank': 1}
+  geometry MultiPolygon rings 11 coordinate pairs 260 distinct vertices 249
+    poly0-0: pairs 168 closed True distinct 167 lon 126.160547..129.572852 lat 34.314258..38.623437
+    poly10-0: pairs 17 closed True distinct 16 lon 126.165625..126.931250 lat 33.201514..33.553223  <= JEUJU BAND
+    poly2-0: pairs 12 closed True distinct 11 lon 127.832227..128.065820 lat 34.703223..34.920996
+    poly3-0: pairs 11 closed True distinct 10 lon 126.108594..126.379883 lat 34.355176..34.563330
+    poly4-0: pairs 9 closed True distinct 8 lon 126.369336..126.520703 lat 37.604687..37.822656
+    poly8-0: pairs 9 closed True distinct 8 lon 126.007520..126.171973 lat 34.706982..34.914844
+    poly1-0: pairs 8 closed True distinct 7 lon 128.489258..128.741016 lat 34.736865..35.013574
+    poly9-0: pairs 8 closed True distinct 7 lon 130.810254..130.934277 lat 37.448730..37.553711
+    poly5-0: pairs 7 closed True distinct 6 lon 126.646094..126.769922 lat 34.296436..34.395898
+    poly7-0: pairs 6 closed True distinct 5 lon 126.318555..126.417578 lat 36.427881..36.612549
+    poly6-0: pairs 5 closed True distinct 4 lon 127.737305..127.799023 lat 34.584082..34.682129
+  overall bbox lon 126.007520..130.934277 lat 33.201514..38.623437
+
+=== 10m: /tmp/opencode/t0042/m5-upstream/ne_10m_admin_0_countries.geojson ===
+file type FeatureCollection features in file 258, KOR matches 1
+  props: {'ISO_A2': 'KR', 'featurecla': 'Admin-0 country', 'scalerank': 0}
+  geometry MultiPolygon rings 53 coordinate pairs 3060 distinct vertices 3007
+    poly0-0: pairs 1593 closed True distinct 1592 lon 126.128184..129.587250 lat 34.292222..38.624335
+    poly11-0: pairs 79 closed True distinct 78 lon 128.488455..128.748546 lat 34.705146..35.032945
+    poly3-0: pairs 61 closed True distinct 60 lon 126.161143..126.953624 lat 33.197577..33.563797  <= JEUJU BAND
+    poly10-0: pairs 58 closed True distinct 57 lon 127.826671..128.074718 lat 34.695868..34.940009
+    poly5-0: pairs 53 closed True distinct 52 lon 126.103282..126.381602 lat 34.352607..34.575751
+    poly13-0: pairs 51 closed True distinct 50 lon 126.355511..126.583066 lat 37.420625..37.534347
+    poly16-0: pairs 45 closed True distinct 44 lon 126.366954..126.542003 lat 37.596177..37.824449
+    poly1-0: pairs 44 closed True distinct 43 lon 126.314818..126.432140 lat 36.407945..36.609360
+    poly51-0: pairs 40 closed True distinct 39 lon 126.158702..126.264985 lat 35.021959..35.105780
+    poly44-0: pairs 39 closed True distinct 38 lon 126.991466..127.096934 lat 34.312893..34.381334
+    poly45-0: pairs 39 closed True distinct 38 lon 126.640961..126.771495 lat 34.289211..34.402045
+    poly43-0: pairs 38 closed True distinct 37 lon 126.757579..126.893321 lat 34.303371..34.353746
+    poly50-0: pairs 38 closed True distinct 37 lon 126.230724..126.361664 lat 34.822496..34.917548
+    poly48-0: pairs 36 closed True distinct 35 lon 128.332049..128.440635 lat 34.763098..34.835422
+    poly21-0: pairs 32 closed True distinct 31 lon 126.031261..126.104259 lat 34.531155..34.625474
+    poly24-0: pairs 30 closed True distinct 29 lon 126.069591..126.177908 lat 34.702786..34.771552
+    poly41-0: pairs 30 closed True distinct 29 lon 126.548839..126.617035 lat 34.175605..34.234524
+    poly46-0: pairs 30 closed True distinct 29 lon 126.753184..126.861095 lat 34.354722..34.439846
+    poly26-0: pairs 29 closed True distinct 28 lon 126.064138..126.153087 lat 34.798163..34.879136
+    poly8-0: pairs 28 closed True distinct 27 lon 125.890880..126.007579 lat 34.718166..34.790758
+    poly27-0: pairs 28 closed True distinct 27 lon 127.963634..128.082367 lat 34.833401..34.916571
+    poly12-0: pairs 27 closed True distinct 26 lon 126.056000..126.165212 lat 35.050035..35.146877
+    poly6-0: pairs 26 closed True distinct 25 lon 127.735850..127.818126 lat 34.579006..34.718166
+    poly19-0: pairs 26 closed True distinct 25 lon 127.452159..127.536388 lat 34.414252..34.472886
+    poly29-0: pairs 26 closed True distinct 25 lon 126.127778..126.181895 lat 35.023627..35.057685
+    poly38-0: pairs 26 closed True distinct 25 lon 126.506358..126.615977 lat 34.126451..34.179104
+    poly39-0: pairs 26 closed True distinct 25 lon 126.636485..126.679454 lat 34.116848..34.197170
+    poly47-0: pairs 26 closed True distinct 25 lon 128.225271..128.297130 lat 34.610460..34.652411
+    poly18-0: pairs 25 closed True distinct 24 lon 127.278331..127.324718 lat 34.005764..34.061469
+    poly31-0: pairs 25 closed True distinct 24 lon 126.250499..126.309418 lat 35.570624..35.619330
+    poly34-0: pairs 24 closed True distinct 23 lon 126.539317..126.618826 lat 37.198065..37.288479
+    poly9-0: pairs 23 closed True distinct 22 lon 125.986501..126.091482 lat 34.859198..34.928900
+    poly20-0: pairs 23 closed True distinct 22 lon 127.707530..127.793956 lat 34.488186..34.551093
+    poly15-0: pairs 22 closed True distinct 21 lon 126.281993..126.380707 lat 37.657375..37.747219
+    poly23-0: pairs 22 closed True distinct 21 lon 125.392345..125.459239 lat 34.628607..34.698432
+    poly7-0: pairs 21 closed True distinct 20 lon 125.916026..126.005382 lat 34.655911..34.728258
+    poly40-0: pairs 21 closed True distinct 20 lon 126.849132..126.924978 lat 34.151353..34.213284
+    poly4-0: pairs 20 closed True distinct 19 lon 127.110525..127.245128 lat 34.417711..34.486762
+    poly32-0: pairs 20 closed True distinct 19 lon 126.088634..126.159190 lat 37.210924..37.267524
+    poly36-0: pairs 20 closed True distinct 19 lon 124.673513..124.725841 lat 37.799994..37.847561
+    poly42-0: pairs 20 closed True distinct 19 lon 126.021007..126.089366 lat 34.278998..34.314887
+    poly2-0: pairs 18 closed True distinct 17 lon 126.220470..126.342540 lat 37.760443..37.814765
+    poly17-0: pairs 18 closed True distinct 17 lon 124.613617..124.743663 lat 37.919989..37.988674
+    poly25-0: pairs 17 closed True distinct 16 lon 126.092540..126.168712 lat 34.761868..34.808092
+    poly30-0: pairs 17 closed True distinct 16 lon 128.801606..128.843272 lat 34.992377..35.062242
+    poly33-0: pairs 17 closed True distinct 16 lon 126.433442..126.498302 lat 37.231269..37.280585
+    poly49-0: pairs 16 closed True distinct 15 lon 128.205821..128.260509 lat 34.796942..34.838568
+    poly14-0: pairs 15 closed True distinct 14 lon 130.805837..130.920665 lat 37.455512..37.545844
+    poly37-0: pairs 14 closed True distinct 13 lon 125.089692..125.137380 lat 34.046861..34.095933
+    poly22-0: pairs 12 closed True distinct 11 lon 126.016612..126.060395 lat 34.565863..34.634223
+    poly28-0: pairs 11 closed True distinct 10 lon 126.220388..126.253429 lat 34.913072..34.935452
+    poly35-0: pairs 10 closed True distinct 9 lon 125.679210..125.706228 lat 37.651760..37.679267
+    poly52-0: pairs 5 closed True distinct 4 lon 131.860148..131.862522 lat 37.241606..37.244006
+  overall bbox lon 124.613617..131.862522 lat 33.197577..38.624335
+
+=== LICENSE.md first lines (as declared upstream) ===
+   # Everything here is public domain.
+   
+   [Full terms of service »](http://www.naturalearthdata.com/about/terms-of-use/)
+   
+   All versions of Natural Earth raster + vector map data found on this website are in the public domain. You may use the maps in any manner, including modifying the content and design, electronic dissemination, and offset printing. The primary authors, _Tom Patterson_ and _Nathaniel Vaughn Kelso_, and all other contributors renounce all financial claim to the maps and invites you to use them for personal, educational, and commercial purposes.
+   
+
+VERSION file: 5.1.2

@@ -1,0 +1,1412 @@
+{
+ "upstream": {
+  "110m": {
+   "geometry_type": "Polygon",
+   "polygons": 1,
+   "rings": 1,
+   "coordinate_pairs": 19,
+   "distinct_vertices": 18,
+   "lon_min": 126.117398,
+   "lon_max": 129.468304,
+   "lat_min": 34.390046,
+   "lat_max": 38.612243,
+   "props": {
+    "name": null,
+    "name_long": null,
+    "formal_en": null,
+    "ISO_A2": "KR",
+    "adm0_a3": null,
+    "featurecla": "Admin-0 country",
+    "scalerank": 1,
+    "min_zoom": null,
+    "continent": null,
+    "region_un": null
+   }
+  },
+  "50m": {
+   "geometry_type": "MultiPolygon",
+   "polygons": 11,
+   "rings": 11,
+   "coordinate_pairs": 260,
+   "distinct_vertices": 249,
+   "lon_min": 126.00752,
+   "lon_max": 130.934277,
+   "lat_min": 33.201514,
+   "lat_max": 38.623437,
+   "props": {
+    "name": null,
+    "name_long": null,
+    "formal_en": null,
+    "ISO_A2": "KR",
+    "adm0_a3": null,
+    "featurecla": "Admin-0 country",
+    "scalerank": 1,
+    "min_zoom": null,
+    "continent": null,
+    "region_un": null
+   }
+  },
+  "10m": {
+   "geometry_type": "MultiPolygon",
+   "polygons": 53,
+   "rings": 53,
+   "coordinate_pairs": 3060,
+   "distinct_vertices": 3007,
+   "lon_min": 124.613617,
+   "lon_max": 131.862522,
+   "lat_min": 33.197577,
+   "lat_max": 38.624335,
+   "props": {
+    "name": null,
+    "name_long": null,
+    "formal_en": null,
+    "ISO_A2": "KR",
+    "adm0_a3": null,
+    "featurecla": "Admin-0 country",
+    "scalerank": 0,
+    "min_zoom": null,
+    "continent": null,
+    "region_un": null
+   }
+  }
+ },
+ "masks": {
+  "110m-centre": {
+   "filled_tiles": 16031,
+   "coverage_pct": 24.46,
+   "bbox_x": [
+    77,
+    198
+   ],
+   "bbox_w": 122,
+   "bbox_y": [
+    11,
+    197
+   ],
+   "bbox_h": 187,
+   "components": 1,
+   "enclosed_ground_tiles": 0,
+   "perimeter_boundary_edges": 680,
+   "rows_with_two_or_more_runs": 1,
+   "total_runs": 2,
+   "largest_enclosed_ground_gap_tiles": 8,
+   "narrowest_glyph_run_tiles": 2,
+   "component_sizes_tiles": [
+    16031
+   ],
+   "components_below_10_tiles": 0
+  },
+  "110m-subpixel": {
+   "filled_tiles": 15903,
+   "coverage_pct": 24.27,
+   "bbox_x": [
+    78,
+    197
+   ],
+   "bbox_w": 120,
+   "bbox_y": [
+    11,
+    197
+   ],
+   "bbox_h": 187,
+   "components": 1,
+   "enclosed_ground_tiles": 0,
+   "perimeter_boundary_edges": 676,
+   "rows_with_two_or_more_runs": 1,
+   "total_runs": 2,
+   "largest_enclosed_ground_gap_tiles": 8,
+   "narrowest_glyph_run_tiles": 2,
+   "component_sizes_tiles": [
+    15903
+   ],
+   "components_below_10_tiles": 0
+  },
+  "50m-centre": {
+   "filled_tiles": 15850,
+   "coverage_pct": 24.19,
+   "bbox_x": [
+    74,
+    250
+   ],
+   "bbox_w": 177,
+   "bbox_y": [
+    10,
+    249
+   ],
+   "bbox_h": 240,
+   "components": 8,
+   "enclosed_ground_tiles": 0,
+   "perimeter_boundary_edges": 1188,
+   "rows_with_two_or_more_runs": 64,
+   "total_runs": 172,
+   "largest_enclosed_ground_gap_tiles": 62,
+   "narrowest_glyph_run_tiles": 1,
+   "component_sizes_tiles": [
+    15331,
+    290,
+    77,
+    65,
+    37,
+    23,
+    18,
+    9
+   ],
+   "components_below_10_tiles": 1
+  },
+  "50m-subpixel": {
+   "filled_tiles": 15668,
+   "coverage_pct": 23.91,
+   "bbox_x": [
+    74,
+    250
+   ],
+   "bbox_w": 177,
+   "bbox_y": [
+    10,
+    249
+   ],
+   "bbox_h": 240,
+   "components": 10,
+   "enclosed_ground_tiles": 0,
+   "perimeter_boundary_edges": 1172,
+   "rows_with_two_or_more_runs": 67,
+   "total_runs": 181,
+   "largest_enclosed_ground_gap_tiles": 63,
+   "narrowest_glyph_run_tiles": 1,
+   "component_sizes_tiles": [
+    15124,
+    281,
+    72,
+    63,
+    40,
+    30,
+    21,
+    16,
+    15,
+    6
+   ],
+   "components_below_10_tiles": 1
+  },
+  "10m-centre": {
+   "filled_tiles": 16363,
+   "coverage_pct": 24.97,
+   "bbox_x": [
+    24,
+    250
+   ],
+   "bbox_w": 227,
+   "bbox_y": [
+    10,
+    250
+   ],
+   "bbox_h": 241,
+   "components": 26,
+   "enclosed_ground_tiles": 97,
+   "perimeter_boundary_edges": 2044,
+   "rows_with_two_or_more_runs": 100,
+   "total_runs": 370,
+   "largest_enclosed_ground_gap_tiles": 76,
+   "narrowest_glyph_run_tiles": 1,
+   "component_sizes_tiles": [
+    15848,
+    304,
+    33,
+    21,
+    20,
+    16,
+    15,
+    11,
+    10,
+    8,
+    7,
+    7
+   ],
+   "components_below_10_tiles": 17
+  },
+  "10m-subpixel": {
+   "filled_tiles": 15987,
+   "coverage_pct": 24.39,
+   "bbox_x": [
+    24,
+    249
+   ],
+   "bbox_w": 226,
+   "bbox_y": [
+    10,
+    250
+   ],
+   "bbox_h": 241,
+   "components": 31,
+   "enclosed_ground_tiles": 56,
+   "perimeter_boundary_edges": 2080,
+   "rows_with_two_or_more_runs": 104,
+   "total_runs": 419,
+   "largest_enclosed_ground_gap_tiles": 73,
+   "narrowest_glyph_run_tiles": 1,
+   "component_sizes_tiles": [
+    15413,
+    296,
+    68,
+    29,
+    19,
+    17,
+    14,
+    13,
+    11,
+    11,
+    10,
+    10
+   ],
+   "components_below_10_tiles": 19
+  }
+ },
+ "probes": [
+  {
+   "probe": "Incheon / Han estuary mouth",
+   "lon": 126.55,
+   "lat": 37.55,
+   "expected_class": "sea",
+   "col": 93,
+   "row": 58,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "Ganghwa Strait west of Ganghwado",
+   "lon": 126.42,
+   "lat": 37.65,
+   "expected_class": "sea",
+   "col": 89,
+   "row": 53,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Asan Bay inner",
+   "lon": 126.75,
+   "lat": 36.78,
+   "expected_class": "sea",
+   "col": 101,
+   "row": 92,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Seosan / Seosancheon bay head",
+   "lon": 126.45,
+   "lat": 36.75,
+   "expected_class": "sea",
+   "col": 90,
+   "row": 93,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Taean peninsula coast",
+   "lon": 126.3,
+   "lat": 36.75,
+   "expected_class": "land",
+   "col": 84,
+   "row": 93,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Geum estuary at Gunsan",
+   "lon": 126.72,
+   "lat": 35.99,
+   "expected_class": "sea",
+   "col": 100,
+   "row": 127,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Yeongjiang / Hwangnyong bay mouth",
+   "lon": 126.4,
+   "lat": 35.6,
+   "expected_class": "sea",
+   "col": 88,
+   "row": 144,
+   "in_map": true,
+   "110m-centre": "ground",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "Mokpo / Yeongsan estuary",
+   "lon": 126.4,
+   "lat": 34.75,
+   "expected_class": "sea",
+   "col": 88,
+   "row": 182,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Seosanman coast west of Yeonggwang",
+   "lon": 126.05,
+   "lat": 35.05,
+   "expected_class": "sea",
+   "col": 75,
+   "row": 169,
+   "in_map": true,
+   "110m-centre": "ground",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "Gwangyang Bay inner",
+   "lon": 127.62,
+   "lat": 34.93,
+   "expected_class": "sea",
+   "col": 132,
+   "row": 174,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Haenam coast",
+   "lon": 126.8,
+   "lat": 34.6,
+   "expected_class": "sea",
+   "col": 102,
+   "row": 188,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Jinhae Bay inner",
+   "lon": 128.62,
+   "lat": 35.16,
+   "expected_class": "sea",
+   "col": 168,
+   "row": 164,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "Busan coast",
+   "lon": 129.06,
+   "lat": 35.1,
+   "expected_class": "land",
+   "col": 183,
+   "row": 166,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "Namhae strait coast",
+   "lon": 127.9,
+   "lat": 34.8,
+   "expected_class": "sea",
+   "col": 142,
+   "row": 180,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Pohang neck",
+   "lon": 129.38,
+   "lat": 36.03,
+   "expected_class": "land",
+   "col": 195,
+   "row": 125,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Ulsan coast",
+   "lon": 129.32,
+   "lat": 35.55,
+   "expected_class": "land",
+   "col": 193,
+   "row": 146,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Gangneung east coast",
+   "lon": 129.1,
+   "lat": 37.75,
+   "expected_class": "land",
+   "col": 185,
+   "row": 49,
+   "in_map": true,
+   "110m-centre": "ground",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "Donghae / Mukho inlet",
+   "lon": 129.1,
+   "lat": 37.55,
+   "expected_class": "sea",
+   "col": 185,
+   "row": 58,
+   "in_map": true,
+   "110m-centre": "glyph",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Ulleungdo island",
+   "lon": 130.9,
+   "lat": 37.48,
+   "expected_class": "land",
+   "col": 250,
+   "row": 61,
+   "in_map": true,
+   "110m-centre": "ground",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "NE corner near Seokjin",
+   "lon": 128.5,
+   "lat": 38.55,
+   "expected_class": "land",
+   "col": 163,
+   "row": 13,
+   "in_map": true,
+   "110m-centre": "ground",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "NE tip at the Tumen mouth",
+   "lon": 129.25,
+   "lat": 38.4,
+   "expected_class": "land",
+   "col": 190,
+   "row": 20,
+   "in_map": true,
+   "110m-centre": "ground",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  },
+  {
+   "probe": "Jeju main body",
+   "lon": 126.55,
+   "lat": 33.4,
+   "expected_class": "land",
+   "col": 93,
+   "row": 242,
+   "in_map": true,
+   "110m-centre": "ground",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "glyph",
+   "10m-shipped": "glyph"
+  },
+  {
+   "probe": "Jeju strait (mainland side)",
+   "lon": 126.55,
+   "lat": 33.95,
+   "expected_class": "sea",
+   "col": 93,
+   "row": 217,
+   "in_map": true,
+   "110m-centre": "ground",
+   "class_mismatch": [
+    1,
+    1,
+    1
+   ],
+   "10m-subpixel": "ground",
+   "10m-shipped": "ground"
+  }
+ ],
+ "comparison": {
+  "110m-centre": {
+   "iou_vs_shipped": 0.9668,
+   "intersection": 15937,
+   "union": 16484,
+   "rows_compared": 203,
+   "mean_tiles": 7.805,
+   "worst_tiles": 107,
+   "deviations_over_10_tiles": 32
+  },
+  "110m-subpixel": {
+   "iou_vs_shipped": 0.9662,
+   "intersection": 15869,
+   "union": 16424,
+   "rows_compared": 203,
+   "mean_tiles": 7.83,
+   "worst_tiles": 107,
+   "deviations_over_10_tiles": 32
+  },
+  "50m-centre": {
+   "iou_vs_shipped": 0.8807,
+   "intersection": 15097,
+   "union": 17143,
+   "rows_compared": 208,
+   "mean_tiles": 8.226,
+   "worst_tiles": 160,
+   "deviations_over_10_tiles": 62
+  },
+  "50m-subpixel": {
+   "iou_vs_shipped": 0.8788,
+   "intersection": 14995,
+   "union": 17063,
+   "rows_compared": 208,
+   "mean_tiles": 8.255,
+   "worst_tiles": 159,
+   "deviations_over_10_tiles": 62
+  },
+  "10m-centre": {
+   "iou_vs_shipped": 0.8789,
+   "intersection": 15321,
+   "union": 17432,
+   "rows_compared": 219,
+   "mean_tiles": 13.416,
+   "worst_tiles": 159,
+   "deviations_over_10_tiles": 103
+  },
+  "10m-subpixel": {
+   "iou_vs_shipped": 0.878,
+   "intersection": 15137,
+   "union": 17240,
+   "rows_compared": 218,
+   "mean_tiles": 12.585,
+   "worst_tiles": 159,
+   "deviations_over_10_tiles": 99
+  },
+  "10m-shipped": {
+   "iou_vs_shipped": 0.8872,
+   "intersection": 15148,
+   "union": 17073,
+   "rows_compared": 209,
+   "mean_tiles": 7.029,
+   "worst_tiles": 159,
+   "deviations_over_10_tiles": 42
+  }
+ },
+ "shipped_values": [
+  64,
+  192
+ ],
+ "jeju_upstream_rings": {
+  "110m": [],
+  "50m": [
+   {
+    "ring": "poly10-0",
+    "pairs": 16,
+    "lon": [
+     126.165625,
+     126.93125
+    ],
+    "lat": [
+     33.201514,
+     33.553223
+    ],
+    "deg_w": 0.765625,
+    "deg_h": 0.3517089999999996
+   }
+  ],
+  "10m": [
+   {
+    "ring": "poly3-0",
+    "pairs": 60,
+    "lon": [
+     126.161143,
+     126.953624
+    ],
+    "lat": [
+     33.197577,
+     33.563797
+    ],
+    "deg_w": 0.7924810000000093,
+    "deg_h": 0.36621999999999844
+   }
+  ]
+ },
+ "extent_clipped_or_off_peninsula_rings": [
+  {
+   "ring": "poly17-0",
+   "pairs": 17,
+   "col": [
+    23.9,
+    28.6
+   ],
+   "row": [
+    38.2,
+    41.2
+   ],
+   "lon": [
+    124.613617,
+    124.743663
+   ],
+   "lat": [
+    37.919989,
+    37.988674
+   ],
+   "outside_extent": false,
+   "off_peninsula": true
+  },
+  {
+   "ring": "poly23-0",
+   "pairs": 21,
+   "col": [
+    51.9,
+    54.3
+   ],
+   "row": [
+    184.1,
+    187.2
+   ],
+   "lon": [
+    125.392345,
+    125.459239
+   ],
+   "lat": [
+    34.628607,
+    34.698432
+   ],
+   "outside_extent": false,
+   "off_peninsula": true
+  },
+  {
+   "ring": "poly35-0",
+   "pairs": 9,
+   "col": [
+    62.2,
+    63.1
+   ],
+   "row": [
+    51.9,
+    53.1
+   ],
+   "lon": [
+    125.67921,
+    125.706228
+   ],
+   "lat": [
+    37.65176,
+    37.679267
+   ],
+   "outside_extent": false,
+   "off_peninsula": true
+  },
+  {
+   "ring": "poly36-0",
+   "pairs": 19,
+   "col": [
+    26.1,
+    27.9
+   ],
+   "row": [
+    44.5,
+    46.6
+   ],
+   "lon": [
+    124.673513,
+    124.725841
+   ],
+   "lat": [
+    37.799994,
+    37.847561
+   ],
+   "outside_extent": false,
+   "off_peninsula": true
+  },
+  {
+   "ring": "poly37-0",
+   "pairs": 13,
+   "col": [
+    41.0,
+    42.7
+   ],
+   "row": [
+    210.8,
+    213.0
+   ],
+   "lon": [
+    125.089692,
+    125.13738
+   ],
+   "lat": [
+    34.046861,
+    34.095933
+   ],
+   "outside_extent": false,
+   "off_peninsula": true
+  },
+  {
+   "ring": "poly52-0",
+   "pairs": 4,
+   "col": [
+    284.0,
+    284.1
+   ],
+   "row": [
+    71.2,
+    71.3
+   ],
+   "lon": [
+    131.860148,
+    131.862522
+   ],
+   "lat": [
+    37.241606,
+    37.244006
+   ],
+   "outside_extent": true,
+   "off_peninsula": true
+  }
+ ],
+ "build_candidate": {
+  "rule": "10m admin-0 rings, 4x4 subpixel even-odd fill, tile glyph at >=50 percent subpixel coverage, 8-connected components dropped when either bbox axis is below 10 tiles, then every 4-connected internal ground counter filled to glyph",
+  "filled_tiles": 15831,
+  "coverage_pct": 24.16,
+  "bbox_x": [
+   77,
+   202
+  ],
+  "bbox_w": 126,
+  "bbox_y": [
+   10,
+   250
+  ],
+  "bbox_h": 241,
+  "components": 3,
+  "enclosed_ground_tiles": 0,
+  "enclosed_ground_tiles_before_fill": 54,
+  "enclosed_ground_components_before_fill": 22,
+  "tiles_filled": 54,
+  "perimeter_boundary_edges": 1550,
+  "rows_with_two_or_more_runs": 81,
+  "total_runs": 277,
+  "largest_enclosed_ground_gap_tiles": 19,
+  "narrowest_glyph_run_tiles": 1,
+  "kept_components": [
+   {
+    "area": 15413,
+    "x0": 77,
+    "x1": 202,
+    "y0": 10,
+    "y1": 201,
+    "w": 126,
+    "h": 192
+   },
+   {
+    "area": 296,
+    "x0": 79,
+    "x1": 107,
+    "y0": 234,
+    "y1": 250,
+    "w": 29,
+    "h": 17
+   },
+   {
+    "area": 68,
+    "x0": 163,
+    "x1": 172,
+    "y0": 169,
+    "y1": 183,
+    "w": 10,
+    "h": 15
+   }
+  ],
+  "dropped_components": [
+   {
+    "area": 29,
+    "x0": 73,
+    "x1": 79,
+    "y0": 174,
+    "y1": 183,
+    "w": 7,
+    "h": 10
+   },
+   {
+    "area": 19,
+    "x0": 86,
+    "x1": 93,
+    "y0": 59,
+    "y1": 62,
+    "w": 8,
+    "h": 4
+   },
+   {
+    "area": 17,
+    "x0": 76,
+    "x1": 82,
+    "y0": 164,
+    "y1": 169,
+    "w": 7,
+    "h": 6
+   },
+   {
+    "area": 14,
+    "x0": 70,
+    "x1": 73,
+    "y0": 180,
+    "y1": 185,
+    "w": 4,
+    "h": 6
+   },
+   {
+    "area": 13,
+    "x0": 246,
+    "x1": 249,
+    "y0": 58,
+    "y1": 61,
+    "w": 4,
+    "h": 4
+   },
+   {
+    "area": 11,
+    "x0": 74,
+    "x1": 77,
+    "y0": 187,
+    "y1": 191,
+    "w": 4,
+    "h": 5
+   },
+   {
+    "area": 11,
+    "x0": 92,
+    "x1": 95,
+    "y0": 205,
+    "y1": 209,
+    "w": 4,
+    "h": 5
+   },
+   {
+    "area": 10,
+    "x0": 24,
+    "x1": 28,
+    "y0": 38,
+    "y1": 40,
+    "w": 5,
+    "h": 3
+   },
+   {
+    "area": 10,
+    "x0": 114,
+    "x1": 117,
+    "y0": 193,
+    "y1": 196,
+    "w": 4,
+    "h": 4
+   },
+   {
+    "area": 7,
+    "x0": 82,
+    "x1": 85,
+    "y0": 46,
+    "y1": 47,
+    "w": 4,
+    "h": 2
+   },
+   {
+    "area": 6,
+    "x0": 93,
+    "x1": 95,
+    "y0": 70,
+    "y1": 72,
+    "w": 3,
+    "h": 3
+   },
+   {
+    "area": 6,
+    "x0": 126,
+    "x1": 128,
+    "y0": 194,
+    "y1": 196,
+    "w": 3,
+    "h": 3
+   },
+   {
+    "area": 6,
+    "x0": 104,
+    "x1": 106,
+    "y0": 206,
+    "y1": 207,
+    "w": 3,
+    "h": 2
+   },
+   {
+    "area": 5,
+    "x0": 174,
+    "x1": 175,
+    "y0": 168,
+    "y1": 170,
+    "w": 2,
+    "h": 3
+   },
+   {
+    "area": 5,
+    "x0": 52,
+    "x1": 53,
+    "y0": 184,
+    "y1": 186,
+    "w": 2,
+    "h": 3
+   },
+   {
+    "area": 5,
+    "x0": 110,
+    "x1": 112,
+    "y0": 198,
+    "y1": 200,
+    "w": 3,
+    "h": 3
+   },
+   {
+    "area": 5,
+    "x0": 74,
+    "x1": 76,
+    "y0": 201,
+    "y1": 202,
+    "w": 3,
+    "h": 2
+   },
+   {
+    "area": 5,
+    "x0": 96,
+    "x1": 97,
+    "y0": 206,
+    "y1": 209,
+    "w": 2,
+    "h": 4
+   },
+   {
+    "area": 4,
+    "x0": 77,
+    "x1": 78,
+    "y0": 70,
+    "y1": 72,
+    "w": 2,
+    "h": 3
+   },
+   {
+    "area": 4,
+    "x0": 135,
+    "x1": 137,
+    "y0": 191,
+    "y1": 192,
+    "w": 3,
+    "h": 2
+   },
+   {
+    "area": 3,
+    "x0": 26,
+    "x1": 27,
+    "y0": 44,
+    "y1": 45,
+    "w": 2,
+    "h": 2
+   },
+   {
+    "area": 3,
+    "x0": 89,
+    "x1": 90,
+    "y0": 70,
+    "y1": 71,
+    "w": 2,
+    "h": 2
+   },
+   {
+    "area": 3,
+    "x0": 153,
+    "x1": 154,
+    "y0": 178,
+    "y1": 179,
+    "w": 2,
+    "h": 2
+   },
+   {
+    "area": 3,
+    "x0": 154,
+    "x1": 155,
+    "y0": 186,
+    "y1": 187,
+    "w": 2,
+    "h": 2
+   },
+   {
+    "area": 2,
+    "x0": 83,
+    "x1": 84,
+    "y0": 143,
+    "y1": 144,
+    "w": 2,
+    "h": 2
+   },
+   {
+    "area": 2,
+    "x0": 41,
+    "x1": 42,
+    "y0": 211,
+    "y1": 212,
+    "w": 2,
+    "h": 2
+   },
+   {
+    "area": 1,
+    "x0": 62,
+    "x1": 62,
+    "y0": 52,
+    "y1": 52,
+    "w": 1,
+    "h": 1
+   },
+   {
+    "area": 1,
+    "x0": 120,
+    "x1": 120,
+    "y0": 214,
+    "y1": 214,
+    "w": 1,
+    "h": 1
+   }
+  ]
+ },
+ "decimation": {
+  "shipped-110m-centre": {
+   "128": {
+    "filled": 4155,
+    "coverage_pct": 25.36,
+    "rows_with_two_or_more_runs": 1,
+    "total_runs": 2,
+    "largest_enclosed_ground_gap_tiles": 4,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "64": {
+    "filled": 1033,
+    "coverage_pct": 25.22,
+    "rows_with_two_or_more_runs": 0,
+    "total_runs": 0,
+    "largest_enclosed_ground_gap_tiles": 0,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "32": {
+    "filled": 256,
+    "coverage_pct": 25.0,
+    "rows_with_two_or_more_runs": 0,
+    "total_runs": 0,
+    "largest_enclosed_ground_gap_tiles": 0,
+    "narrowest_glyph_run_tiles": 1
+   }
+  },
+  "110m-centre": {
+   "128": {
+    "filled": 4048,
+    "coverage_pct": 24.71,
+    "rows_with_two_or_more_runs": 1,
+    "total_runs": 2,
+    "largest_enclosed_ground_gap_tiles": 4,
+    "narrowest_glyph_run_tiles": 2
+   },
+   "64": {
+    "filled": 1014,
+    "coverage_pct": 24.76,
+    "rows_with_two_or_more_runs": 0,
+    "total_runs": 0,
+    "largest_enclosed_ground_gap_tiles": 0,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "32": {
+    "filled": 252,
+    "coverage_pct": 24.61,
+    "rows_with_two_or_more_runs": 0,
+    "total_runs": 0,
+    "largest_enclosed_ground_gap_tiles": 0,
+    "narrowest_glyph_run_tiles": 2
+   }
+  },
+  "110m-subpixel": {
+   "128": {
+    "filled": 4009,
+    "coverage_pct": 24.47,
+    "rows_with_two_or_more_runs": 1,
+    "total_runs": 2,
+    "largest_enclosed_ground_gap_tiles": 4,
+    "narrowest_glyph_run_tiles": 2
+   },
+   "64": {
+    "filled": 1008,
+    "coverage_pct": 24.61,
+    "rows_with_two_or_more_runs": 0,
+    "total_runs": 0,
+    "largest_enclosed_ground_gap_tiles": 0,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "32": {
+    "filled": 247,
+    "coverage_pct": 24.12,
+    "rows_with_two_or_more_runs": 0,
+    "total_runs": 0,
+    "largest_enclosed_ground_gap_tiles": 0,
+    "narrowest_glyph_run_tiles": 1
+   }
+  },
+  "50m-centre": {
+   "128": {
+    "filled": 4016,
+    "coverage_pct": 24.51,
+    "rows_with_two_or_more_runs": 30,
+    "total_runs": 80,
+    "largest_enclosed_ground_gap_tiles": 29,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "64": {
+    "filled": 996,
+    "coverage_pct": 24.32,
+    "rows_with_two_or_more_runs": 10,
+    "total_runs": 25,
+    "largest_enclosed_ground_gap_tiles": 4,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "32": {
+    "filled": 247,
+    "coverage_pct": 24.12,
+    "rows_with_two_or_more_runs": 2,
+    "total_runs": 4,
+    "largest_enclosed_ground_gap_tiles": 1,
+    "narrowest_glyph_run_tiles": 1
+   }
+  },
+  "50m-subpixel": {
+   "128": {
+    "filled": 3969,
+    "coverage_pct": 24.22,
+    "rows_with_two_or_more_runs": 32,
+    "total_runs": 83,
+    "largest_enclosed_ground_gap_tiles": 29,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "64": {
+    "filled": 982,
+    "coverage_pct": 23.97,
+    "rows_with_two_or_more_runs": 11,
+    "total_runs": 28,
+    "largest_enclosed_ground_gap_tiles": 4,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "32": {
+    "filled": 242,
+    "coverage_pct": 23.63,
+    "rows_with_two_or_more_runs": 2,
+    "total_runs": 4,
+    "largest_enclosed_ground_gap_tiles": 1,
+    "narrowest_glyph_run_tiles": 1
+   }
+  },
+  "10m-centre": {
+   "128": {
+    "filled": 4187,
+    "coverage_pct": 25.56,
+    "rows_with_two_or_more_runs": 41,
+    "total_runs": 132,
+    "largest_enclosed_ground_gap_tiles": 35,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "64": {
+    "filled": 1027,
+    "coverage_pct": 25.07,
+    "rows_with_two_or_more_runs": 14,
+    "total_runs": 36,
+    "largest_enclosed_ground_gap_tiles": 4,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "32": {
+    "filled": 251,
+    "coverage_pct": 24.51,
+    "rows_with_two_or_more_runs": 1,
+    "total_runs": 2,
+    "largest_enclosed_ground_gap_tiles": 2,
+    "narrowest_glyph_run_tiles": 1
+   }
+  },
+  "10m-subpixel": {
+   "128": {
+    "filled": 4089,
+    "coverage_pct": 24.96,
+    "rows_with_two_or_more_runs": 43,
+    "total_runs": 149,
+    "largest_enclosed_ground_gap_tiles": 36,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "64": {
+    "filled": 999,
+    "coverage_pct": 24.39,
+    "rows_with_two_or_more_runs": 14,
+    "total_runs": 37,
+    "largest_enclosed_ground_gap_tiles": 4,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "32": {
+    "filled": 248,
+    "coverage_pct": 24.22,
+    "rows_with_two_or_more_runs": 0,
+    "total_runs": 0,
+    "largest_enclosed_ground_gap_tiles": 0,
+    "narrowest_glyph_run_tiles": 1
+   }
+  },
+  "10m-shipped": {
+   "128": {
+    "filled": 4031,
+    "coverage_pct": 24.6,
+    "rows_with_two_or_more_runs": 34,
+    "total_runs": 106,
+    "largest_enclosed_ground_gap_tiles": 9,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "64": {
+    "filled": 994,
+    "coverage_pct": 24.27,
+    "rows_with_two_or_more_runs": 13,
+    "total_runs": 32,
+    "largest_enclosed_ground_gap_tiles": 4,
+    "narrowest_glyph_run_tiles": 1
+   },
+   "32": {
+    "filled": 249,
+    "coverage_pct": 24.32,
+    "rows_with_two_or_more_runs": 0,
+    "total_runs": 0,
+    "largest_enclosed_ground_gap_tiles": 0,
+    "narrowest_glyph_run_tiles": 1
+   }
+  }
+ }
+}

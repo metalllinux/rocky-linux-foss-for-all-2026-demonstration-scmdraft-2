@@ -1,0 +1,61 @@
+# TASK-0042 L1 live construction segment: the exact injected input sequence for live-demo.scm,
+# seeded from the Blizzard map "(2)River Crossing.scm" (Jungle World). Copy under a dedicated
+# name so the five deliverable maps stay byte-stable.
+#
+# REPLAY: each non-comment, non-#STEP line is one `./rdp-input rdp-args <that line>` call. A line
+# may hold several events (they share one RDP connection, which makes Ctrl+letter combos atomic);
+# a `drag` line holds only its waypoints because the drag parser consumes trailing coordinates.
+# A `#STEP name` line marks a capture boundary (gnome-screenshot-tool -f /tmp/live-<name>.png).
+#
+# Constraints honored: NO injected click on any modal Delphi dialog button; NO Isometrical<->
+# Rectangular view toggle; NO Delete scancode. The Save certification dialog is confirmed with
+# Enter (scancode 0x1C), the dialog's keyboard default, not a button click.
+# Proven-drivable core (carried from earlier passes and re-proven this dispatch): terrain-palette
+# selection + canvas drag painting, Ctrl+D/Ctrl+T/Ctrl+U layer switching (observable in the status
+# bar: first field reads Terrain/Units/Doodads and the units count), Ctrl+S + Enter save.
+# Unit/start-location/doodad placement via deep injected tree navigation is attempted and measured,
+# NOT claimed drivable, and is reported honestly by its measured outcome.
+# Coordinates are 1920x1080 screen px. River Crossing terrain palette at launch (tree top, x=62):
+# Water 764, Dirt 783, Mud 803, Jungle 823, Rocky Ground 843, Ruins 863, High Dirt 923. Canvas
+# vertical scrollbar page-down = click 1893 700. Tree vertical scrollbar page-down = click 160 1000.
+# Tree nodes after 4 tree page-downs: Doodads ~927, Locations ~948, Units ~968, Terran toggle (40,1008).
+
+#STEP before
+#STEP layer_terrain
+keydown 0x1D key 0x14 keyup 0x1D
+#STEP band1_rocky
+click 62 843
+drag 320 360 1500 360 1500 392 320 392
+#STEP band2_highdirt
+click 62 923
+drag 320 520 1500 520 1500 552 320 552
+#STEP pan1
+click 1893 700
+click 1893 700
+click 1893 700
+#STEP band3_rocky
+click 62 843
+drag 320 420 1500 420 1500 452 320 452
+#STEP band4_highdirt
+click 62 923
+drag 320 600 1500 600 1500 632 320 632
+#STEP layer_units
+keydown 0x1D key 0x16 keyup 0x1D
+#STEP unit_attempt
+click 160 1000
+click 160 1000
+click 160 1000
+click 160 1000
+click 40 1008
+click 760 450
+#STEP layer_doodads
+keydown 0x1D key 0x07 keyup 0x1D
+#STEP doodad_attempt
+click 10 927
+click 760 470
+#STEP layer_back_terrain
+keydown 0x1D key 0x14 keyup 0x1D
+#STEP after_ctrl_s
+keydown 0x1D key 0x1F keyup 0x1D
+#STEP after_enter
+key 0x1C

@@ -1,0 +1,54 @@
+# TASK-0042 L4 live construction segment on Ice World era 6 seed.
+#
+# Seed: flat 256x256 Ice World, ground value 64 (Rocky Snow), written by build_ice_seed.py.
+# Map: ~/scmdraft-maps/live-demo/live-demo-ice.scm
+# Paint tone: High Outpost (value 192), measured WCAG 6.745 against Rocky Snow ground.
+#
+# Palette coordinates derived from fresh capture l4-palette.png (2026-11-20 22:25):
+#   Rocky Snow  y=806  (ground tone, value 64, group 4)
+#   High Outpost y=934 (paint tone, value 192, group 12)
+#   Click x=62 (same panel geometry as Jungle tree in L3).
+#
+# REPLAY: each non-comment, non-#STEP line is one `./rdp-input rdp-args <that line>` call.
+# A `#STEP name` line marks a capture boundary.
+#
+# Save mechanism: taskkill triggers SCMDraft's "Save changes?" prompt, confirmed with Enter.
+# Ctrl+S triggers a Broodwar Compatibility Warning dialog (era 6 is Broodwar tileset), and the
+# subsequent Save opens a file dialog with an invalid-path error. Taskkill is the proven save path.
+#
+# Constraints honored: NO injected click on a Delphi dialog button. NO Isometrical to
+# Rectangular toggle. NO Delete scancode. Save confirmed with Enter (0x1C) after taskkill.
+#
+# Correct layer-switch scancodes: Ctrl+T=0x14, Ctrl+U=0x16, Ctrl+D=0x20, Ctrl+S=0x1F.
+
+#STEP before
+# (map just opened at 100% zoom, flat Rocky Snow ground)
+
+#STEP band1
+click 62 934
+drag 320 360 1500 360 1500 392 320 392
+
+#STEP band2
+click 62 934
+drag 320 520 1500 520 1500 552 320 552
+
+#STEP pan1
+click 1893 700
+click 1893 700
+click 1893 700
+
+#STEP band3
+click 62 934
+drag 320 420 1500 420 1500 452 320 452
+
+#STEP doodads_layer
+keydown 0x1D key 0x20 keyup 0x1D
+
+#STEP terrain_back
+keydown 0x1D key 0x14 keyup 0x1D
+
+#STEP units_layer
+keydown 0x1D key 0x16 keyup 0x1D
+
+#STEP terrain_final
+keydown 0x1D key 0x14 keyup 0x1D

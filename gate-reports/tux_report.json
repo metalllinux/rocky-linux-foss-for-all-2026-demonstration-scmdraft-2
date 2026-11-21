@@ -1,0 +1,65 @@
+{
+ "code_coverage_pct": 67.1,
+ "code_coverage_tiles": 43976,
+ "mask_bbox": [
+  0,
+  255,
+  0,
+  255
+ ],
+ "thumbnail_body_dark_share_pct": 66.55,
+ "thumbnail_body_crop": [
+  18,
+  112,
+  146,
+  241
+ ],
+ "real_thumbnail_wcag": {
+  "crop": [
+   18,
+   112,
+   146,
+   241
+  ],
+  "ground": [
+   176,
+   176,
+   176
+  ],
+  "glyph": [
+   36,
+   40,
+   56
+  ],
+  "ratio": 6.745
+ },
+ "main_canvas_wcag": {
+  "capture": "tux-jump3.png",
+  "crop": [
+   155,
+   105,
+   1878,
+   832
+  ],
+  "ground": [
+   176,
+   176,
+   176
+  ],
+  "glyph": [
+   36,
+   40,
+   56
+  ],
+  "wcag": 6.745
+ },
+ "booth64_wcag": 6.745,
+ "calibration_render_wcag": 6.745,
+ "_labels": {
+  "booth64/booth32": "downscale of the REAL editor overview thumbnail map body (contains SCMDraft pixels); the only booth artifact",
+  "calibration-render": "synthetic mask image from measured tones (contains NO SCMDraft pixel), a calibration reference only",
+  "real_thumbnail_wcag / main_canvas_wcag / booth64_wcag": "measured on real SCMDraft renders",
+  "calibration_render_wcag": "measured on the synthetic calibration render, not a booth simulation"
+ },
+ "_f1_correction_2026-11-21": "Record-hygiene fix by dispatch F1 (Tails), M6 finding doc:2631/M4 doc:2544. The tux artifacts were re-cropped by M3 at 2026-11-21 00:24; this report was last written 2026-11-20 20:46 and still carried the pre-M3 crop. Regenerated from the on-disk tux-mm.png: 128x129 body, crop (18,112)-(146,241) of tux-100.png/tux-reopen.png (doc:2539), measured dark share 66.55 percent. real_thumbnail_wcag.crop set to the same measured panel rectangle so tux and republic-of-korea coverage are reproducible from one rectangle."
+}

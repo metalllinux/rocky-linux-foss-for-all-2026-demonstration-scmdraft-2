@@ -1,0 +1,153 @@
+{
+  "dispatch": "L4",
+  "date": "2026-11-20",
+  "tileset": "Ice World era 6",
+  "ground_value": 64,
+  "ground_name": "Rocky Snow",
+  "paint_value": 192,
+  "paint_name": "High Outpost",
+  "seed_path": "~/scmdraft-maps/live-demo/live-demo-ice.scm",
+  "seed_size": 614562,
+  "seed_sha": "8f338a3cea24c1e0c5381088fc0175f5a35151fdd543f971337d99b14d627c74",
+  "banded_size": 614562,
+  "banded_sha": "9a9c24660f55a25341388e75d5bf8e68f9ca9e9df58f2568f7e5fc33fe7888b8",
+  "reopen_sha": "9a9c24660f55a25341388e75d5bf8e68f9ca9e9df58f2568f7e5fc33fe7888b8",
+  "canvas_crop": [
+    160,
+    120,
+    1895,
+    855
+  ],
+  "status_crop": [
+    0,
+    1045,
+    1920,
+    1080
+  ],
+  "palette_coords": {
+    "High_Outpost": [
+      62,
+      934
+    ],
+    "Rocky_Snow": [
+      62,
+      806
+    ]
+  },
+  "palette_source": "l4-palette.png measured 2026-11-20 22:25",
+  "wcag_live_paint": {
+    "band1": {
+      "median_wcag": 6.094,
+      "changed_px": 245867,
+      "inside_px": 41635,
+      "inside_pct": 16.9
+    },
+    "band2": {
+      "median_wcag": 6.159,
+      "changed_px": 359955,
+      "inside_px": 49768,
+      "inside_pct": 13.8
+    },
+    "band3": {
+      "median_wcag": 6.094,
+      "changed_px": 231538,
+      "inside_px": 44155,
+      "inside_pct": 19.1
+    }
+  },
+  "wcag_persistence": {
+    "before_to_reopen": {
+      "median_wcag": 6.745,
+      "changed_px": 530472,
+      "inside_px": 72832,
+      "inside_pct": 13.7
+    }
+  },
+  "persistence": {
+    "method": "programmatic file replacement (era 6 Broodwar save dialog broken under Wine)",
+    "seed_to_banded": "changed",
+    "banded_to_reopen": "identical",
+    "size_stable": true
+  },
+  "save_limitation": {
+    "finding": "Ctrl+S and taskkill save paths both trigger a Broodwar Compatibility Warning dialog for era 6 maps, which opens a file save dialog with invalid Wine path characters (/ in filename field). The save cannot complete.",
+    "workaround": "Persistence proven by programmatic file write (build_ts.py with band mask), same technique as all five deliverable maps.",
+    "booth_impact": "Ctrl+S is still a visible audience step (dialog appears, presenter dismisses with Escape). Persistence is demonstrated by re-opening the pre-built banded file."
+  },
+  "byte_stability": {
+    "foss-for-all": "e856f0e1 (match)",
+    "rocky-logo": "447360ce (match)",
+    "rocky-with-heart": "b9b056c2 (match)",
+    "tux": "79002eacd5d6 (match)"
+  },
+  "audience_steps": [
+    {
+      "step": "launch",
+      "action": "SCMDraft opens flat Ice World seed at 100% zoom",
+      "time_s": 9
+    },
+    {
+      "step": "band1",
+      "action": "Click High Outpost palette, drag 45-tile band",
+      "time_s": 8,
+      "wcag": 6.094
+    },
+    {
+      "step": "band2",
+      "action": "Click High Outpost, drag second band",
+      "time_s": 8,
+      "wcag": 6.159
+    },
+    {
+      "step": "pan",
+      "action": "Three page-down clicks scroll canvas",
+      "time_s": 4
+    },
+    {
+      "step": "band3",
+      "action": "Click High Outpost, drag third band",
+      "time_s": 8,
+      "wcag": 6.094
+    },
+    {
+      "step": "Ctrl+D",
+      "action": "Switch to Doodads layer (status bar evidence)",
+      "time_s": 4
+    },
+    {
+      "step": "Ctrl+T",
+      "action": "Switch back to Terrain",
+      "time_s": 4
+    },
+    {
+      "step": "Ctrl+U",
+      "action": "Switch to Units layer (status bar evidence)",
+      "time_s": 4
+    },
+    {
+      "step": "Ctrl+T",
+      "action": "Switch back to Terrain",
+      "time_s": 4
+    },
+    {
+      "step": "Ctrl+S",
+      "action": "Save intent (compatibility dialog appears, Escape dismisses)",
+      "time_s": 5
+    },
+    {
+      "step": "close",
+      "action": "Kill SCMDraft",
+      "time_s": 3
+    },
+    {
+      "step": "reopen",
+      "action": "Re-open banded file, bands persist (persistence proof)",
+      "time_s": 12
+    }
+  ],
+  "total_segment_s": 69,
+  "m2_should_fixes_closed": {
+    "status_bar_crop": "STATUS_CROP = (0, 1045, 1920, 1080) = 35 rows wide, x=0 full width",
+    "l3_report_label": "l3_report.json corrected from L3v3 to L3v4"
+  }
+}

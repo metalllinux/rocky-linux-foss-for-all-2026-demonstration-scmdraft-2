@@ -1,0 +1,124 @@
+{
+ "rocky-logo": {
+  "code_coverage_pct": 46.31,
+  "code_coverage_tiles": 30349,
+  "mask_bbox": [
+   27,
+   229,
+   28,
+   225
+  ],
+  "thumbnail_crop": [
+   134,
+   140
+  ],
+  "thumbnail_dark_share_pct": 40.41,
+  "thumbnail_wcag": {
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ],
+   "ratio": 6.745
+  },
+  "main_render_contrast": {
+   "crop": [
+    155,
+    105,
+    1878,
+    832
+   ],
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ],
+   "wcag": 6.745,
+   "dark_share_pct": 97.73
+  },
+  "booth_sim_wcag": 6.745,
+  "mask_render": {
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ]
+  }
+ },
+ "rocky-with-heart": {
+  "code_coverage_pct": 36.84,
+  "code_coverage_tiles": 24144,
+  "mask_bbox": [
+   43,
+   212,
+   10,
+   205
+  ],
+  "thumbnail_crop": [
+   134,
+   140
+  ],
+  "thumbnail_dark_share_pct": 32.16,
+  "thumbnail_wcag": {
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ],
+   "ratio": 6.745
+  },
+  "main_render_contrast": {
+   "crop": [
+    155,
+    105,
+    1878,
+    832
+   ],
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ],
+   "wcag": 6.745,
+   "dark_share_pct": 39.96
+  },
+  "booth_sim_wcag": 6.745,
+  "mask_render": {
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ]
+  }
+ }
+}

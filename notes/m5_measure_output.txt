@@ -1,0 +1,40 @@
+/tmp/opencode/t0042/m5_measure.py:397: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  n = sum(dmax.point(lambda v: 1 if v > threshold else 0).getdata())
+container: {"extracted_chk_bytes": 614215, "controller_written_chk_bytes": 614215, "extracted_equals_written": true, "era": 6, "dim": [256, 256], "mtxm_bytes": 131072, "tile_bytes": 131072, "mtxm_equals_tile": true, "isom_bytes": 265224, "isom_bytes_distinct": [0, 16], "unit_section_bytes": 0, "dood_section_present": false, "mrgn_bytes": 1280, "str_name": "republic-of-korea", "new_distinct_values": [64, 192], "old_distinct_values": [64, 192]}
+new mask: {"glyph_tiles": 15831, "coverage_pct": 24.16, "bbox_x": [77, 202], "bbox_w": 126, "bbox_y": [10, 250], "bbox_h": 241, "components_8conn": 3, "component_sizes": [15467, 296, 68], "enclosed_ground_tiles_4conn": 0, "perimeter_boundary_edges": 1550, "rows_with_2plus_runs": 81, "runs": 277, "largest_enclosed_ground_gap_tiles": 19, "narrowest_run_tiles": 1}
+old mask: {"glyph_tiles": 16390, "coverage_pct": 25.01, "bbox_x": [78, 198], "bbox_w": 121, "bbox_y": [11, 250], "bbox_h": 240, "components_8conn": 2, "component_sizes": [16029, 361], "enclosed_ground_tiles_4conn": 0, "perimeter_boundary_edges": 770, "rows_with_2plus_runs": 1, "runs": 2, "largest_enclosed_ground_gap_tiles": 8, "narrowest_run_tiles": 2}
+new vs old: {"iou": 0.8872, "intersection_tiles": 15148, "union_tiles": 17073, "new_only_tiles": 683, "old_only_tiles": 1242, "rows_in_both_masks": 203, "per_row_edge_deviation_tiles_mean": 4.081, "per_row_edge_deviation_tiles_median": 2, "per_row_edge_deviation_tiles_worst": 28, "deviations_over_10_tiles": 30}
+
+anchor windows (centre class new|old, sea tiles in a 5x5 window new|old):
+  Incheon / Han estuary mouth          exp sea   col   95 row   59 new glyph     10  old glyph      0
+  Ganghwa Strait                       exp sea   col   89 row   53 new glyph      7  old glyph      0
+  Asan Bay head                        exp sea   col  100 row   94 new glyph      0  old glyph      0
+  Seosanman bay head                   exp sea   col   89 row   95 new glyph      3  old glyph      0
+  Taean peninsula                      exp land  col   84 row   93 new glyph      2  old glyph      7
+  Geum estuary at Gunsan               exp sea   col  100 row  128 new glyph      3  old glyph      0
+  Mokpo / Yeongsan estuary             exp sea   col   87 row  181 new glyph     12  old ground    17
+  Seosanman coast west of Yeonggwang   exp sea   col   75 row  169 new ground    25  old ground    25
+  Gwangyang Bay inner                  exp sea   col  132 row  174 new glyph     12  old glyph      0
+  Jinhae Bay inner                     exp sea   col  168 row  164 new ground     9  old glyph      0
+  Namhae strait                        exp sea   col  142 row  180 new glyph      3  old glyph      4
+  Donghae / Mukho inlet                exp sea   col  185 row   58 new glyph      8  old glyph      4
+  Pohang neck                          exp land  col  195 row  125 new glyph      8  old glyph      0
+  Ulsan coast                          exp land  col  193 row  146 new glyph      0  old glyph      0
+  Gangneung coast                      exp land  col  185 row   49 new ground    25  old ground    25
+  Busan coast                          exp land  col  183 row  167 new ground    16  old glyph     12
+  Jeju main body                       exp land  col   93 row  242 new glyph      0  old glyph      0
+  Jeju west tip                        exp land  col   83 row  244 new glyph      0  old glyph      0
+  Jeju strait                          exp sea   col   93 row  217 new ground    25  old ground    25
+  NE point near Seokjin                exp land  col  164 row   12 new ground    25  old ground    25
+  NE tip at the Tumen mouth            exp land  col  190 row   20 new ground    25  old ground    25
+  SW corner near Jindo                 exp land  col   79 row  191 new ground    22  old ground    25
+
+body locate: {"method": "per-row byte regex over a PIL map-tone mask, runs of 40 px or more clustered by rounded x-extent; the cluster inventory is reported, and the overview panel is the near-square block on the left of the frame", "clusters_m5-open_top10": [{"bbox": [18, 124, 145, 239], "rows": 116, "run_px": 14848, "dims": [128, 116]}, {"bbox": [45, 112, 145, 123], "rows": 12, "run_px": 1212, "dims": [101, 12]}, {"bbox": [36, 325, 143, 631], "rows": 8, "run_px": 864, "dims": [108, 307]}, {"bbox": [164, 107, 1914, 1046], "rows": 3, "run_px": 5249, "dims": [1751, 940]}, {"bbox": [7, 110, 155, 718], "rows": 3, "run_px": 447, "dims": [149, 609]}, {"bbox": [336, 83, 415, 103], "rows": 2, "run_px": 160, "dims": [80, 21]}, {"bbox": [467, 83, 574, 103], "rows": 2, "run_px": 216, "dims": [108, 21]}, {"bbox": [585, 83, 665, 103], "rows": 2, "run_px": 162, "dims": [81, 21]}, {"bbox": [676, 83, 756, 103], "rows": 2, "run_px": 162, "dims": [81, 21]}, {"bbox": [767, 83, 874, 103], "rows": 2, "run_px": 216, "dims": [108, 21]}], "overview_panel_m5-open": [18, 124, 145, 239, 116], "overview_panel_m5-reopen": [18, 124, 145, 239, 116], "shadow_m4_recorded_rect": [18, 112, 146, 240]}
+body crop: {"crop": [18, 112, 146, 240], "side_px": 128, "located_bbox": [18, 112, 145, 239], "located_dims": [128, 128], "tiles_per_px": 2.0}
+render on body: {"crop": [18, 112, 146, 240], "total_px": 16384, "ground_px": 12344, "glyph_px": 3966, "nonground_px": 74, "distinct_ground_tones": 1, "distinct_glyph_tones": 1, "distinct_other_tones": 1, "ground_dominant": [176, 176, 176], "glyph_dominant": [36, 40, 56], "ground_share_pct": 75.34, "glyph_share_pct": 24.21, "other_share_pct": 0.45, "wcag_dominant_pair": 6.745, "wcag_worst_ground_against_glyph_dominant": 6.745, "other_tones_top": [{"rgb": [255, 255, 255], "px": 74}]}
+render on reopen: {"crop": [18, 112, 146, 240], "total_px": 16384, "ground_px": 12344, "glyph_px": 3966, "nonground_px": 74, "distinct_ground_tones": 1, "distinct_glyph_tones": 1, "distinct_other_tones": 1, "ground_dominant": [176, 176, 176], "glyph_dominant": [36, 40, 56], "ground_share_pct": 75.34, "glyph_share_pct": 24.21, "other_share_pct": 0.45, "wcag_dominant_pair": 6.745, "wcag_worst_ground_against_glyph_dominant": 6.745, "other_tones_top": [{"rgb": [255, 255, 255], "px": 74}]}
+reopen diff: {"crop": [18, 112, 146, 240], "threshold": 16, "differing_px": 0, "total_px": 16384, "diff_pct": 0.0} {"crop": [0, 0, 1920, 1080], "threshold": 16, "differing_px": 0, "total_px": 2073600, "diff_pct": 0.0}
+main canvas frame: {"crop": [155, 105, 1878, 832], "total_px": 313768, "ground_px": 141461, "glyph_px": 169270, "nonground_px": 3037, "distinct_ground_tones": 6, "distinct_glyph_tones": 16, "distinct_other_tones": 4, "ground_dominant": [176, 176, 176], "glyph_dominant": [36, 40, 56], "ground_share_pct": 45.08, "glyph_share_pct": 53.95, "other_share_pct": 0.97, "wcag_dominant_pair": 6.745, "wcag_worst_ground_against_glyph_dominant": 5.328, "other_tones_top": [{"rgb": [245, 245, 245], "px": 1458}, {"rgb": [255, 255, 255], "px": 905}, {"rgb": [106, 106, 106], "px": 362}, {"rgb": [227, 227, 227], "px": 312}]}
+booth: [{"artifact": "republic-of-korea-mm.png", "size": [128, 128], "map_tone_share_pct": 99.55, "nontone_share_pct": 0.45, "nontone_px": 74}, {"artifact": "republic-of-korea-booth64.png", "size": [64, 64], "map_tone_share_pct": 96.8, "nontone_share_pct": 3.2, "nontone_px": 131}, {"artifact": "republic-of-korea-booth32.png", "size": [32, 32], "map_tone_share_pct": 96.78, "nontone_share_pct": 3.22, "nontone_px": 33}]
+booth64 composition: {"glyph_share_pct": 23.24, "ground_share_pct": 73.56, "other_share_pct": 3.2, "wcag_dominant_pair": 6.745, "wcag_worst_ground_against_glyph_dominant": 4.412}
+booth32 composition: {"glyph_share_pct": 23.14, "ground_share_pct": 73.63, "other_share_pct": 3.22}

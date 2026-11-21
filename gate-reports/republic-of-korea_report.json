@@ -1,0 +1,1036 @@
+{
+ "chk_extract": {
+  "rc": 0,
+  "stdout": "extracted 614215 bytes of staredit\\scenario.chk -> /tmp/opencode/t0042/m5-extracted.chk\nhead: 56455220020000003b00495645520200",
+  "stderr": ""
+ },
+ "container": {
+  "extracted_chk_bytes": 614215,
+  "controller_written_chk_bytes": 614215,
+  "extracted_equals_written": true,
+  "era": 6,
+  "dim": [
+   256,
+   256
+  ],
+  "mtxm_bytes": 131072,
+  "tile_bytes": 131072,
+  "mtxm_equals_tile": true,
+  "isom_bytes": 265224,
+  "isom_bytes_distinct": [
+   0,
+   16
+  ],
+  "unit_section_bytes": 0,
+  "dood_section_present": false,
+  "mrgn_bytes": 1280,
+  "str_name": "republic-of-korea",
+  "new_distinct_values": [
+   64,
+   192
+  ],
+  "old_distinct_values": [
+   64,
+   192
+  ]
+ },
+ "new_mask": {
+  "glyph_tiles": 15831,
+  "coverage_pct": 24.16,
+  "bbox_x": [
+   77,
+   202
+  ],
+  "bbox_w": 126,
+  "bbox_y": [
+   10,
+   250
+  ],
+  "bbox_h": 241,
+  "components_8conn": 3,
+  "component_sizes": [
+   15467,
+   296,
+   68
+  ],
+  "enclosed_ground_tiles_4conn": 0,
+  "perimeter_boundary_edges": 1550,
+  "rows_with_2plus_runs": 81,
+  "runs": 277,
+  "largest_enclosed_ground_gap_tiles": 19,
+  "narrowest_run_tiles": 1,
+  "feature_floor": {
+   "rule": "minimum-dimension floor, a component is kept only when BOTH axes of its 8-connected bounding box are >= 10 tiles (korea_10m.MIN_FEATURE_TILES, korea_10m.apply_feature_floor)",
+   "area_reading_wrong": "an area reading (>=10 tiles of area) keeps 9 components and would ship Ulleungdo; it does NOT reproduce the shipped 3-component mask",
+   "dimension_reading_components": 3,
+   "shipped_components_8conn": 3,
+   "dropped_components": 28,
+   "dropped_tiles": 210,
+   "dropped_named_examples": {
+    "Ulleungdo": {
+     "tiles": 13,
+     "bbox_tiles": "4w x 4h",
+     "bbox_cols": "246-249",
+     "bbox_rows": "58-61",
+     "lon": "130.8018..130.8854",
+     "lat": "37.4745..37.5422",
+     "note": "identity-bearing but below the minimum-dimension floor, dropped as a stated consequence not an omission"
+    },
+    "Ganghwado-area fragments": {
+     "tiles": 19,
+     "bbox_tiles": "8w x 4h",
+     "bbox_cols": "86-93",
+     "bbox_rows": "59-62",
+     "lon": "126.3437..126.5387",
+     "lat": "37.4520..37.5196"
+    }
+   },
+   "source": "python3 korea_10m.py __main__ keep/drop census; builder mask == shipped CHK mask (verified equal)"
+  }
+ },
+ "old_mask": {
+  "glyph_tiles": 16390,
+  "coverage_pct": 25.01,
+  "bbox_x": [
+   78,
+   198
+  ],
+  "bbox_w": 121,
+  "bbox_y": [
+   11,
+   250
+  ],
+  "bbox_h": 240,
+  "components_8conn": 2,
+  "component_sizes": [
+   16029,
+   361
+  ],
+  "enclosed_ground_tiles_4conn": 0,
+  "perimeter_boundary_edges": 770,
+  "rows_with_2plus_runs": 1,
+  "runs": 2,
+  "largest_enclosed_ground_gap_tiles": 8,
+  "narrowest_run_tiles": 2
+ },
+ "new_vs_old": {
+  "iou": 0.8872,
+  "intersection_tiles": 15148,
+  "union_tiles": 17073,
+  "new_only_tiles": 683,
+  "old_only_tiles": 1242,
+  "rows_in_both_masks": 203,
+  "per_row_edge_deviation_tiles_mean": 4.081,
+  "per_row_edge_deviation_tiles_median": 2,
+  "per_row_edge_deviation_tiles_worst": 28,
+  "deviations_over_10_tiles": 30,
+  "anchors": [
+   {
+    "anchor": "Incheon / Han estuary mouth",
+    "lon": 126.6,
+    "lat": 37.53,
+    "expected": "sea",
+    "col": 95,
+    "row": 59,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 10,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Ganghwa Strait",
+    "lon": 126.42,
+    "lat": 37.65,
+    "expected": "sea",
+    "col": 89,
+    "row": 53,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 7,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Asan Bay head",
+    "lon": 126.72,
+    "lat": 36.72,
+    "expected": "sea",
+    "col": 100,
+    "row": 94,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 0,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Seosanman bay head",
+    "lon": 126.42,
+    "lat": 36.7,
+    "expected": "sea",
+    "col": 89,
+    "row": 95,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 3,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Taean peninsula",
+    "lon": 126.3,
+    "lat": 36.75,
+    "expected": "land",
+    "col": 84,
+    "row": 93,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 2,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 7
+   },
+   {
+    "anchor": "Geum estuary at Gunsan",
+    "lon": 126.73,
+    "lat": 35.97,
+    "expected": "sea",
+    "col": 100,
+    "row": 128,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 3,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Mokpo / Yeongsan estuary",
+    "lon": 126.38,
+    "lat": 34.76,
+    "expected": "sea",
+    "col": 87,
+    "row": 181,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 12,
+    "old_centre": "ground",
+    "old_sea_tiles_5x5": 17
+   },
+   {
+    "anchor": "Seosanman coast west of Yeonggwang",
+    "lon": 126.05,
+    "lat": 35.05,
+    "expected": "sea",
+    "col": 75,
+    "row": 169,
+    "in_map": true,
+    "new_centre": "ground",
+    "new_sea_tiles_5x5": 25,
+    "old_centre": "ground",
+    "old_sea_tiles_5x5": 25
+   },
+   {
+    "anchor": "Gwangyang Bay inner",
+    "lon": 127.62,
+    "lat": 34.93,
+    "expected": "sea",
+    "col": 132,
+    "row": 174,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 12,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Jinhae Bay inner",
+    "lon": 127.55,
+    "lat": 35.16,
+    "expected": "sea",
+    "col": 129,
+    "row": 164,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 0,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0,
+    "lon_recorded_wrong": 128.62,
+    "note": "F1 correction. The recorded anchor lon 128.62 was about 107 km east of Jinhae Bay (real Jinhae ~127.55 E), so the recorded '0 to 9 sea' gain was measured in open water off the east coast, not at Jinhae. Placed at its real coordinates this anchor lands on glyph (mainland) with 0 sea tiles in both the new and the 110 m masks, so it does NOT demonstrate a Jinhae Bay gain at this tile resolution and must not be quoted as one."
+   },
+   {
+    "anchor": "Namhae strait",
+    "lon": 127.9,
+    "lat": 34.8,
+    "expected": "sea",
+    "col": 142,
+    "row": 180,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 3,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 4
+   },
+   {
+    "anchor": "Donghae / Mukho inlet",
+    "lon": 129.1,
+    "lat": 37.55,
+    "expected": "sea",
+    "col": 185,
+    "row": 58,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 8,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 4
+   },
+   {
+    "anchor": "Pohang neck",
+    "lon": 129.38,
+    "lat": 36.03,
+    "expected": "land",
+    "col": 195,
+    "row": 125,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 8,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Ulsan coast",
+    "lon": 129.32,
+    "lat": 35.55,
+    "expected": "land",
+    "col": 193,
+    "row": 146,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 0,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Gangneung coast",
+    "lon": 129.1,
+    "lat": 37.75,
+    "expected": "land",
+    "col": 185,
+    "row": 49,
+    "in_map": true,
+    "new_centre": "ground",
+    "new_sea_tiles_5x5": 25,
+    "old_centre": "ground",
+    "old_sea_tiles_5x5": 25,
+    "informative": false,
+    "note": "expected land but the whole 5x5 window is sea in both masks, so this anchor cannot detect false land and tests nothing"
+   },
+   {
+    "anchor": "Busan coast",
+    "lon": 129.06,
+    "lat": 35.08,
+    "expected": "land",
+    "col": 183,
+    "row": 167,
+    "in_map": true,
+    "new_centre": "ground",
+    "new_sea_tiles_5x5": 16,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 12
+   },
+   {
+    "anchor": "Jeju main body",
+    "lon": 126.55,
+    "lat": 33.4,
+    "expected": "land",
+    "col": 93,
+    "row": 242,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 0,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Jeju west tip",
+    "lon": 126.25,
+    "lat": 33.35,
+    "expected": "land",
+    "col": 83,
+    "row": 244,
+    "in_map": true,
+    "new_centre": "glyph",
+    "new_sea_tiles_5x5": 0,
+    "old_centre": "glyph",
+    "old_sea_tiles_5x5": 0
+   },
+   {
+    "anchor": "Jeju strait",
+    "lon": 126.55,
+    "lat": 33.95,
+    "expected": "sea",
+    "col": 93,
+    "row": 217,
+    "in_map": true,
+    "new_centre": "ground",
+    "new_sea_tiles_5x5": 25,
+    "old_centre": "ground",
+    "old_sea_tiles_5x5": 25
+   },
+   {
+    "anchor": "NE point near Seokjin",
+    "lon": 128.53,
+    "lat": 38.57,
+    "expected": "land",
+    "col": 164,
+    "row": 12,
+    "in_map": true,
+    "new_centre": "ground",
+    "new_sea_tiles_5x5": 25,
+    "old_centre": "ground",
+    "old_sea_tiles_5x5": 25,
+    "informative": false,
+    "note": "expected land but the whole 5x5 window is sea in both masks, so this anchor cannot detect false land and tests nothing"
+   },
+   {
+    "anchor": "NE tip at the Tumen mouth",
+    "lon": 129.25,
+    "lat": 38.4,
+    "expected": "land",
+    "col": 190,
+    "row": 20,
+    "in_map": true,
+    "new_centre": "ground",
+    "new_sea_tiles_5x5": 25,
+    "old_centre": "ground",
+    "old_sea_tiles_5x5": 25,
+    "informative": false,
+    "note": "expected land but the whole 5x5 window is sea in both masks, so this anchor cannot detect false land and tests nothing"
+   },
+   {
+    "anchor": "SW corner near Jindo",
+    "lon": 126.15,
+    "lat": 34.55,
+    "expected": "land",
+    "col": 79,
+    "row": 191,
+    "in_map": true,
+    "new_centre": "ground",
+    "new_sea_tiles_5x5": 22,
+    "old_centre": "ground",
+    "old_sea_tiles_5x5": 25,
+    "informative": false,
+    "note": "expected land but the whole 5x5 window is sea in both masks, so this anchor cannot detect false land and tests nothing"
+   }
+  ],
+  "anchor_reliability": {
+   "summary": "Of the 10 land-expected anchors, 4 sit in open water in both masks and prove nothing; the sea-anchor half is the part that carries the rebuild claim.",
+   "non_informative_land_anchors_open_water_both_masks": [
+    "Gangneung coast",
+    "NE point near Seokjin",
+    "NE tip at the Tumen mouth",
+    "SW corner near Jindo"
+   ],
+   "corrected_anchor": "Jinhae Bay inner (lon 128.62 -> 127.55)",
+   "sea_anchors_that_gained_sea_new_vs_110m": [
+    "Incheon / Han estuary mouth",
+    "Ganghwa Strait",
+    "Seosanman bay head",
+    "Geum estuary at Gunsan",
+    "Gwangyang Bay inner",
+    "Donghae / Mukho inlet"
+   ]
+  }
+ },
+ "captures": {
+  "m5-open.png": [
+   1920,
+   1080
+  ],
+  "m5-reopen.png": [
+   1920,
+   1080
+  ],
+  "m5-jump.png": [
+   1920,
+   1080
+  ]
+ },
+ "map_body_locate": {
+  "method": "per-row byte regex over a PIL map-tone mask, runs of 40 px or more clustered by rounded x-extent; the cluster inventory is reported, and the overview panel is the near-square block on the left of the frame",
+  "clusters_m5-open_top10": [
+   {
+    "bbox": [
+     18,
+     124,
+     145,
+     239
+    ],
+    "rows": 116,
+    "run_px": 14848,
+    "dims": [
+     128,
+     116
+    ]
+   },
+   {
+    "bbox": [
+     45,
+     112,
+     145,
+     123
+    ],
+    "rows": 12,
+    "run_px": 1212,
+    "dims": [
+     101,
+     12
+    ]
+   },
+   {
+    "bbox": [
+     36,
+     325,
+     143,
+     631
+    ],
+    "rows": 8,
+    "run_px": 864,
+    "dims": [
+     108,
+     307
+    ]
+   },
+   {
+    "bbox": [
+     164,
+     107,
+     1914,
+     1046
+    ],
+    "rows": 3,
+    "run_px": 5249,
+    "dims": [
+     1751,
+     940
+    ]
+   },
+   {
+    "bbox": [
+     7,
+     110,
+     155,
+     718
+    ],
+    "rows": 3,
+    "run_px": 447,
+    "dims": [
+     149,
+     609
+    ]
+   },
+   {
+    "bbox": [
+     336,
+     83,
+     415,
+     103
+    ],
+    "rows": 2,
+    "run_px": 160,
+    "dims": [
+     80,
+     21
+    ]
+   },
+   {
+    "bbox": [
+     467,
+     83,
+     574,
+     103
+    ],
+    "rows": 2,
+    "run_px": 216,
+    "dims": [
+     108,
+     21
+    ]
+   },
+   {
+    "bbox": [
+     585,
+     83,
+     665,
+     103
+    ],
+    "rows": 2,
+    "run_px": 162,
+    "dims": [
+     81,
+     21
+    ]
+   },
+   {
+    "bbox": [
+     676,
+     83,
+     756,
+     103
+    ],
+    "rows": 2,
+    "run_px": 162,
+    "dims": [
+     81,
+     21
+    ]
+   },
+   {
+    "bbox": [
+     767,
+     83,
+     874,
+     103
+    ],
+    "rows": 2,
+    "run_px": 216,
+    "dims": [
+     108,
+     21
+    ]
+   }
+  ],
+  "overview_panel_m5-open": [
+   18,
+   124,
+   145,
+   239,
+   116
+  ],
+  "overview_panel_m5-reopen": [
+   18,
+   124,
+   145,
+   239,
+   116
+  ],
+  "shadow_m4_recorded_rect": [
+   18,
+   112,
+   146,
+   240
+  ]
+ },
+ "panel_expansion": {
+  "raw_cluster_rows": [
+   124,
+   239
+  ],
+  "expanded_rows": [
+   112,
+   239
+  ],
+  "rows_recovered_above": 12,
+  "rows_recovered_below": 0,
+  "expanded_dims": [
+   128,
+   128
+  ],
+  "reopen_expanded_rows": [
+   112,
+   239
+  ],
+  "shadow_m4_recorded_rect": [
+   18,
+   112,
+   146,
+   240
+  ]
+ },
+ "body_crop": {
+  "crop": [
+   18,
+   112,
+   146,
+   240
+  ],
+  "side_px": 128,
+  "located_bbox": [
+   18,
+   112,
+   145,
+   239
+  ],
+  "located_dims": [
+   128,
+   128
+  ],
+  "tiles_per_px": 2.0
+ },
+ "render_on_map_body": {
+  "crop": [
+   18,
+   112,
+   146,
+   240
+  ],
+  "total_px": 16384,
+  "ground_px": 12344,
+  "glyph_px": 3966,
+  "nonground_px": 74,
+  "distinct_ground_tones": 1,
+  "distinct_glyph_tones": 1,
+  "distinct_other_tones": 1,
+  "ground_dominant": [
+   176,
+   176,
+   176
+  ],
+  "glyph_dominant": [
+   36,
+   40,
+   56
+  ],
+  "ground_share_pct": 75.34,
+  "glyph_share_pct": 24.21,
+  "other_share_pct": 0.45,
+  "wcag_dominant_pair": 6.745,
+  "wcag_worst_ground_against_glyph_dominant": 6.745,
+  "other_tones_top": [
+   {
+    "rgb": [
+     255,
+     255,
+     255
+    ],
+    "px": 74
+   }
+  ]
+ },
+ "render_on_map_body_reopen": {
+  "crop": [
+   18,
+   112,
+   146,
+   240
+  ],
+  "total_px": 16384,
+  "ground_px": 12344,
+  "glyph_px": 3966,
+  "nonground_px": 74,
+  "distinct_ground_tones": 1,
+  "distinct_glyph_tones": 1,
+  "distinct_other_tones": 1,
+  "ground_dominant": [
+   176,
+   176,
+   176
+  ],
+  "glyph_dominant": [
+   36,
+   40,
+   56
+  ],
+  "ground_share_pct": 75.34,
+  "glyph_share_pct": 24.21,
+  "other_share_pct": 0.45,
+  "wcag_dominant_pair": 6.745,
+  "wcag_worst_ground_against_glyph_dominant": 6.745,
+  "other_tones_top": [
+   {
+    "rgb": [
+     255,
+     255,
+     255
+    ],
+    "px": 74
+   }
+  ]
+ },
+ "reopen_visual_diff": {
+  "crop": [
+   18,
+   112,
+   146,
+   240
+  ],
+  "threshold": 16,
+  "differing_px": 0,
+  "total_px": 16384,
+  "diff_pct": 0.0
+ },
+ "reopen_visual_diff_fullframe": {
+  "crop": [
+   0,
+   0,
+   1920,
+   1080
+  ],
+  "threshold": 16,
+  "differing_px": 0,
+  "total_px": 2073600,
+  "diff_pct": 0.0
+ },
+ "main_canvas_frame": {
+  "crop": [
+   155,
+   105,
+   1878,
+   832
+  ],
+  "total_px": 313768,
+  "ground_px": 141461,
+  "glyph_px": 169270,
+  "nonground_px": 3037,
+  "distinct_ground_tones": 6,
+  "distinct_glyph_tones": 16,
+  "distinct_other_tones": 4,
+  "ground_dominant": [
+   176,
+   176,
+   176
+  ],
+  "glyph_dominant": [
+   36,
+   40,
+   56
+  ],
+  "ground_share_pct": 45.08,
+  "glyph_share_pct": 53.95,
+  "other_share_pct": 0.97,
+  "wcag_dominant_pair": 6.745,
+  "wcag_worst_ground_against_glyph_dominant": 5.328,
+  "other_tones_top": [
+   {
+    "rgb": [
+     245,
+     245,
+     245
+    ],
+    "px": 1458
+   },
+   {
+    "rgb": [
+     255,
+     255,
+     255
+    ],
+    "px": 905
+   },
+   {
+    "rgb": [
+     106,
+     106,
+     106
+    ],
+    "px": 362
+   },
+   {
+    "rgb": [
+     227,
+     227,
+     227
+    ],
+    "px": 312
+   }
+  ]
+ },
+ "status_bar_crop": {
+  "crop": [
+   0,
+   1045,
+   1920,
+   1080
+  ],
+  "note": "cropped for reading, see m5-read-status-3x.png"
+ },
+ "booth_artifacts": {
+  "derivation": "republic-of-korea-mm.png is the 128x128 map-body crop of m5-open.png; booth64 and booth32 are single-step Lanczos resizes of that crop, uniform at 0.5 and 0.25 px per map pixel; mm-2x is a 2x Lanczos enlargement",
+  "uniform_scale_check": {
+   "mm_to_64": [
+    0.5,
+    0.5
+   ],
+   "mm_to_32": [
+    0.25,
+    0.25
+   ]
+  },
+  "chrome": [
+   {
+    "artifact": "republic-of-korea-mm.png",
+    "size": [
+     128,
+     128
+    ],
+    "map_tone_share_pct": 99.55,
+    "nontone_share_pct": 0.45,
+    "nontone_px": 74
+   },
+   {
+    "artifact": "republic-of-korea-booth64.png",
+    "size": [
+     64,
+     64
+    ],
+    "map_tone_share_pct": 96.8,
+    "nontone_share_pct": 3.2,
+    "nontone_px": 131
+   },
+   {
+    "artifact": "republic-of-korea-booth32.png",
+    "size": [
+     32,
+     32
+    ],
+    "map_tone_share_pct": 96.78,
+    "nontone_share_pct": 3.22,
+    "nontone_px": 33
+   }
+  ],
+  "composition_64": {
+   "crop": [
+    0,
+    0,
+    64,
+    64
+   ],
+   "total_px": 4096,
+   "ground_px": 3013,
+   "glyph_px": 952,
+   "nonground_px": 131,
+   "distinct_ground_tones": 116,
+   "distinct_glyph_tones": 113,
+   "distinct_other_tones": 74,
+   "ground_dominant": [
+    176,
+    176,
+    176
+   ],
+   "glyph_dominant": [
+    36,
+    40,
+    56
+   ],
+   "ground_share_pct": 73.56,
+   "glyph_share_pct": 23.24,
+   "other_share_pct": 3.2,
+   "wcag_dominant_pair": 6.745,
+   "wcag_worst_ground_against_glyph_dominant": 4.412,
+   "other_tones_top": [
+    {
+     "rgb": [
+      211,
+      211,
+      211
+     ],
+     "px": 16
+    },
+    {
+     "rgb": [
+      213,
+      213,
+      213
+     ],
+     "px": 10
+    },
+    {
+     "rgb": [
+      107,
+      109,
+      117
+     ],
+     "px": 9
+    },
+    {
+     "rgb": [
+      108,
+      110,
+      118
+     ],
+     "px": 4
+    },
+    {
+     "rgb": [
+      99,
+      101,
+      110
+     ],
+     "px": 3
+    }
+   ]
+  },
+  "composition_32": {
+   "crop": [
+    0,
+    0,
+    32,
+    32
+   ],
+   "total_px": 1024,
+   "ground_px": 754,
+   "glyph_px": 237,
+   "nonground_px": 33,
+   "distinct_ground_tones": 83,
+   "distinct_glyph_tones": 63,
+   "distinct_other_tones": 32,
+   "ground_dominant": [
+    176,
+    176,
+    176
+   ],
+   "glyph_dominant": [
+    36,
+    40,
+    56
+   ],
+   "ground_share_pct": 73.63,
+   "glyph_share_pct": 23.14,
+   "other_share_pct": 3.22,
+   "wcag_dominant_pair": 6.745,
+   "wcag_worst_ground_against_glyph_dominant": 4.412,
+   "other_tones_top": [
+    {
+     "rgb": [
+      139,
+      140,
+      144
+     ],
+     "px": 2
+    },
+    {
+     "rgb": [
+      205,
+      205,
+      205
+     ],
+     "px": 1
+    },
+    {
+     "rgb": [
+      203,
+      203,
+      203
+     ],
+     "px": 1
+    },
+    {
+     "rgb": [
+      204,
+      204,
+      204
+     ],
+     "px": 1
+    },
+    {
+     "rgb": [
+      202,
+      202,
+      202
+     ],
+     "px": 1
+    }
+   ]
+  }
+ },
+ "_f1_corrections_2026-11-21": "Record-hygiene fixes applied by dispatch F1 (Tails) on M6 findings. Feature floor restated as minimum-dimension (doc:2598). Sea-anchor table corrected: Jinhae lon 128.62->127.55 and four land-expected anchors flagged as open-water/non-informative (doc:2613). Anchor sea counts re-derived from republic-of-korea.chk and superseded-...110m.chk MTXM. Map (.scm/.chk) bytes unchanged; target untouched."
+}

@@ -1,0 +1,162 @@
+{
+  "steps": {
+    "before": {
+      "canvas_cols": 172,
+      "canvas_dark": 1200063,
+      "canvas_blue": 4547,
+      "canvas_tot": 1275225,
+      "dark_pct": 94.11,
+      "blue_pct": 0.36,
+      "thumb_cols": 71
+    },
+    "layer_terrain": {
+      "canvas_cols": 170,
+      "canvas_dark": 1200331,
+      "canvas_blue": 4551,
+      "canvas_tot": 1275225,
+      "dark_pct": 94.13,
+      "blue_pct": 0.36,
+      "thumb_cols": 71
+    },
+    "band1_rocky": {
+      "canvas_cols": 170,
+      "canvas_dark": 1196170,
+      "canvas_blue": 4551,
+      "canvas_tot": 1275225,
+      "dark_pct": 93.8,
+      "blue_pct": 0.36,
+      "thumb_cols": 71
+    },
+    "band2_highdirt": {
+      "canvas_cols": 172,
+      "canvas_dark": 1127465,
+      "canvas_blue": 4551,
+      "canvas_tot": 1275225,
+      "dark_pct": 88.41,
+      "blue_pct": 0.36,
+      "thumb_cols": 71
+    },
+    "pan1": {
+      "canvas_cols": 133,
+      "canvas_dark": 1136639,
+      "canvas_blue": 50,
+      "canvas_tot": 1275225,
+      "dark_pct": 89.13,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "band3_rocky": {
+      "canvas_cols": 134,
+      "canvas_dark": 1175380,
+      "canvas_blue": 47,
+      "canvas_tot": 1275225,
+      "dark_pct": 92.17,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "band4_highdirt": {
+      "canvas_cols": 135,
+      "canvas_dark": 1106335,
+      "canvas_blue": 46,
+      "canvas_tot": 1275225,
+      "dark_pct": 86.76,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "layer_units": {
+      "canvas_cols": 134,
+      "canvas_dark": 1106301,
+      "canvas_blue": 46,
+      "canvas_tot": 1275225,
+      "dark_pct": 86.75,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "unit_attempt": {
+      "canvas_cols": 135,
+      "canvas_dark": 1106301,
+      "canvas_blue": 46,
+      "canvas_tot": 1275225,
+      "dark_pct": 86.75,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "layer_doodads": {
+      "canvas_cols": 135,
+      "canvas_dark": 1106301,
+      "canvas_blue": 46,
+      "canvas_tot": 1275225,
+      "dark_pct": 86.75,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "doodad_attempt": {
+      "canvas_cols": 135,
+      "canvas_dark": 1106301,
+      "canvas_blue": 46,
+      "canvas_tot": 1275225,
+      "dark_pct": 86.75,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "layer_back_terrain": {
+      "canvas_cols": 135,
+      "canvas_dark": 1106301,
+      "canvas_blue": 46,
+      "canvas_tot": 1275225,
+      "dark_pct": 86.75,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "after_ctrl_s": {
+      "canvas_cols": 163,
+      "canvas_dark": 1071918,
+      "canvas_blue": 6343,
+      "canvas_tot": 1275225,
+      "dark_pct": 84.06,
+      "blue_pct": 0.5,
+      "thumb_cols": 71
+    },
+    "after_enter": {
+      "canvas_cols": 135,
+      "canvas_dark": 1106301,
+      "canvas_blue": 46,
+      "canvas_tot": 1275225,
+      "dark_pct": 86.75,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "reopen": {
+      "canvas_cols": 172,
+      "canvas_dark": 1127446,
+      "canvas_blue": 4551,
+      "canvas_tot": 1275225,
+      "dark_pct": 88.41,
+      "blue_pct": 0.36,
+      "thumb_cols": 71
+    },
+    "reopen_down1": {
+      "canvas_cols": 135,
+      "canvas_dark": 1083542,
+      "canvas_blue": 39,
+      "canvas_tot": 1275225,
+      "dark_pct": 84.97,
+      "blue_pct": 0.0,
+      "thumb_cols": 71
+    },
+    "reopen_down2": {
+      "canvas_cols": 163,
+      "canvas_dark": 1163965,
+      "canvas_blue": 1360,
+      "canvas_tot": 1275225,
+      "dark_pct": 91.28,
+      "blue_pct": 0.11,
+      "thumb_cols": 71
+    }
+  },
+  "before_save": "90426 1795150218 /home/howard/scmdraft-maps/live-demo/live-demo.scm",
+  "after_save": "94921 1795150338 /home/howard/scmdraft-maps/live-demo/live-demo.scm",
+  "sha_before": "481364dc58e8401d966ef9ce04f87b375344a95838b292007a05fdeb0b721a9e",
+  "sha_after": "506b0b79bc0e4e1755a20941167cd297db150e2c33dbe6b5311a1bf7a9fca308",
+  "changed": true
+}

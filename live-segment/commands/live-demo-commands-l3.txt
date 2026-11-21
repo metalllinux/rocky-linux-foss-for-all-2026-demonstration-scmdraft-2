@@ -1,0 +1,53 @@
+# TASK-0042 L3 live construction segment fix pass v4: closes the three Shadow should-fixes.
+#
+# ROOT CAUSES FOUND AND FIXED:
+# A. Ctrl+D scancode was wrong in L1: 0x07 (key "6" in AT set 1), not 0x20 (key "D").
+#    Ctrl+6 cycled race filter without switching layers. Ctrl+D with 0x20 switches to
+#    Doodads correctly. Verified live 2026-11-20: status bar reads "Doodads | Select Doodads | 187 Doodads".
+# B. Tree scroll state: after Ctrl+D switches to Doodads, the tree reorganizes and terrain
+#    palette coordinates (x=62, y=843, y=923) shift. Fix: paint FIRST from the clean launch
+#    state (coordinates proven correct), THEN layer-switch.
+#
+# FIXES APPLIED:
+# 1. Ctrl+D proven from a clean Terrain state with correct scancode 0x20, AFTER painting.
+#    Status bar read from x=0 showing full layer name "Doodads".
+# 2. Unit and doodad placement steps CUT (12 clicks, 0-2 px change in L1). Recorded.
+# 3. Before and after captures on the MAIN CANVAS at 100 percent zoom (crop 160,120,1895,855).
+#
+# REPLAY: each non-comment, non-#STEP line is one `./rdp-input rdp-args <that line>` call.
+# A `#STEP name` line marks a capture boundary.
+#
+# Constraints honored: NO injected click on a Delphi dialog button. NO Isometrical to
+# Rectangular toggle. NO Delete scancode. Save confirmed with Enter (0x1C).
+#
+# Coordinates: 1920x1080. Clean-launch palette (x=62): Water 764, Dirt 783, Mud 803,
+# Jungle 823, Rocky Ground 843, Ruins 863, High Jungle 923. Canvas scroll page-down = 1893 700.
+#
+# Correct layer-switch scancodes: Ctrl+T=0x14, Ctrl+U=0x16, Ctrl+D=0x20, Ctrl+S=0x1F.
+
+#STEP before
+#STEP band1_rocky
+click 62 843
+drag 320 360 1500 360 1500 392 320 392
+#STEP band2_highjungle
+click 62 923
+drag 320 520 1500 520 1500 552 320 552
+#STEP pan1
+click 1893 700
+click 1893 700
+click 1893 700
+#STEP band3_rocky
+click 62 843
+drag 320 420 1500 420 1500 452 320 452
+#STEP doodads_layer
+keydown 0x1D key 0x20 keyup 0x1D
+#STEP terrain_back
+keydown 0x1D key 0x14 keyup 0x1D
+#STEP units_layer
+keydown 0x1D key 0x16 keyup 0x1D
+#STEP terrain_final
+keydown 0x1D key 0x14 keyup 0x1D
+#STEP after_ctrl_s
+keydown 0x1D key 0x1F keyup 0x1D
+#STEP after_enter
+key 0x1C

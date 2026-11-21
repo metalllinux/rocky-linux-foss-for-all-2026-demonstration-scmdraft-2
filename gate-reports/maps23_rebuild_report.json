@@ -1,0 +1,110 @@
+{
+ "rocky-logo": {
+  "code_coverage_pct": 61.25,
+  "code_coverage_tiles": 40140,
+  "mask_bbox": [
+   0,
+   255,
+   0,
+   255
+  ],
+  "thumbnail_body_dark_share_pct": 59.76,
+  "thumbnail_body_crop": [
+   4,
+   4,
+   131,
+   131
+  ],
+  "real_thumbnail_wcag": {
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ],
+   "ratio": 6.745
+  },
+  "main_canvas_wcag": {
+   "crop": [
+    155,
+    105,
+    1878,
+    832
+   ],
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ],
+   "wcag": 6.745
+  },
+  "booth64_wcag": 6.745,
+  "calibration_render_wcag": 6.745
+ },
+ "rocky-with-heart": {
+  "code_coverage_pct": 44.25,
+  "code_coverage_tiles": 29000,
+  "mask_bbox": [
+   0,
+   255,
+   20,
+   255
+  ],
+  "thumbnail_body_dark_share_pct": 43.1,
+  "thumbnail_body_crop": [
+   4,
+   4,
+   131,
+   131
+  ],
+  "real_thumbnail_wcag": {
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ],
+   "ratio": 6.745
+  },
+  "main_canvas_wcag": {
+   "crop": [
+    155,
+    105,
+    1878,
+    832
+   ],
+   "ground": [
+    176,
+    176,
+    176
+   ],
+   "glyph": [
+    36,
+    40,
+    56
+   ],
+   "wcag": 6.745
+  },
+  "booth64_wcag": 6.745,
+  "calibration_render_wcag": 6.745
+ },
+ "_labels": {
+  "booth64/booth32": "downscale of the REAL editor overview thumbnail map body (contains SCMDraft pixels)",
+  "calibration-render": "synthetic mask image from measured tones (contains NO SCMDraft pixel), a calibration reference only",
+  "real_thumbnail_wcag / main_canvas_wcag / booth64_wcag": "measured on real SCMDraft renders",
+  "calibration_render_wcag": "measured on the synthetic calibration render, not a booth simulation"
+ }
+}

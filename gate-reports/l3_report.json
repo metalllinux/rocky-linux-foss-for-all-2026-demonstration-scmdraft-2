@@ -1,0 +1,230 @@
+{
+  "dispatch": "L3v4",
+  "date": "2026-11-20",
+  "seed_stat": "90426 1795171981",
+  "seed_sha": "481364dc58e8401d966ef9ce04f87b375344a95838b292007a05fdeb0b721a9e",
+  "after_save_stat": "94538 1795172067",
+  "sha_after_save": "9048e91beb450ee44fe890bd8c5884d57e3c39edec02aed9308f7a89cd927a70",
+  "changed": true,
+  "canvas_crop": [
+    160,
+    120,
+    1895,
+    855
+  ],
+  "status_crop": [
+    0,
+    1050,
+    1920,
+    1080
+  ],
+  "steps": {
+    "before": {
+      "colors": 172,
+      "dark_pct": 94.1,
+      "green_pct": 27.42,
+      "brown_pct": 0.76,
+      "grey_pct": 0.14,
+      "total_px": 1275225
+    },
+    "band1_rocky": {
+      "colors": 172,
+      "dark_pct": 93.78,
+      "green_pct": 23.43,
+      "brown_pct": 0.77,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "band2_highjungle": {
+      "colors": 172,
+      "dark_pct": 88.41,
+      "green_pct": 21.1,
+      "brown_pct": 2.33,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "pan1": {
+      "colors": 133,
+      "dark_pct": 89.13,
+      "green_pct": 28.16,
+      "brown_pct": 1.55,
+      "grey_pct": 0.14,
+      "total_px": 1275225
+    },
+    "band3_rocky": {
+      "colors": 134,
+      "dark_pct": 92.17,
+      "green_pct": 23.25,
+      "brown_pct": 1.16,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "doodads_layer": {
+      "colors": 133,
+      "dark_pct": 92.16,
+      "green_pct": 23.25,
+      "brown_pct": 1.16,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "terrain_back": {
+      "colors": 134,
+      "dark_pct": 92.17,
+      "green_pct": 23.25,
+      "brown_pct": 1.16,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "units_layer": {
+      "colors": 133,
+      "dark_pct": 92.16,
+      "green_pct": 23.25,
+      "brown_pct": 1.16,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "terrain_final": {
+      "colors": 134,
+      "dark_pct": 92.17,
+      "green_pct": 23.25,
+      "brown_pct": 1.16,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "after_ctrl_s": {
+      "colors": 162,
+      "dark_pct": 89.47,
+      "green_pct": 22.14,
+      "brown_pct": 1.16,
+      "grey_pct": 0.23,
+      "total_px": 1275225
+    },
+    "after_enter": {
+      "colors": 134,
+      "dark_pct": 92.17,
+      "green_pct": 23.25,
+      "brown_pct": 1.16,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "reopen": {
+      "colors": 172,
+      "dark_pct": 88.41,
+      "green_pct": 21.11,
+      "brown_pct": 2.33,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    },
+    "reopen_down1": {
+      "colors": 135,
+      "dark_pct": 84.95,
+      "green_pct": 19.06,
+      "brown_pct": 3.15,
+      "grey_pct": 0.14,
+      "total_px": 1275225
+    },
+    "reopen_down2": {
+      "colors": 161,
+      "dark_pct": 96.75,
+      "green_pct": 28.09,
+      "brown_pct": 0.36,
+      "grey_pct": 0.15,
+      "total_px": 1275225
+    }
+  },
+  "pairwise_diffs": {
+    "before_to_band1_rocky": {
+      "diff_px": 20723,
+      "total_px": 1275225,
+      "diff_pct": 1.63
+    },
+    "band1_rocky_to_band2_highjungle": {
+      "diff_px": 82541,
+      "total_px": 1275225,
+      "diff_pct": 6.47
+    },
+    "band2_highjungle_to_pan1": {
+      "diff_px": 420372,
+      "total_px": 1275225,
+      "diff_pct": 32.96
+    },
+    "pan1_to_band3_rocky": {
+      "diff_px": 112696,
+      "total_px": 1275225,
+      "diff_pct": 8.84
+    },
+    "band3_rocky_to_doodads_layer": {
+      "diff_px": 752,
+      "total_px": 1275225,
+      "diff_pct": 0.06
+    },
+    "doodads_layer_to_terrain_back": {
+      "diff_px": 752,
+      "total_px": 1275225,
+      "diff_pct": 0.06
+    },
+    "terrain_back_to_units_layer": {
+      "diff_px": 752,
+      "total_px": 1275225,
+      "diff_pct": 0.06
+    },
+    "units_layer_to_terrain_final": {
+      "diff_px": 752,
+      "total_px": 1275225,
+      "diff_pct": 0.06
+    },
+    "terrain_final_to_after_ctrl_s": {
+      "diff_px": 35914,
+      "total_px": 1275225,
+      "diff_pct": 2.82
+    },
+    "after_ctrl_s_to_after_enter": {
+      "diff_px": 35914,
+      "total_px": 1275225,
+      "diff_pct": 2.82
+    },
+    "after_enter_to_reopen": {
+      "diff_px": 361082,
+      "total_px": 1275225,
+      "diff_pct": 28.32
+    },
+    "reopen_to_reopen_down1": {
+      "diff_px": 477471,
+      "total_px": 1275225,
+      "diff_pct": 37.44
+    },
+    "reopen_down1_to_reopen_down2": {
+      "diff_px": 372142,
+      "total_px": 1275225,
+      "diff_pct": 29.18
+    }
+  },
+  "deliverable_stability": {
+    "foss-for-all": {
+      "sha": "e856f0e1d62e",
+      "expected": "e856f0e1",
+      "match": true
+    },
+    "rocky-logo": {
+      "sha": "447360ce8077",
+      "expected": "447360ce",
+      "match": true
+    },
+    "rocky-with-heart": {
+      "sha": "b9b056c27a67",
+      "expected": "b9b056c2",
+      "match": true
+    }
+  },
+  "scancode_fix": "Ctrl+D: 0x1D + 0x20 (correct AT set 1 for D). L1 used 0x07 which is key '6'.",
+  "fixes_applied": {
+    "ctrl_d_from_clean": "Ctrl+D issued FIRST (from clean Terrain, correct scancode 0x20). Verified status bar reads 'Doodads | Select Doodads | 187 Doodads'.",
+    "placement_cut": "L1 unit_attempt and doodad_attempt steps (12 clicks, 0-2 px change) cut.",
+    "main_canvas_captures": "Before and after pair uses main-canvas crop (160,120,1895,855)."
+  },
+  "cut_steps": [
+    "L1 step 'unit_attempt': 4 tree page-downs, Terran toggle, canvas click. 2 px diff. CUT.",
+    "L1 step 'doodad_attempt': Doodads node click, canvas click. 0 px diff. CUT."
+  ],
+  "dispatch_note": "Numbers are from l3v4-* captures. l3v3-* captures are the failed attempt kept for the record."
+}
