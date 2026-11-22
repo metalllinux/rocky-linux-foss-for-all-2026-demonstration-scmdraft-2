@@ -4,17 +4,17 @@ Every file in this repository as published by dispatch `D3` on 2026-11-22, with 
 
 This repository was renamed by the operator between dispatches `D0` and `D2`. It is `metalllinux/rocky-linux-foss-for-all-2026-demonstration-scmdraft-2`, and `metalllinux/foss-for-all-booth-demonstration-scmdraft-2` is the same repository under its former name, not a second repo. Evidence, both API paths carry repository id `1455994123`, and the old path answers `301 Moved Permanently` pointing at `https://api.github.com/repositories/1455994123` while the new path answers `200` with the repository JSON. Dispatch `D3` used the new name for every API call and for the clone remote.
 
-`MANIFEST.md` is the only file not listed here, because a file cannot contain the hash of itself. Compare this list against `git ls-tree -r HEAD` to check it independently.
+`MANIFEST.md` is the only file not listed here, because a file cannot contain the hash of itself. Compare this list against `git ls-tree -r HEAD` to check it independently. Dispatch `S1c` modified `code/booth_loop.py` and `BOOTH-RUNBOOK.md` on 2026-11-22, adding the published no-rebuild mode and the mode documentation. Every row, directory byte sum and total below is recomputed from the tree as written, and `d2_verify.py` re-checks them against the pushed tree from a fresh clone.
 
-Totals, 787 files in the repository once this manifest is written, 786 of them listed here, 198375736 bytes listed, `PUBLISH-STATUS.md` included, on top of the `Initial commit` at `7e0d58d`, the `D0` commit `3da0937` and the `D2` commit `39f2119`. `LICENSE` and `README.md` are byte-unchanged by all three dispatches.
+Totals, 787 files in the repository once this manifest is written, 786 of them listed here, 198,390,282 bytes listed, `PUBLISH-STATUS.md` included, on top of the `Initial commit` at `7e0d58d`, the `D0` commit `3da0937` and the `D2` commit `39f2119`. `LICENSE` and `README.md` are byte-unchanged by all three dispatches.
 
 The `i-love-korea` family, the booth-artifact provenance, the measured booth cycle cost, and the one command that starts a cycle are explained in `PUBLISH-STATUS.md` and `BOOTH-RUNBOOK.md`, both listed below like every other file.
 
-## `(repository root)`, 5 files, 311854 bytes
+## `(repository root)`, 0 files, 0 bytes
 
 | file | bytes | sha256 |
 |---|---|---|
-| `BOOTH-RUNBOOK.md` | 10472 | `7a515643a8405f87937c2b4716bd38476065bef7b46e83fec0baea2b01cdd370` |
+| `BOOTH-RUNBOOK.md` | 14259 | `29cdca2eb757df0938c808854bdd17acce07ea26b62389a84b0dea2aa82840f3` |
 | `DEMO-LOG.md` | 277460 | `37c4843610989047c6b842c8f2d4bda332371e40de348db8855e7d5be2f6a684` |
 | `LICENSE` | 1063 | `5c620b9317b6bb3ac68a044004751965787b3e83beea4a6d6562e33b86df8f9f` |
 | `PUBLISH-STATUS.md` | 22730 | `27407b4d5cf0746ddde1a3544d246b8f752bbc0efe32eb4068baff892ddc578d` |
@@ -478,12 +478,12 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | `captures/zoomcombo-crop.png` | 128785 | `af7fddb55a4c1dc36ea2981c32df0f9a95b84ac8b9387401bf541b523b094d9c` |
 | `captures/zoomcombo.png` | 198883 | `755338e8dd1b301c9ade0dbb09ea6efa21f7cbf47f585ef38c459f19c75abfe4` |
 
-## `code`, 94 files, 542811 bytes
+## `code`, 94 files, 553,570 bytes
 
 | file | bytes | sha256 |
 |---|---|---|
 | `code/analyze_sl.py` | 662 | `047126003a6c2ba72f6c9d8ae8deb97c9f452eb95396d08c35f5dc92e27b4a4f` |
-| `code/booth_loop.py` | 36458 | `83aa26849e9e720ffd0bc4a43b601390d19c190d9bf3c9edfb7df1e194740753` |
+| `code/booth_loop.py` | 47217 | `38c46709c4913d37202943ebc7d2660c9a5c3fb6af9dda8ac5576d805e7f7414` |
 | `code/build_ice_after.py` | 1987 | `12cdcdd8c1e50f2d23a5b40c94227e363bac686221d93882b499127891bc8dda` |
 | `code/build_ice_seed.py` | 1136 | `db24255265631cea9c922a6ef941347720b0bd096354c520a38b9f465754fbe6` |
 | `code/build_map.py` | 6089 | `b5b8f53fc6aa7f246e0bc34018e0933d0cdb911943c7e5bfa3484c5951e583ec` |

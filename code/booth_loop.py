@@ -25,10 +25,23 @@ disk headroom read before and after every cycle, a `--tag-prefix` so several mea
 separable in one run log, and a summary that reports per-cycle cost and the number of complete
 cycles that fit in one, two and three hours from the measured cost.
 
+S1c additions (dispatch S1c, 2026-11-22): a `--source published` mode. `--source rebuild`, the
+default and every cycle measured by `S1a` and `S1b`, rebuilds each map from the committed mask code
+plus `ts-harvest/ref-era6.chk`, a harvested plaintext CHK extracted from a shipped Blizzard map that
+is withheld from the published repository for licence reasons, so that mode can only run from a
+working tree that holds that CHK. `--source published` skips the rebuild entirely, takes each
+deliverable `.scm` from a clone of `metalllinux/rocky-linux-foss-for-all-2026-demonstration-scmdraft-2`,
+verifies it against the recorded SHA-256 before transfer and again on the target, and then drives the
+same open, display, painting-segment and teardown sequence with no save on any map. The frame planner
+still reads the committed mask code, which the repository publishes under `code/`. The reference CHK
+is never read in published mode.
+
 Usage:
   python3 booth_loop.py --maps tux --loops 1 --display-seconds 60
   python3 booth_loop.py --maps foss-for-all,tux,i-love-korea --display-seconds 300
   python3 booth_loop.py --maps <six> --loops 1 --display-seconds 300 --tag-prefix S1b300
+  python3 booth_loop.py --source published --clone <clone-of-the-booth-repo> --maps <six> \
+    --loops 1 --display-seconds 300 --tag-prefix S1c300
   python3 booth_loop.py --paint-only
   python3 booth_loop.py --summary [--tag-prefix <phase>]
 """
@@ -40,10 +53,30 @@ import subprocess
 import sys
 import time
 
-HERE = "/tmp/opencode/t0042"
-BUILD_DIR = f"{HERE}/s1a-build"
-LOG_PATH = f"{HERE}/s1a-run-log.jsonl"
-SUMMARY_PATH = f"{HERE}/s1a_cycle_report.json"
+# HERE is the directory holding this script: the controller working tree when run there, or
+# `<clone>/code` when run from a clone of the booth repo. The mask code the frame planner imports
+# (`rocky.py`, `glyph.py`) lives here in both cases, because the repository publishes it in `code/`.
+HERE = os.path.dirname(os.path.abspath(__file__))
+# WORK_DIR is machine-local scratch: captures, OCR crops, the run log, the cycle reports. It is not
+# part of the repository, and a published-mode run writes nothing into the clone it runs from.
+WORK_DIR = os.environ.get("CHAOTIX_T0042_WORK", "/tmp/opencode/t0042")
+# INJECTOR_DIR is machine-local and deliberately unpublished: `rdp-input` is a compiled binary and
+# `rdp-args` carries the target RDP credential, both withheld by the D0 exclusion rules.
+INJECTOR_DIR = os.environ.get("CHAOTIX_T0042_INJECTOR", "/tmp/opencode/t0042")
+BUILD_DIR = f"{WORK_DIR}/s1a-build"
+LOG_PATH = f"{WORK_DIR}/s1a-run-log.jsonl"
+SUMMARY_PATH = f"{WORK_DIR}/s1a_cycle_report.json"
+
+# Published (no-rebuild) mode. Repository-side paths a clone carries, and the target-side launch
+# script the published runner depends on, published at `code/t0042-run-dos.sh` and verified by
+# preflight rather than assumed.
+SOURCE = "rebuild"                 # recorded in every log record
+CLONE = ""                         # set by --clone when --source published
+PUBLISHED_MAP_SUBDIR = "maps/deliverable"
+PUBLISHED_SCRATCH_SEED = "live-segment/maps/live-demo-ice.scm"
+SCRATCH_SEED_SHA = "8f338a3cea24c1e0c5381088fc0175f5a35151fdd543f971337d99b14d627c74"
+PUBLISHED_RUN_SCRIPT = "code/t0042-run-dos.sh"
+TARGET_RUN_SCRIPT = "/tmp/t0042-run-dos.sh"
 
 SSH_PASS = os.path.expanduser("~/AI/secrets/scm_draft_pass.md")   # read at run time by sshpass -f
 HOST = "howard@192.168.1.99"
@@ -98,7 +131,7 @@ LOG = []
 def log(loop, map_name, step, seconds, **extra):
     """Append one timed step record the moment it completes."""
     rec = {"ts": time.strftime("%Y-%m-%d %H:%M:%S"), "loop": loop, "map": map_name,
-           "step": step, "seconds": round(seconds, 2)}
+           "step": step, "seconds": round(seconds, 2), "mode": SOURCE}
     rec.update(extra)
     LOG.append(rec)
     with open(LOG_PATH, "a") as fh:
@@ -147,7 +180,7 @@ def capture(name, tag):
     tscript(f'XDG_RUNTIME_DIR=/run/user/1000 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus '
             f'gnome-screenshot-tool -f {remote}')
     time.sleep(0.6)
-    local = f"{HERE}/{tag}.png"
+    local = f"{WORK_DIR}/{tag}.png"
     r = sh(SCP + [f"{HOST}:{remote}", local])
     if r.returncode:
         sys.stderr.write(f"SCP FAIL: {r.stderr.strip()}\n")
@@ -155,7 +188,7 @@ def capture(name, tag):
 
 
 def rdpev(events):
-    r = sh(["./rdp-input", "rdp-args"] + [str(e) for e in events], cwd=HERE)
+    r = sh(["./rdp-input", "rdp-args"] + [str(e) for e in events], cwd=INJECTOR_DIR)
     if r.returncode:
         print("   rdp rc", r.returncode, (r.stderr or "").strip()[:200])
     return r.returncode
@@ -457,7 +490,7 @@ def derive_palette(png):
     S = 4
     crop = im.crop(PALETTE_PANEL)
     crop = crop.resize(((x1 - x0) * S, (y1 - y0) * S), Image.LANCZOS)
-    tmp = f"{HERE}/_palette_ocr.png"
+    tmp = f"{WORK_DIR}/_palette_ocr.png"
     crop.save(tmp)
     r = sh(["tesseract", tmp, "-", "--psm", "6", "tsv"])
     rows = list(csv.DictReader(io.StringIO(r.stdout or ""), delimiter="\t"))
@@ -490,26 +523,144 @@ def derive_palette(png):
     return derived, method, {"ocr_rows": labels, "high_grass_row": high_grass}
 
 
+# --- published (no-rebuild) mode, dispatch S1c ------------------------------
+
+def published_map_path(name):
+    """Where a clone of the booth repo carries this map's published deliverable copy."""
+    return f"{CLONE}/{PUBLISHED_MAP_SUBDIR}/{name}.scm"
+
+
+def published_scratch_seed():
+    """Where a clone carries the flat Ice World seed the painting segment runs on."""
+    return f"{CLONE}/{PUBLISHED_SCRATCH_SEED}"
+
+
+def preflight_published(names):
+    """Published-mode gate, controller-side only, run once per invocation before any target contact.
+
+    Checks every repository-side thing the cycle needs against its recorded SHA-256, so a missing or
+    altered published copy aborts the whole invocation before the target is touched, and names the
+    three things a clone does not carry rather than discovering them mid-cycle. The withheld reference
+    CHK is not needed in this mode and is never read.
+    """
+    t0 = time.monotonic()
+    problems = []
+    inj = f"{INJECTOR_DIR}/rdp-input"
+    args_file = f"{INJECTOR_DIR}/rdp-args"
+    if not (os.path.exists(inj) and os.access(inj, os.X_OK)):
+        problems.append(f"injector binary missing or not executable: {inj}")
+    if not os.path.exists(args_file):
+        problems.append(f"RDP args file missing: {args_file}")
+    if not os.path.exists(SSH_PASS):
+        problems.append(f"target password file missing: {SSH_PASS}, machine-local and never published")
+    if not os.path.isdir(f"{CLONE}/{PUBLISHED_MAP_SUBDIR}"):
+        problems.append(f"clone carries no {PUBLISHED_MAP_SUBDIR}: {CLONE}")
+    for n in names:
+        p = published_map_path(n)
+        if not os.path.exists(p):
+            problems.append(f"published map absent from the clone: {p}")
+        elif sha256(p) != MAPS[n]["sha"]:
+            problems.append(f"published map does not reproduce its recorded SHA-256: {p}")
+    seed = published_scratch_seed()
+    if not os.path.exists(seed):
+        problems.append(f"published scratch seed absent from the clone: {seed}")
+    elif sha256(seed) != SCRATCH_SEED_SHA:
+        problems.append(f"published scratch seed does not reproduce {SCRATCH_SEED_SHA[:12]}: {seed}")
+    for src in ("rocky.py", "glyph.py"):
+        if not os.path.exists(f"{CLONE}/code/{src}"):
+            problems.append(f"clone carries no mask code for frame planning: {CLONE}/code/{src}")
+    if problems:
+        log("preflight", "cycle", "preflight_published", time.monotonic() - t0, status="FAIL",
+            clone=CLONE, maps_checked=len(names), problems=problems,
+            inverse="read-only checks, nothing written, no target contact")
+        for p in problems:
+            print(f"PREFLIGHT FAIL {p}")
+        return False
+    log("preflight", "cycle", "preflight_published", time.monotonic() - t0, status="PASS",
+        clone=CLONE, maps_checked=len(names), injector=inj, work_dir=WORK_DIR,
+        clone_carries=[f"{PUBLISHED_MAP_SUBDIR}/<name>.scm", PUBLISHED_SCRATCH_SEED,
+                       "code/rocky.py", "code/glyph.py", PUBLISHED_RUN_SCRIPT],
+        clone_does_not_carry=["rdp-input (compiled binary, withheld)",
+                              "rdp-args (carries the target RDP credential, withheld)",
+                              "target password file (credential, withheld)",
+                              "ts-harvest/ref-era6.chk (harvested Blizzard CHK, withheld, "
+                              "not read in this mode)"],
+        inverse="read-only checks, nothing written, no target contact")
+    return True
+
+
+def preflight_target_run_script():
+    """Check the target-side launch script against the copy the clone publishes, before the first
+    open. Installs the published copy if the target has none, and names the removal inverse. If the
+    target carries a script that differs, aborts rather than overwriting machine state silently."""
+    t0 = time.monotonic()
+    pub = f"{CLONE}/{PUBLISHED_RUN_SCRIPT}"
+    if not os.path.exists(pub):
+        log("preflight", "cycle", "preflight_target_run_script", time.monotonic() - t0, status="FAIL",
+            reason=f"clone carries no {PUBLISHED_RUN_SCRIPT}", inverse="no target change")
+        return False
+    want = sha256(pub)
+    t = parse_stat(tscript(f'if [ -f "{TARGET_RUN_SCRIPT}" ]; then sha256sum "{TARGET_RUN_SCRIPT}"; '
+                           f'else echo MISSING; fi'))
+    if (t["raw"] or "").strip() == "MISSING":
+        r = sh(SCP + [pub, f"{HOST}:{TARGET_RUN_SCRIPT}"])
+        tscript(f'chmod 755 {TARGET_RUN_SCRIPT}')
+        after = parse_stat(tscript(f'sha256sum {TARGET_RUN_SCRIPT}'))
+        ok = r.returncode == 0 and after["sha"] == want
+        log("preflight", "cycle", "preflight_target_run_script", time.monotonic() - t0,
+            status="INSTALLED" if ok else "FAIL", target=TARGET_RUN_SCRIPT,
+            sha=(after["sha"] or "")[:12], expected=want[:12], inverse=f"rm -f {TARGET_RUN_SCRIPT}")
+        return ok
+    ok = t["sha"] == want
+    log("preflight", "cycle", "preflight_target_run_script", time.monotonic() - t0,
+        status="PASS" if ok else "FAIL", target=TARGET_RUN_SCRIPT, sha=(t["sha"] or "")[:12],
+        expected=want[:12], inverse="read-only check, no target change")
+    if not ok:
+        print(f"PREFLIGHT FAIL {TARGET_RUN_SCRIPT} does not match the published "
+              f"{PUBLISHED_RUN_SCRIPT}, refusing to overwrite it")
+    return ok
+
+
 # --- the cycle -------------------------------------------------------------
 
 def run_map(loop, name, display_seconds):
     spec = MAPS[name]
-    local = f"{BUILD_DIR}/{name}.scm"
     target_path = f"{PREFIX_MAPS}/{name}.scm"          # absolute, scp will not expand $HOME
     dos_path = f"C:\\Maps\\{name}.scm"
 
-    # 1. deterministic rebuild from the committed mask code
+    # 1. acquire this iteration's map. Rebuild mode rebuilds it from the committed mask code plus the
+    #    withheld reference CHK. Published mode (S1c) reads the clone's published deliverable copy
+    #    read-only and reads no CHK at all.
     t0 = time.monotonic()
-    os.makedirs(BUILD_DIR, exist_ok=True)
-    argv = [sys.executable, f"{HERE}/build_ts.py", spec["mode"], f"{HERE}/ts-harvest/ref-era6.chk",
-            f"{BUILD_DIR}/{name}", "192", "64", "64"] + ([spec["mask"]] if spec["mask"] else [])
-    r = sh(argv)
-    build_out = (r.stdout or "").strip().splitlines()
-    if r.returncode or not os.path.exists(local):
-        log(loop, name, "build", time.monotonic() - t0, status="FAIL", stderr=(r.stderr or "")[:200])
-        return False
-    log(loop, name, "build", time.monotonic() - t0, bytes=os.path.getsize(local),
-        build_line=build_out[0] if build_out else "", inverse=f"rm -f {local} {BUILD_DIR}/{name}.chk")
+    if SOURCE == "published":
+        local = published_map_path(name)
+        if not os.path.exists(local):
+            log(loop, name, "published_source", time.monotonic() - t0, status="FAIL", source=local,
+                reason="published deliverable path absent from the clone",
+                inverse="nothing was written in this step")
+            return False
+        log(loop, name, "published_source", time.monotonic() - t0, source=local,
+            bytes=os.path.getsize(local),
+            inverse="read-only step, the clone copy is not modified and nothing was written")
+    else:
+        local = f"{BUILD_DIR}/{name}.scm"
+        ref_chk = f"{HERE}/ts-harvest/ref-era6.chk"
+        if not os.path.exists(ref_chk):
+            log(loop, name, "build", time.monotonic() - t0, status="FAIL", ref_chk=ref_chk,
+                reason="rebuild mode needs the withheld reference CHK, which the published repository "
+                       "does not carry; run --source published from a clone instead",
+                inverse="nothing was built or written")
+            return False
+        os.makedirs(BUILD_DIR, exist_ok=True)
+        argv = [sys.executable, f"{HERE}/build_ts.py", spec["mode"], ref_chk,
+                f"{BUILD_DIR}/{name}", "192", "64", "64"] + ([spec["mask"]] if spec["mask"] else [])
+        r = sh(argv)
+        build_out = (r.stdout or "").strip().splitlines()
+        if r.returncode or not os.path.exists(local):
+            log(loop, name, "build", time.monotonic() - t0, status="FAIL", stderr=(r.stderr or "")[:200])
+            return False
+        log(loop, name, "build", time.monotonic() - t0, bytes=os.path.getsize(local),
+            build_line=build_out[0] if build_out else "", inverse=f"rm -f {local} {BUILD_DIR}/{name}.chk")
 
     # 2. SHA-256 gate before anything is sent
     t0 = time.monotonic()
@@ -590,8 +741,8 @@ def title_bar(png):
     im = Image.open(png).convert("RGB")
     c = im.crop((0, 36, 900, 62))
     c = c.resize((900 * 2, 26 * 3), Image.LANCZOS)
-    c.save(f"{HERE}/_title.png")
-    return sh(["tesseract", f"{HERE}/_title.png", "-", "--psm", "7"]).stdout.strip()[:160]
+    c.save(f"{WORK_DIR}/_title.png")
+    return sh(["tesseract", f"{WORK_DIR}/_title.png", "-", "--psm", "7"]).stdout.strip()[:160]
 
 
 def status_readout(png):
@@ -601,15 +752,18 @@ def status_readout(png):
     c = im.crop(STATUS_CROP)
     c = c.resize(((STATUS_CROP[2] - STATUS_CROP[0]) * 3, (STATUS_CROP[3] - STATUS_CROP[1]) * 3),
                  Image.LANCZOS)
-    c.save(f"{HERE}/_status.png")
-    return sh(["tesseract", f"{HERE}/_status.png", "-", "--psm", "7"]).stdout.strip()[:120]
+    c.save(f"{WORK_DIR}/_status.png")
+    return sh(["tesseract", f"{WORK_DIR}/_status.png", "-", "--psm", "7"]).stdout.strip()[:120]
 
 
 def run_paint(loop):
     """The proven painting segment, on the scratch map inside the cycle. No deliverable map
     is saved by the editor, and the scratch map is not saved either."""
-    local_seed = f"{HERE}/live-demo-ice.scm"          # flat Ice World seed, build_ice_seed.py
-    seed_sha = "8f338a3cea24c1e0c5381088fc0175f5a35151fdd543f971337d99b14d627c74"
+    # The flat Ice World seed the segment paints on. Rebuild mode uses the controller copy that
+    # build_ice_seed.py wrote; published mode uses the copy the repository carries at
+    # live-segment/maps/, verified against the same recorded SHA-256 before it is transferred.
+    local_seed = published_scratch_seed() if SOURCE == "published" else f"{WORK_DIR}/live-demo-ice.scm"
+    seed_sha = SCRATCH_SEED_SHA
     target_path = f"{PREFIX_MAPS}/{SCRATCH_NAME}.scm"
     dos_path = f"C:\\Maps\\{SCRATCH_NAME}.scm"
 
@@ -622,11 +776,13 @@ def run_paint(loop):
 
     t0 = time.monotonic()
     if sha256(local_seed) != seed_sha:
-        log(loop, SCRATCH_NAME, "scratch_seed_verify", time.monotonic() - t0, status="FAIL")
+        log(loop, SCRATCH_NAME, "scratch_seed_verify", time.monotonic() - t0, source=local_seed,
+            status="FAIL")
         return False
     sh(SCP + [local_seed, f"{HOST}:{target_path}"])
     log(loop, SCRATCH_NAME, "scratch_seed_transfer", time.monotonic() - t0,
-        target=target_path, seed_sha=seed_sha[:12], inverse=f"cp -f {backup} {target_path}")
+        target=target_path, seed_sha=seed_sha[:12], source=local_seed,
+        inverse=f"cp -f {backup} {target_path}")
 
     t0 = time.monotonic()
     launch(dos_path)
@@ -739,7 +895,10 @@ def summary(tag_prefix=None):
         tot = sum(r["seconds"] for r in recs if r["step"] not in FRAME_STEPS)
         disp = sum(r["seconds"] for r in recs if r["step"] == "display_window")
         maps[f"{loop}/{name}"] = {
-            "build": next((r["seconds"] for r in recs if r["step"] == "build"), None),
+            "build": next((r["seconds"] for r in recs
+                           if r["step"] in ("build", "published_source")), None),
+            "acquisition": next((r["step"] for r in recs
+                                 if r["step"] in ("build", "published_source")), None),
             "sha_verify": next((r["seconds"] for r in recs if r["step"] == "sha_verify_controller"), None),
             "transfer": next((r["seconds"] for r in recs if r["step"] == "transfer"), None),
             "open": next((r["seconds"] for r in recs if r["step"] == "open"), None),
@@ -766,6 +925,7 @@ def summary(tag_prefix=None):
         paint_tot = sum(r["seconds"] for r in recs if r["map"] == SCRATCH_NAME)
         cost = round(map_tot + cyc_tot + paint_tot, 2)
         cycles[loop] = {
+            "modes_recorded": sorted({r.get("mode", "rebuild") for r in recs}),
             "maps_total": round(map_tot, 2),
             "cycle_steps": round(cyc_tot, 2),
             "paint": round(paint_tot, 2),
@@ -779,7 +939,7 @@ def summary(tag_prefix=None):
            "scratch_paint_steps": len(paint),
            "scratch_paint_seconds": round(sum(r["seconds"] for r in paint), 2),
            "log_records": len(LOG) or sum(1 for _ in open(LOG_PATH))}
-    path = SUMMARY_PATH if not tag_prefix else f"{HERE}/{tag_prefix}_cycle_report.json"
+    path = SUMMARY_PATH if not tag_prefix else f"{WORK_DIR}/{tag_prefix}_cycle_report.json"
     with open(path, "w") as fh:
         json.dump(rep, fh, indent=2)
     print(json.dumps(rep, indent=2))
@@ -795,6 +955,12 @@ def main():
     ap.add_argument("--summary", action="store_true")
     ap.add_argument("--stability", action="store_true")
     ap.add_argument("--tag-prefix", default="S1b")
+    ap.add_argument("--source", choices=("rebuild", "published"), default="rebuild",
+                    help="rebuild builds each map from the committed mask code plus the withheld "
+                         "reference CHK. published takes each map from a clone of the booth repo and "
+                         "verifies it against the recorded SHA-256 instead, reading no CHK.")
+    ap.add_argument("--clone", default="",
+                    help="path to a clone of the booth repo, required by --source published")
     args = ap.parse_args()
 
     if args.stability:
@@ -804,11 +970,24 @@ def main():
         summary(args.tag_prefix if args.tag_prefix != "S1b" else None)
         return 0
 
+    global SOURCE, CLONE
+    if args.source == "published":
+        if not args.clone:
+            print("--source published needs --clone <path to a clone of the booth repo>")
+            return 2
+        CLONE = os.path.abspath(args.clone)
+    SOURCE = args.source
+
     names = [n for n in args.maps.split(",") if n]
     for n in names:
         if n not in MAPS:
             print(f"unknown map {n}")
             return 2
+    if SOURCE == "published":
+        if not preflight_published(names):
+            return 4
+        if not preflight_target_run_script():
+            return 5
     for loop_i in range(1, max(1, args.loops) + 1):
         tag = f"{args.tag_prefix}L{loop_i}"
         cleanup_tmp(tag)
