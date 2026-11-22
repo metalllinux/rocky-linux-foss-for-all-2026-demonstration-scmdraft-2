@@ -1651,3 +1651,344 @@ artifacts were not re-cut or renamed, and the panel EDID geometry was not re-mea
 **Inverse.** `rm -rf /tmp/opencode/t0042/publish /tmp/opencode/t0042/d2_stage.py /tmp/opencode/t0042/d2_report.py /tmp/opencode/t0042/d2_verify.py /tmp/opencode/t0042/d2_stage_plan.tsv`, revert this entry by git, restore the clone remote `git remote set-url origin https://github.com/metalllinux/foss-for-all-booth-demonstration-scmdraft-2.git`. No target state touched.
 
 **Checks not run.** No target contact, so target-side map hashes are not re-verified here, they remain `M9`'s claim.
+
+## 2026-11-21 22:47 — Dispatch D2 step 2, booth repo pushed and verified from the remote (`Tails`, controller-side only, no target contact)
+
+**Push.** Booth repo commit `39f2119feda546bce916f474eeeee3ae0eb2f974` on top of `3da0937`, answered
+`3da0937..39f2119  main -> main` against `https://github.com/metalllinux/rocky-linux-foss-for-all-2026-demonstration-scmdraft-2`.
+Team repo step-1 commit `ba5af6b`, pre-push selftest green at 61 checks. Working tree in the booth clone was rebuilt from the
+staged plan (`rsync -a --delete` of `publish/`, root files and planning docs copied from the team repo at `ba5af6b`), so no
+published file survives by accident.
+
+**Content as published.** `maps/deliverable/i-love-korea.scm` is the accepted two-line build `16fe455d46fd...`.
+`maps/superseded/` now holds four builds, the two pre-existing plus `superseded-i-love-korea.scm` at `82589b4205f5...` and
+`superseded-i-love-korea-2line.scm` at `e7ad27b2f4e7c6d1...`, and `PUBLISH-STATUS.md` states the measured distinction between
+them, the `-2line` file name-superseded with `MTXM` identical to the accepted build cell for cell and the whole 6-byte size
+difference in the `STR` name field, the plain-prefixed one content-superseded at 19666 glyph tiles, two designs not three. The
+four `M7`-era artifacts (`i-love-korea-mm.png`, `-mm-2x.png`, `-booth32.png`, `-booth64.png`) moved from `booth-artifacts/` to
+`booth-artifacts/superseded/` with names unchanged, recorded where they went. Accepted booth artifacts for `i-love-korea` are
+the `i-love-korea-2line-` trio with source capture named as `m9-open.png` per the `F2` ruling, and the `F2` re-cut and inpaint
+set landed as `booth-artifacts/f2-recut/`, byte-identical to the published trio at matching SHA-256 values
+(`f9446f81dd86...`, `0fdee8346af6...`, `2a9a0b860967...`). Added with `D0`'s rules, `captures/m9-open.png`, `m9-zoom25.png`,
+`m9-jump.png`, `m9-reopen.png`, the `M9` and `F2` scripts under `code/`, and `gate-reports/i-love-korea-2line_report.json`,
+`f2_artifact_check.json`, `f2_control.json`.
+
+**Verified from the remote, not from the push command.** Fresh clone at `/tmp/opencode/t0042/booth-verify-d2`: `git log` shows
+`39f2119` on `3da0937` on `7e0d58d`, `git ls-tree -r HEAD` holds 606 paths, `sha256sum` in that clone reproduces all six
+deliverable maps at their recorded values with `i-love-korea` at the accepted one, and both superseded `i-love-korea` builds at
+their recorded values. Manifest cross-check `python3 /tmp/opencode/t0042/d2_verify.py .` answers 605 rows, 605 unique paths,
+0 omitted by manifest, 0 listed-but-absent, 0 size or hash mismatches, PASS. `README.md` `e278208f88b9...` and `LICENSE`
+`5c620b9317b6...` byte-unchanged, `git diff --stat` for them between the two commits empty. API answers `"private": true`,
+`"visibility": "private"`, `"id": 1455994123`, `"pushed_at": "2026-11-21T13:47:17Z"`, visibility unchanged. Both repo names
+and the redirect evidence are recorded in `MANIFEST.md` and `PUBLISH-STATUS.md`.
+
+**Categories `D2` did not copy, named.** All `D0` withholding re-applied unchanged, chk-or-scx-intermediate 68 files including
+`m9-extracted.chk`, the rewritten `i-love-korea.chk`, `superseded-i-love-korea-2line.chk` and the three `F2` `x-*.chk`,
+harvested-reference-chks 170, upstream-library 905, upstream-dataset 5, probe-map 38, build-log-or-probe 66 including `xf2.log`,
+compiled-binary 4, build-artifact 17, shipped-starcraft-data 4, upstream-code 3, transient-note 4, credential 1, raw PPM 1,
+`colorbase.bin` 1, ISOs 0 with none on the controller, SCMDraft and Wine binaries 0 existing on the target only, game data 0.
+Named as empty rather than silently absent, booth-geometry-captures 0 (`B1` removed `b1-editor.png` under its own inverse rule,
+its measurements publish in the planning doc) and shadow-independent-read-scripts-and-reading-aids 0 from the staging directory
+(`M10`'s aids live under `/tmp/opencode/shadow-t0042`, outside the classified tree, same as at `D0`).
+
+**Inverse.** Team repo, revert this entry and the step-1 entry and the `## Implementation` D2 subsection by git. Booth repo,
+`git revert 39f2119` and push, which restores the `D0` state exactly. Controller, `rm -rf /tmp/opencode/t0042/publish
+/tmp/opencode/t0042/booth-verify-d2 /tmp/opencode/t0042/d2_stage.py /tmp/opencode/t0042/d2_report.py
+/tmp/opencode/t0042/d2_verify.py /tmp/opencode/t0042/d2_stage_plan.tsv /tmp/opencode/d2_repo_new.json
+/tmp/opencode/d2_repo_after.json`. No target state touched, no visibility change, no credential in any argv, commit message or
+landed file.
+
+**Checks that did not run, named.** No target contact, target-side map sizes, mtimes and SHAs remain `M9`'s claim, last checked
+target-side by `B1` at 18:40. SCMDraft 2's own map-validation dialog still run on no map, `V1`. No licence ruling on the landed
+captures, `R4` and `R5` open. No re-adjudication of any legibility verdict, and no new capture or map was produced by this
+dispatch.
+
+## 2026-11-21 23:20-23:33 — Dispatch S1a step 1, booth loop runner built, deterministic rebuild gate run on all six maps (`Tails`, controller-side)
+
+Runner `/tmp/opencode/t0042/booth_loop.py`, one command per cycle, parameters `--maps`,
+`--loops`, `--display-seconds` (default 300). Inverse `rm -f /tmp/opencode/t0042/booth_loop.py`.
+
+Pre-state read from the target, command `sshpass -f ~/AI/secrets/scm_draft_pass.md ssh
+howard@192.168.1.99 'hostname; uname -r; pgrep -af "ScmDraft[ ]2"; ls -l /tmp/t0042-run.sh
+/tmp/t0042-run-dos.sh; sha256sum ...'`. Answers `scmdraft2-map-creator`, kernel
+`6.12.0-211.74.1.el10_2.x86_64`, `NO_SCM_RUNNING`, both launch helpers present, and the six
+deliverables at `e856f0e1d62e`, `447360ce8077`, `b9b056c27a67`, `79002eacd5d6`,
+`c773a534a564`, `16fe455d46fd`. No target file was written by this step.
+
+Determinism gate, six rebuilds into `/tmp/opencode/t0042/s1a-rebuild/` with the committed
+recipes, `python3 build_ts.py glyph ts-harvest/ref-era6.chk s1a-rebuild/foss-for-all 192 64 64`
+and `python3 build_ts.py silhouette ts-harvest/ref-era6.chk s1a-rebuild/<map> 192 64 64 <mask>`
+with masks `rocky-logo`, `rocky-with-heart`, `tux`, `republic-of-korea-10m`, `i-love-korea-2line`.
+All six rebuilt `.scm` reproduce their recorded SHA-256 byte for byte, era 6, `MTXM` 65536
+entries, distinct `[64, 192]`. So the loop's SHA gate can be a precondition rather than a hope.
+Inverse `rm -rf /tmp/opencode/t0042/s1a-rebuild`.
+
+Palette re-derivation method proven offline against `l4-palette.png` before any target contact:
+`tesseract --psm 6 tsv` on the panel crop gives label row centres Rocky Snow 839 and High
+Outpost 968 in that capture. The rows `L4` recorded, 806 and 934, sit on Moguls and High Grass
+in the same capture, which is the mechanism behind `L5`'s finding that the same pixel selected
+High Grass. Inverse `rm -f /tmp/opencode/t0042/_palette_ocr.png _pal.png _pal2.png _b.png _bb.png`.
+
+## 2026-11-21 23:35-23:38 — Dispatch S1a step 2, `foss-for-all` booth cycle on the target, first pass aborted at a report defect (`Tails`)
+
+First attempt aborted after the transfer: the runner compared the recorded SHA against the last
+whitespace-separated token of the target read, which is the file *path*, so a byte-correct copy
+reported `FAIL`. The target copy itself was correct, `614561 B
+e856f0e1d62ec8f7ecfccf8f0d5f08aee0d5798ef972ea9fee996bbf3bfd3eb0` at
+`/home/howard/.wine-scmdraft/drive_c/Maps/foss-for-all.scm`. The defect is a report defect, not
+a map or transfer defect. Fixed in the runner by a 64-hex extraction (`parse_stat`). No display
+step and no editor launch happened in the aborted attempt. The stray copy was removed by the
+second attempt's teardown, `rm -f /home/howard/.wine-scmdraft/drive_c/Maps/foss-for-all.scm`,
+verified `REMOVED`.
+
+## 2026-11-21 23:36-23:38 — Dispatch S1a step 3, `foss-for-all` cycle complete, four main-canvas frames at the measured 8.00 px per tile floor (`Tails`)
+
+Command, `python3 /tmp/opencode/t0042/booth_loop.py --maps foss-for-all --loops 1
+--display-seconds 45 --no-paint`. Run log `/tmp/opencode/t0042/s1a-run-log.jsonl`.
+
+| Step | Measured |
+|---|---|
+| build | 0.04 s, 614561 B, `glyph: era 6 chk 614210 B MTXM 65536 ISOM 265224 distinct 2 [64, 192]` |
+| SHA verify before transfer | 0.00 s, `e856f0e1d62e` equals the record, PASS |
+| transfer to `C:\Maps\` | 0.50 s, target `614561 B e856f0e1d62e`, PASS |
+| open by `C:\Maps\foss-for-all.scm` | 25.51 s, title bar OCR `... - [C:\Maps\foss-for-all.scm ]` |
+| zoom to the floor | 14.82 s, one combo walk of 6 extended-Down steps, no retry needed |
+| display window, 4 frames | 56.24 s wall for a 45 s requested hold |
+| teardown | 2.92 s, `NO_SCM_RUNNING`, loop copy `REMOVED` |
+
+Every frame measured, from the capture and not from the record: viewport indicator 108 x 48
+thumbnail px, that is 216 x 96 tiles, 7.931 px per tile across the 1713 px canvas, and an
+independent run census, drawn dark runs 48/144/192/240 px explained 88 to 100 percent by the
+committed mask's own ink runs 6/18/24/30 tiles, giving 8.0 px per tile. Frame windows cols
+14-229 and 40-255, rows 64-159 and 144-239, reached by overview clicks at (79,168), (92,168),
+(79,208), (92,208). Main-canvas glyph tone share per frame 8.49, 20.32, 15.99, 14.54 percent.
+The open capture measures 54 x 24 tiles and 31.7 px per tile, so the zoom reset to 100 percent on
+open that `M1` recorded is confirmed by measurement in this pass.
+
+Target files this step created, `/tmp/S1aL1-foss-for-all-{open,zoom,f1..f4}.png`. Inverse
+`rm -f /tmp/S1aL1-foss-for-all-*.png /tmp/t0042-run.log`, not yet applied, applied at the
+end of the dispatch so the operator can inspect the captures (rule r002). Controller files
+`s1a-build/foss-for-all.{scm,chk}`, `S1aL1-foss-for-all-*.png`, `s1a-run-log.jsonl`. The
+deliverable original `/home/howard/scmdraft-maps/foss-for-all/foss-for-all.scm` was not opened,
+not written and not saved by the editor.
+
+## 2026-11-21 23:46-23:49 — Dispatch S1a step 4, `i-love-korea` booth cycle complete, six main-canvas frames on the `F2`-derived positions (`Tails`)
+
+Command, `python3 /tmp/opencode/t0042/booth_loop.py --maps i-love-korea --loops 1
+--display-seconds 45 --no-paint`.
+
+build 0.05 s, 614561 B; SHA verify 0.00 s, `16fe455d46fd` equals the record, PASS; transfer
+0.54 s to `/home/howard/.wine-scmdraft/drive_c/Maps/i-love-korea.scm`, target read `614561 B
+16fe455d46fd`, PASS; open 25.83 s by `C:\Maps\i-love-korea.scm`, title bar OCR `... -
+[C:\Maps\i-love-korea.scm ]`; zoom 15.03 s, one combo walk, no retry; display window 60.57 s
+for a 45 s request across 6 frames; teardown 2.92 s, `NO_SCM_RUNNING`, loop copy `REMOVED`.
+
+Frame windows and clicks, cols 12-227 and 28-243 crossed with rows 8-103, 136-231 and 152-247,
+clicks (78,140), (86,140), (78,204), (86,204), (78,212), (86,212). Every frame measures
+108 x 48 thumbnail px of viewport indicator, 216 x 96 tiles, 7.931 px per tile, and the run
+census reads 8 px per tile explaining 88.1 to 100 percent of drawn runs. The row-152 frames are
+the ones that carry the bottoms of all five letters, which is the position `F2` derived at
+doc:2544-2547 and did not capture. Main-canvas glyph tone share 45.62, 45.47, 38.41, 38.69,
+36.56, 36.73 percent. `S1aL1-i-love-korea-f5.png` shows `KOREA` with letter bottoms inside the
+viewport, read visually, and its Zoom combo reads 25 percent.
+
+Target captures created, `/tmp/S1aL1-i-love-korea-{open,zoom,f1..f6}.png`, inverse
+`rm -f /tmp/S1aL1-i-love-korea-*.png /tmp/t0042-run.log`, applied in step 6 and verified.
+The deliverable original was not opened, written or saved.
+
+## 2026-11-21 23:56-23:58 — Dispatch S1a step 5, the proven painting segment run inside the cycle on the scratch map, palette coordinates re-derived from a live capture (`Tails`)
+
+Command, `python3 /tmp/opencode/t0042/booth_loop.py --paint-only`. Scratch map only, no
+deliverable map was opened, saved or touched by the editor.
+
+Pre-state of the scratch map on the target, `/home/howard/.wine-scmdraft/drive_c/Maps/
+live-demo-ice.scm` 12502 B `f00d1f60521c...` mtime 2026-11-21 08:18:33, the file `L5`'s editor
+save wrote. Backup taken, `cp -f live-demo-ice.scm live-demo-ice.scm.pre-s1a`, inverse
+`cp -f live-demo-ice.scm.pre-s1a live-demo-ice.scm && rm -f live-demo-ice.scm.pre-s1a`. The
+flat seed `/tmp/opencode/t0042/live-demo-ice.scm` was verified at `8f338a3cea24...` on the
+controller and transferred in 0.28 s. Open 25.74 s by `C:\Maps\live-demo-ice.scm`.
+
+Palette re-derivation, 2.10 s, `tesseract --psm 6 tsv` on a fresh capture of the panel, method
+`ocr-tsv-label-rows`, answers Rocky Snow y 839, High Outpost y 968, High Grass y 935. The click
+was made at (62, 968) and the status bar readout after the click reads
+`Isometrical Terrain Ice World\High Outpost`, read from the capture. This closes the `L5`
+finding on the evidence: the palette rows are stable across launches and match `l4-palette.png`
+exactly, and `L4`'s recorded click at y 934 sits on the High Grass row, so `L5`'s High Grass
+selection was a mis-mapped row in `L4`, not an unstable tree.
+
+Segment, `L4`'s proven step list, band1 7.08 s, band2 6.95 s, three page-down pan clicks 8.67 s,
+band3 6.89 s, Ctrl+D Ctrl+T Ctrl+U Ctrl+T 9.81 s, status-bar evidence capture 1.88 s. Measured
+change, `S1aL1-live-demo-ice-{before,band1,band2,pan,band3,layers,statusbar,palette,open}.png`
+on the target, inverse `rm -f` applied in step 6. Contrast measured in this pass on the tone the
+segment actually selected, ground (176,176,176) against the painted High Outpost tone
+(48,40,24) WCAG 6.713, and 6.267 as the median across 42581 sampled changed pixels, against the
+3.0 gate. Share of each commanded stroke rectangle that changed, 55.8, 49.73 and 57.64 percent,
+measured as changed pixels divided by rectangle pixels, which is a different ratio from `L4`'s
+13.8 to 19.1 percent (changed pixels inside the rectangle divided by all changed pixels).
+
+Teardown 2.66 s, `NO_SCM_RUNNING`, and the scratch map restored from the backup to 12502 B
+`f00d1f60521c...`, byte-identical to its pre-step state with mtime 2026-11-21 23:58:13. No save
+was performed on any map in this step.
+
+## 2026-11-22 00:02 — Dispatch S1a step 6, post-run target verification and capture teardown (`Tails`)
+
+Six deliverables re-read on the target, all at their recorded SHA-256 with their pre-dispatch
+mtimes unchanged, `foss-for-all` `e856f0e1d62e` 614561 B mtime 2026-11-20 06:03:19,
+`rocky-logo` `447360ce8077` 614559 B 2026-11-20 08:17:08, `rocky-with-heart` `b9b056c27a67`
+614565 B 08:17:09, `tux` `79002eacd5d6` 614552 B 2026-11-20 20:33:23, `republic-of-korea`
+`c773a534a564` 614566 B 2026-11-21 10:49:37, `i-love-korea` `16fe455d46fd` 614561 B 19:28:35.
+`pgrep -af "ScmDraft[ ]2"` answers `NO_SCM_RUNNING`. Loop copies in `C:\Maps\` absent, only
+`live-demo-ice.scm` restored to `f00d1f60521c...` and the pre-existing reference map remain.
+This dispatch's target captures removed, `rm -f /tmp/S1aL1-*.png /tmp/t0042-run.log`, verified
+`CAPTURES_REMOVED`.
+
+Left on the target deliberately, four SCMDraft backups its own open path wrote in
+`/home/howard/.wine-scmdraft/drive_c/Maps/`, `Scme205.tmp` 614561 B (foss-for-all open),
+`Scm933.tmp` 614552 B (tux), `Scmcc91.tmp` 614561 B (i-love-korea), `Scm71d3.tmp` 614562 B
+(live-demo-ice). Inverse `rm -f` each, left in place per rule r002 so the operator can see what
+one booth cycle costs the target disk, about 2.4 MB per cycle for six maps.
+
+## 2026-11-22 07:51 — Dispatch S1b phase A, the three new maps on the target at a 300 s window (`Tails`)
+
+Command `python3 /tmp/opencode/t0042/booth_loop.py --tag-prefix S1bA --maps
+rocky-logo,rocky-with-heart,republic-of-korea --loops 1 --display-seconds 300`, rc 0, 51 log
+records appended to `/tmp/opencode/t0042/s1a-run-log.jsonl`. First run of the two new cycle
+steps. `tmp_cleanup` 0.76 s, `find /home/howard/.wine-scmdraft/drive_c/Maps -maxdepth 1 -name
+"Scm*.tmp"` listed and `rm -f` removed nine backups, 4326926 B freed, all named in the log record
+(`Scm2518 Scm6aac Scm71d3 Scm7251 Scm86f3 Scm9194 Scm933 Scmcc91 Scme205`), `remaining 0`;
+inverse recorded as permanent deletion, the editor recreates one per open. `disk_headroom_before`
+`df -B1 /` avail 65004978176 B, `du -sb C:\Maps\` 102928 B; `disk_headroom_after` avail
+64998404096 B, `C:\Maps\` 2561180 B, consumed 6574080 B of which 2458252 B is the four new
+`Scm*.tmp` residue and the rest this dispatch's 30 target captures in `/tmp/S1bAL1-*.png`.
+
+Per map, each rebuilt by `build_ts.py` from the committed mask code, each reproducing its
+recorded SHA-256 before transfer and matching it again on the target after scp to the absolute
+path `/home/howard/.wine-scmdraft/drive_c/Maps/<name>.scm`, each opened by its drive-qualified
+`C:\Maps\<name>.scm` path, no save step on any map. Build 0.09, 0.10, 0.60 s; transfer 0.52,
+0.51, 0.51 s; open 25.97, 25.47, 25.85 s with the title bar carrying the `C:\Maps` path; teardown
+2.90, 2.89, 2.91 s each answering `NO_SCM_RUNNING` and `REMOVED` for the loop copy. Totals at the
+300 s window, `rocky-logo` 362.63 s, `rocky-with-heart` 361.94 s, `republic-of-korea` 353.90 s;
+non-display overhead 44.55, 43.89, 44.36 s against `S1a`'s 44.06 s carried figure. Zoom verified
+from pixels on every map, viewport indicator 216 x 96 tiles, 7.931 x 7.854 px per tile, first
+verification pass, not from the Zoom combo. Display windows measured 318.08 s (6 frames), 318.05 s
+(6 frames), 309.54 s (3 frames) against the 300 s request, the overshoot is per-frame capture plus
+metrics cost inside the hold loop and is recorded rather than smoothed. Palette re-derived from a
+fresh capture at setup, method `ocr-tsv-label-rows`, Rocky Snow 839 and High Outpost 968, the
+`S1a` corrected rows, not the `L4` hardcoded fallback. Paint segment on the scratch map, median
+WCAG 6.267 over 42581 changed sampled pixels against the 3.0 gate, scratch map restored at
+teardown, `NO_SCM_RUNNING`.
+
+Residue after phase A, named: `Scmd702.tmp` 614559 B (rocky-logo open), `Scm5f7f.tmp` 614565 B
+(rocky-with-heart), `Scme782.tmp` 614566 B (republic-of-korea), `Scm52ee.tmp` 614562 B (scratch
+open, same size pattern `S1a` recorded for `Scm71d3.tmp`). Target captures `/tmp/S1bAL1-*.png`
+30 files, inverse `rm -f /tmp/S1bAL1-*.png` to be applied at the dispatch's final verification
+after the controller-side analysis. Inverse of the whole phase for the target: loop copies already
+removed at each teardown, captures removable, residue named above.
+
+## 2026-11-22 08:33 — Dispatch S1b phase B, one full six-map booth cycle at the 300 s default (`Tails`)
+
+Command `python3 /tmp/opencode/t0042/booth_loop.py --tag-prefix S1b300 --maps
+foss-for-all,rocky-logo,rocky-with-heart,tux,republic-of-korea,i-love-korea --loops 1
+--display-seconds 300`, rc 0, 88 run-log records, report `/tmp/opencode/t0042/S1b300_cycle_report.json`.
+First full six-map cycle ever run end to end. Per-map totals, build, transfer, open, teardown in
+seconds: `foss-for-all` 355.97 / 0.04 / 0.51 / 25.53 / 2.90; `rocky-logo` 362.02 / 0.04 / 0.53 /
+25.46 / 2.91; `rocky-with-heart` 361.95 / 0.10 / 0.53 / 25.46 / 2.89; `tux` 361.94 / 0.10 / 0.52 /
+25.48 / 2.90; `republic-of-korea` 353.87 / 0.56 / 0.52 / 25.84 / 2.90; `i-love-korea` 362.40 /
+0.06 / 0.50 / 25.86 / 2.89. Non-display overhead 43.88 to 44.36 s on every map. Every map
+reproduced its recorded SHA-256 from the committed mask code before transfer and matched it on the
+target after; every teardown answered `NO_SCM_RUNNING` with the loop copy `REMOVED`; no save step
+touched any map. Zoom verified from pixels on all six, indicator 216 x 96 tiles at 7.931 x 7.854 px
+per tile. Display windows measured 309.54 to 318.07 s against the 300 s request.
+
+Cycle cost, measured: 2232.36 s = 37 min 12 s (maps 2158.15 s, scratch paint 72.96 s, cycle steps
+1.25 s), against `S1a`'s projected 2219.5 s, a 0.58 percent deviation, which retires the projection
+in favour of the measurement. Complete cycles that fit, computed from this measured cost: 1 in one
+hour, 3 in two hours, 4 in three hours.
+
+Cycle steps: `tmp_cleanup` 0.75 s removed the four phase-A residue files named in the previous
+entry (2458252 B), `remaining 0`. Disk headroom before 64997818368 B avail and `C:\Maps\` at
+102928 B; after 64989118464 B avail and `C:\Maps\` at 4404854 B. The 8699904 B consumed is the
+seven `Scm*.tmp` backups the cycle's opens wrote (4301926 B) plus this phase's target captures in
+`/tmp/S1b300L1-*.png`. Palette re-derived from a fresh capture at setup, `ocr-tsv-label-rows`,
+839 and 968. Paint median WCAG 6.267 over 42581 sampled changed pixels. Scratch map restored to
+12502 B `f00d1f60521c...` at teardown. Inverse for the phase: loop copies removed per teardown,
+captures removable with `rm -f /tmp/S1b300L1-*.png` at final verification, residue named, scratch
+restored.
+
+## 2026-11-22 08:57 — Dispatch S1b phase C, one full six-map cycle at the 150 s window (`Tails`)
+
+Command `python3 /tmp/opencode/t0042/booth_loop.py --tag-prefix S1b150 --maps
+foss-for-all,rocky-logo,rocky-with-heart,tux,republic-of-korea,i-love-korea --loops 1
+--display-seconds 150`, rc 0, 88 run-log records, report `/tmp/opencode/t0042/S1b150_cycle_report.json`.
+Per-map totals at 150 s: `foss-for-all` 204.96, `rocky-logo` 212.49, `rocky-with-heart` 211.92,
+`tux` 211.98, `republic-of-korea` 203.93, `i-love-korea` 212.46 s; overheads unchanged at 43.86 to
+44.46 s; display windows measured 159.57 to 168.06 s against the 150 s request. All six SHA gates
+PASS before transfer and re-matched on the target, all six teardowns `NO_SCM_RUNNING` and `REMOVED`,
+zoom verified from pixels on all six, palette re-derived `ocr-tsv-label-rows` 839 and 968, paint
+median WCAG 6.267. Measured cycle cost 1331.99 s = 22 min 12 s; complete cycles that fit from this
+cost: 2 in one hour, 5 in two, 8 in three. `tmp_cleanup` 0.74 s removed the seven phase-B residue
+files named in the phase B entry (4301926 B), `remaining 0`; headroom 64989360128 B before,
+64979861504 B after. The shorter window costs 44.7 percent of cycle time against 50 percent of the
+display time, because the 44 s per-map overhead does not shrink, which is the number the booth
+schedule turns on.
+
+## 2026-11-22 09:05 — Dispatch S1b final verification, target left clean apart from named residue (`Tails`)
+
+Six deliverables re-read on the target after all three phases, all at their recorded SHA-256 with
+unchanged mtimes: `foss-for-all` `e856f0e1d62e` 614561 B 2026-11-20 06:03:19, `rocky-logo`
+`447360ce8077` 614559 B 08:17:08, `rocky-with-heart` `b9b056c27a67` 614565 B 08:17:09, `tux`
+`79002eacd5d6` 614552 B 2026-11-20 20:33:23, `republic-of-korea` `c773a534a564` 614566 B
+2026-11-21 10:49:37, `i-love-korea` `16fe455d46fd` 614561 B 19:28:35. `pgrep -af "ScmDraft[ ]2"`
+answers `NO_SCM_RUNNING`. This dispatch's target captures removed, `rm -f /tmp/S1bAL1-*.png
+/tmp/S1b300L1-*.png /tmp/S1b150L1-*.png /tmp/t0042-run.log`, verified `CAPTURES_REMOVED`. Loop
+copies in `C:\Maps\` absent, `live-demo-ice.scm` restored at 12502 B. Residue present and named,
+the seven `Scm*.tmp` backups the final cycle's seven opens wrote: `Scm159d.tmp` 614561 B
+(foss-for-all), `Scm3681.tmp` 614559 B (rocky-logo), `Scm74a4.tmp` 614565 B (rocky-with-heart),
+`Scmb0b2.tmp` 614552 B (tux), `Scmeeb3.tmp` 614566 B (republic-of-korea), `Scmf78.tmp` 614561 B
+(i-love-korea), `Scm4e21.tmp` 614562 B (scratch open), 4301926 B total, left in place per rule
+r002, inverse `rm -f /home/howard/.wine-scmdraft/drive_c/Maps/Scm*.tmp`. Final `df -B1 /` reads
+avail 64999227392 B against 65004978176 B at dispatch start, 5750784 B net consumed of which the
+4301926 B residue is named; the remaining 1448858 B is not attributed to a named file, candidates
+are the seven launches' Wine prefix writes and scp temp files, recorded as unattributed rather than
+guessed.
+
+## 2026-11-22 09:40 — Dispatch D3 step 1, pre-flight verification of the renamed booth repo and the six deliverables (`Tails`, controller-side only, no target contact)
+
+Remote state verified before any write, through `python3 /tmp/opencode/t0042/d3_api.py`, a GET-only
+probe that reads the token from `~/AI/secrets/token.md` at run time inside the process, so no
+credential value is in argv, a file, a log or a commit. `metalllinux/rocky-linux-foss-for-all-2026-
+demonstration-scmdraft-2` answers `id 1455994123`, `private true`, `visibility private`, default
+branch `main`, `refs/heads/main = 39f2119feda546bce916f474eeeee3ae0eb2f974`, `pushed_at
+2026-11-21T13:47:17Z`. The dispatch addresses the repo by the new name in every API call and in the
+clone remote. The six controller deliverables re-verified with `sha256sum` against the recorded
+values before staging, all byte-exact: `foss-for-all` `e856f0e1d62e...` 614561 B, `rocky-logo`
+`447360ce8077...`, `rocky-with-heart` `b9b056c27a67...`, `tux` `79002eacd5d6...`,
+`republic-of-korea` `c773a534a564...`, `i-love-korea` `16fe455d46fd...`. Delta surface since the `D2`
+push inventoried with `find -newermt "2026-11-21 22:48"`, 181 files 25870389 B excluding the clone,
+publish, scratch-rebuild and `__pycache__` directories: the booth runner `booth_loop.py`, the
+measured run log `s1a-run-log.jsonl` (279 records), four cycle reports, 170 booth-loop captures,
+and the `D3` scripts themselves. Recorded open hygiene observed at run time, unchanged and not
+touched: `~/AI/secrets/scm_draft_pass.md` is still mode 644 (`## Status` records it as an operator
+action), `rdp-args` still exists on the controller and is withheld by the classifier. Inverse, no
+target state was touched and no repo state changed by this step; the probe script lands under
+`/tmp/opencode/t0042` outside git-tracked paths, `rm -f /tmp/opencode/t0042/d3_api.py` removes it.
+
+## 2026-11-22 09:55 — Dispatch D3 step 2, booth runbook authored and the D3 staging run (`Tails`, controller-side only, no target contact)
+
+The runbook `BOOTH-RUNBOOK.md` was authored at `/tmp/opencode/t0042` from the runner as it stands
+after `S1b` and from the measured cycle reports, and every number in it was re-checked against the
+step log before publication, frame counts 4, 6, 6, 6, 3 and 6 from the `S1b300L1` frame records,
+`tmp_cleanup` 0.74 to 0.76 s, the paint contrast census 42581 changed pixels sampled at median WCAG
+6.267 with minimum pair 1.2 identical across all three phases, and the six map sizes 614552 to
+614566 B from `sha256sum`. Staging ran as `python3 /tmp/opencode/t0042/d3_stage.py`, `D0`'s classifier
+imported unchanged, `D2`'s five deltas imported unchanged, three named `D3` deltas, landed 778 files
+197210938 B, plan `/tmp/opencode/t0042/d3_stage_plan.tsv`. The three `D3` deltas, `s1a-run-log.jsonl`
+lands in `booth-loop/`, `BOOTH-RUNBOOK.md` lands at the repository root outside the classify walk,
+and the scratch directories `s1a-build/` and `s1a-rebuild/` are outside the walk because their
+`.scm` files carry the deliverable basenames and would have copied byte-identical duplicates into
+`maps/deliverable/`. A credential scan compared every landing file's bytes against the four values
+in `~/AI/secrets/` read at run time and printed only the count, zero hits. Withheld categories hold
+at the `D2` figures for every hard category, `.chk` and `.scx` intermediates 68, harvested reference
+CHKs 170, upstream library 905, upstream dataset 5, probe maps 38, credential 1, compiled binaries 4.
+Inverse, `/tmp/opencode/t0042/publish/` and `d3_stage_plan.tsv` are regenerable from the scripts,
+`rm -rf` removes them, no target state was touched.

@@ -1,0 +1,90 @@
+{
+  "per_map": {
+    "S1b150L1/foss-for-all": {
+      "build": 0.08,
+      "sha_verify": 0.0,
+      "transfer": 0.5,
+      "open": 25.82,
+      "zoom_set": 15.06,
+      "display_window": 160.58,
+      "teardown": 2.92,
+      "overhead_excluding_display": 44.38,
+      "total": 204.96,
+      "steps": 11
+    },
+    "S1b150L1/i-love-korea": {
+      "build": 0.11,
+      "sha_verify": 0.0,
+      "transfer": 0.5,
+      "open": 25.87,
+      "zoom_set": 15.03,
+      "display_window": 168.04,
+      "teardown": 2.91,
+      "overhead_excluding_display": 44.42,
+      "total": 212.46,
+      "steps": 13
+    },
+    "S1b150L1/republic-of-korea": {
+      "build": 0.59,
+      "sha_verify": 0.0,
+      "transfer": 0.5,
+      "open": 25.87,
+      "zoom_set": 14.49,
+      "display_window": 159.57,
+      "teardown": 2.91,
+      "overhead_excluding_display": 44.36,
+      "total": 203.93,
+      "steps": 10
+    },
+    "S1b150L1/rocky-logo": {
+      "build": 0.09,
+      "sha_verify": 0.0,
+      "transfer": 0.53,
+      "open": 25.82,
+      "zoom_set": 15.11,
+      "display_window": 168.03,
+      "teardown": 2.91,
+      "overhead_excluding_display": 44.46,
+      "total": 212.49,
+      "steps": 13
+    },
+    "S1b150L1/rocky-with-heart": {
+      "build": 0.09,
+      "sha_verify": 0.0,
+      "transfer": 0.52,
+      "open": 25.46,
+      "zoom_set": 14.89,
+      "display_window": 168.06,
+      "teardown": 2.9,
+      "overhead_excluding_display": 43.86,
+      "total": 211.92,
+      "steps": 13
+    },
+    "S1b150L1/tux": {
+      "build": 0.11,
+      "sha_verify": 0.0,
+      "transfer": 0.52,
+      "open": 25.45,
+      "zoom_set": 14.98,
+      "display_window": 168.0,
+      "teardown": 2.92,
+      "overhead_excluding_display": 43.98,
+      "total": 211.98,
+      "steps": 13
+    }
+  },
+  "cycles": {
+    "S1b150L1": {
+      "maps_total": 1257.74,
+      "cycle_steps": 1.24,
+      "paint": 73.01,
+      "cycle_cost_seconds": 1331.99,
+      "cycles_fit_1h": 2,
+      "cycles_fit_2h": 5,
+      "cycles_fit_3h": 8
+    }
+  },
+  "scratch_paint_steps": 12,
+  "scratch_paint_seconds": 73.01,
+  "log_records": 88
+}

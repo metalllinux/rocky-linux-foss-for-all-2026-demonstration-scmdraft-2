@@ -1,0 +1,54 @@
+{
+  "per_map": {
+    "S1bAL1/republic-of-korea": {
+      "build": 0.6,
+      "sha_verify": 0.0,
+      "transfer": 0.51,
+      "open": 25.85,
+      "zoom_set": 14.49,
+      "display_window": 309.54,
+      "teardown": 2.91,
+      "overhead_excluding_display": 44.36,
+      "total": 353.9,
+      "steps": 10
+    },
+    "S1bAL1/rocky-logo": {
+      "build": 0.09,
+      "sha_verify": 0.0,
+      "transfer": 0.52,
+      "open": 25.97,
+      "zoom_set": 15.07,
+      "display_window": 318.08,
+      "teardown": 2.9,
+      "overhead_excluding_display": 44.55,
+      "total": 362.63,
+      "steps": 13
+    },
+    "S1bAL1/rocky-with-heart": {
+      "build": 0.1,
+      "sha_verify": 0.0,
+      "transfer": 0.51,
+      "open": 25.47,
+      "zoom_set": 14.92,
+      "display_window": 318.05,
+      "teardown": 2.89,
+      "overhead_excluding_display": 43.89,
+      "total": 361.94,
+      "steps": 13
+    }
+  },
+  "cycles": {
+    "S1bAL1": {
+      "maps_total": 1078.47,
+      "cycle_steps": 1.28,
+      "paint": 72.48,
+      "cycle_cost_seconds": 1152.23,
+      "cycles_fit_1h": 3,
+      "cycles_fit_2h": 6,
+      "cycles_fit_3h": 9
+    }
+  },
+  "scratch_paint_steps": 12,
+  "scratch_paint_seconds": 72.48,
+  "log_records": 51
+}

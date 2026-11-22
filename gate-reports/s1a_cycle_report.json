@@ -1,0 +1,54 @@
+{
+  "per_map": {
+    "S1aL1/foss-for-all": {
+      "build": 0.08,
+      "sha_verify": 0.0,
+      "transfer": 0.53,
+      "open": 25.51,
+      "zoom_set": 14.82,
+      "display_window": 56.24,
+      "teardown": 2.92,
+      "overhead_excluding_display": 44.4,
+      "total": 100.64,
+      "steps": 14
+    },
+    "S1aL1/i-love-korea": {
+      "build": 0.05,
+      "sha_verify": 0.0,
+      "transfer": 0.54,
+      "open": 25.83,
+      "zoom_set": 15.03,
+      "display_window": 60.57,
+      "teardown": 2.92,
+      "overhead_excluding_display": 44.37,
+      "total": 104.94,
+      "steps": 13
+    },
+    "S1aL1/tux": {
+      "build": 0.06,
+      "sha_verify": 0.0,
+      "transfer": 0.51,
+      "open": 25.49,
+      "zoom_set": 15.04,
+      "display_window": 60.44,
+      "teardown": 2.92,
+      "overhead_excluding_display": 44.02,
+      "total": 104.46,
+      "steps": 13
+    }
+  },
+  "cycles": {
+    "S1aL1": {
+      "maps_total": 310.04,
+      "cycle_steps": 0,
+      "paint": 72.56,
+      "cycle_cost_seconds": 382.6,
+      "cycles_fit_1h": 9,
+      "cycles_fit_2h": 18,
+      "cycles_fit_3h": 28
+    }
+  },
+  "scratch_paint_steps": 12,
+  "scratch_paint_seconds": 72.56,
+  "log_records": 52
+}
