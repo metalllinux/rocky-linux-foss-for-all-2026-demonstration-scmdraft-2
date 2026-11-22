@@ -4,9 +4,9 @@ Every file in this repository as published by dispatch `D3` on 2026-11-22, with 
 
 This repository was renamed by the operator between dispatches `D0` and `D2`. It is `metalllinux/rocky-linux-foss-for-all-2026-demonstration-scmdraft-2`, and `metalllinux/foss-for-all-booth-demonstration-scmdraft-2` is the same repository under its former name, not a second repo. Evidence, both API paths carry repository id `1455994123`, and the old path answers `301 Moved Permanently` pointing at `https://api.github.com/repositories/1455994123` while the new path answers `200` with the repository JSON. Dispatch `D3` used the new name for every API call and for the clone remote.
 
-`MANIFEST.md` is the only file not listed here, because a file cannot contain the hash of itself. Compare this list against `git ls-tree -r HEAD` to check it independently. Dispatch `S1c` modified `code/booth_loop.py` and `BOOTH-RUNBOOK.md` on 2026-11-22, adding the published no-rebuild mode and the mode documentation. Every row, directory byte sum and total below is recomputed from the tree as written, and `d2_verify.py` re-checks them against the pushed tree from a fresh clone.
+`MANIFEST.md` is the only file not listed here, because a file cannot contain the hash of itself. Compare this list against `git ls-tree -r HEAD` to check it independently. Dispatch `S1c` modified `code/booth_loop.py` and `BOOTH-RUNBOOK.md` on 2026-11-22, adding the published no-rebuild mode and the mode documentation that names which mode a clone can run and that rebuild mode needs the withheld reference CHK, and published its measured cycle record in `booth-loop/s1a-run-log.jsonl`, `gate-reports/S1c300_cycle_report.json`, `gate-reports/S1cSmoke_cycle_report.json`, `DEMO-LOG.md` and the `S1c` section of `PUBLISH-STATUS.md`. Every row, directory byte sum and total below is recomputed from the tree as written, and `d2_verify.py` re-checks them against the pushed tree from a fresh clone.
 
-Totals, 787 files in the repository once this manifest is written, 786 of them listed here, 198,390,282 bytes listed, `PUBLISH-STATUS.md` included, on top of the `Initial commit` at `7e0d58d`, the `D0` commit `3da0937` and the `D2` commit `39f2119`. `LICENSE` and `README.md` are byte-unchanged by all three dispatches.
+Totals, 789 files in the repository once this manifest is written, 788 of them listed here, 198,452,355 bytes listed, `PUBLISH-STATUS.md` included, on top of the `Initial commit` at `7e0d58d`, the `D0` commit `3da0937` and the `D2` commit `39f2119`. `LICENSE` and `README.md` are byte-unchanged by all three dispatches.
 
 The `i-love-korea` family, the booth-artifact provenance, the measured booth cycle cost, and the one command that starts a cycle are explained in `PUBLISH-STATUS.md` and `BOOTH-RUNBOOK.md`, both listed below like every other file.
 
@@ -14,10 +14,10 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 
 | file | bytes | sha256 |
 |---|---|---|
-| `BOOTH-RUNBOOK.md` | 14259 | `29cdca2eb757df0938c808854bdd17acce07ea26b62389a84b0dea2aa82840f3` |
-| `DEMO-LOG.md` | 277460 | `37c4843610989047c6b842c8f2d4bda332371e40de348db8855e7d5be2f6a684` |
+| `BOOTH-RUNBOOK.md` | 15595 | `b5a60a42d009812bd0b7c4ff9f1bbb3f80e728ff9ed45095f496c6ffa23f9bee` |
+| `DEMO-LOG.md` | 291025 | `7cb31f81863131fabb6a87a9da2d0c5b271690a702db2875d223e9d51dcc4a0e` |
 | `LICENSE` | 1063 | `5c620b9317b6bb3ac68a044004751965787b3e83beea4a6d6562e33b86df8f9f` |
-| `PUBLISH-STATUS.md` | 22730 | `27407b4d5cf0746ddde1a3544d246b8f752bbc0efe32eb4068baff892ddc578d` |
+| `PUBLISH-STATUS.md` | 25803 | `ed4488085034a9e67c3b8b4666955a586d99e01d8c7668c055e5d1c19bb7188c` |
 | `README.md` | 129 | `e278208f88b9b3e37b05732e53fb23dbad187843592bf0bb8113576560c32352` |
 
 ## `booth-artifacts`, 64 files, 588258 bytes
@@ -108,11 +108,11 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | `booth-artifacts/superseded/i-love-korea-mm-2x.png` | 11183 | `1ceafc366e48bb4827966ebf9208e81913b760cf2a6cb2da2822238f359299db` |
 | `booth-artifacts/superseded/i-love-korea-mm.png` | 726 | `f4a43dc966f587d28b6c453f7cce69709719b52262c465b774ef1f19bd4d820d` |
 
-## `booth-loop`, 1 files, 87906 bytes
+## `booth-loop`, 1 files, 128,888 bytes
 
 | file | bytes | sha256 |
 |---|---|---|
-| `booth-loop/s1a-run-log.jsonl` | 87906 | `2a4d4cb66e8bfdd977393596e1b359918606af90eb960e36303065ed9a74672c` |
+| `booth-loop/s1a-run-log.jsonl` | 128888 | `274314e6590537a4e89e98f0385d604a2580a8b3e71738b69108db7a0a8f7ed2` |
 
 ## `calibration`, 13 files, 1146512 bytes
 
@@ -577,13 +577,15 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | `code/t0042-run.sh` | 668 | `2788cec370ab7dc3008a1fd202563f092f4ee2d8b0378c63af86e0729a919615` |
 | `code/tux.py` | 5470 | `4bc50853f39341e162726bc9f36e3c4e972b565bb8e85e8c75ae6bfbb21a4d96` |
 
-## `gate-reports`, 16 files, 121612 bytes
+## `gate-reports`, 18 files, 124,729 bytes
 
 | file | bytes | sha256 |
 |---|---|---|
 | `gate-reports/S1b150_cycle_report.json` | 2097 | `6ce6e760429bd2457cf02e21e5401715ff07538012e227278cb0ad9d85cc6ee7` |
 | `gate-reports/S1b300_cycle_report.json` | 2094 | `5834c73bebaf1dff0b257cbc4a6f81851b2b2225efa9cfdcff28a3ddb9d0688a` |
 | `gate-reports/S1bA_cycle_report.json` | 1217 | `866fc4158f52a25cce466543d16fa40cd71326bc10e51061ad3fdb197c2c43e0` |
+| `gate-reports/S1c300_cycle_report.json` | 2395 | 1b56cc166c0963343f6d4b18432d285d5acd467675b6971db1002915d1077cb3 |
+| `gate-reports/S1cSmoke_cycle_report.json` | 722 | fbe88717983437afcfd89708bb80d0b246e727132186890fd66a59a98620df73 |
 | `gate-reports/f2_artifact_check.json` | 6238 | `000c1307a296a1ed0525bebfdda7f41a0c10522f009b8ef268fd2811263a8371` |
 | `gate-reports/f2_control.json` | 9157 | `c75bde29df733efb6d4f5486ab8492cd37e428329c67a9793ee23b8b941c8b25` |
 | `gate-reports/i-love-korea-2line_report.json` | 18744 | `c1d94b44b974e426e814f88a843926377992f12a755933df15306a8b0c1584f6` |

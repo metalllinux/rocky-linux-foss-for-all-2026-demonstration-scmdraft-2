@@ -70,8 +70,10 @@ is withheld as a credential. The target password file `~/AI/secrets/scm_draft_pa
 in the operator's secrets directory, file mode 600 or stricter, never published. Both modes also need
 Python 3 with Pillow and the `tesseract` OCR binary on the controller, and a writable scratch
 directory for captures, crops, the run log and the cycle reports, defaulting to `/tmp/opencode/t0042`
-and overridable with `CHAOTIX_T0042_WORK` so a published-mode run writes nothing into the clone it
-runs from.
+and overridable with `CHAOTIX_T0042_WORK`. A published-mode run writes its captures, crops, step log
+and reports there rather than into the clone it runs from, and the one thing a run does add to a clone
+is Python's own `code/__pycache__/` bytecode cache for the mask modules, untracked, 67389 B after one
+six-map cycle, removable with `rm -rf`.
 
 Rebuild mode additionally needs `ts-harvest/ref-era6.chk`, the harvested reference CHK named above.
 That is the single thing that makes rebuild mode unrunnable from a clone, and it is withheld
@@ -134,20 +136,32 @@ and mtimes were re-verified unchanged after all three measured phases.
 
 ## What a cycle costs, measured
 
-Costs measured end to end on the target by dispatch `S1b`, one full six-map cycle per window,
-from `gate-reports/S1b300_cycle_report.json` and `gate-reports/S1b150_cycle_report.json`.
+Costs measured end to end on the target, one full six-map cycle per window per mode, from
+`gate-reports/S1b300_cycle_report.json`, `gate-reports/S1b150_cycle_report.json` and
+`gate-reports/S1c300_cycle_report.json`, each reconstructible step by step from
+`booth-loop/s1a-run-log.jsonl`.
 
-| display window | measured cycle cost | complete cycles that fit |
+| display window and mode | measured cycle cost | complete cycles that fit |
 |---|---|---|
-| 300 s, the operator's default | 2232.36 s, 37 min 12 s | 1 in one hour, 3 in two, 4 in three |
-| 150 s, the recorded fallback | 1331.99 s, 22 min 12 s | 2 in one hour, 5 in two, 8 in three |
+| 300 s, the operator's default, rebuild mode, dispatch `S1b` | 2232.36 s, 37 min 12 s | 1 in one hour, 3 in two, 4 in three |
+| 300 s, the operator's default, published mode from a fresh clone, dispatch `S1c` | 2232.13 s, 37 min 12 s | 1 in one hour, 3 in two, 4 in three |
+| 150 s, the recorded fallback, rebuild mode, dispatch `S1b` | 1331.99 s, 22 min 12 s | 2 in one hour, 5 in two, 8 in three |
+
+The two 300 s measurements are 0.23 s apart, 0.01 percent, and per-map non-display overhead is 43.35
+to 44.64 s in published mode against 43.86 to 44.46 s in rebuild mode, so skipping the rebuild changes
+nothing measurable about what a cycle costs. The rebuild itself was never the time, 0.04 to 0.56 s per
+map.
 
 Non-display overhead holds at 43.86 to 44.46 s per map on all six maps at both windows, so halving
 the display window cuts cycle time by 44.7 percent rather than 50, and a shorter window buys maps
 rather than headroom. The 300 s default is the operator's stated booth model and stays. The 150 s
 cycle is the fallback if the venue gives less time than expected. Disk residue is bounded by the
-cycle-start cleanup at 4301926 B per cycle, the seven `Scm*.tmp` backups a full six-map cycle
-writes, named in the run log.
+cycle-start cleanup at 4301926 B per cycle, the seven `Scm*.tmp` backups a full six-map cycle writes,
+named in the run log. Captures are a second disk item the cleanup does not touch, the runner writes each
+capture into `/tmp` on the target before fetching it and never deletes it, 52 captures and 7195615 B for
+one six-map cycle at the 300 s window, about 7.2 MB per cycle against the 65 GB the target reports free.
+For one `S1c` cycle the named items account for 11497541 B against a measured headroom change of
+10874880 B, a 622661 B surplus recorded as unattributed rather than guessed.
 
 ## What the audience sees, honestly separated
 

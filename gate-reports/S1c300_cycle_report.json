@@ -1,0 +1,99 @@
+{
+  "per_map": {
+    "S1c300L1/foss-for-all": {
+      "build": 0.0,
+      "acquisition": "published_source",
+      "sha_verify": 0.0,
+      "transfer": 0.53,
+      "open": 26.17,
+      "zoom_set": 15.05,
+      "display_window": 312.05,
+      "teardown": 2.89,
+      "overhead_excluding_display": 44.64,
+      "total": 356.69,
+      "steps": 11
+    },
+    "S1c300L1/i-love-korea": {
+      "build": 0.0,
+      "acquisition": "published_source",
+      "sha_verify": 0.0,
+      "transfer": 0.54,
+      "open": 25.84,
+      "zoom_set": 15.1,
+      "display_window": 318.03,
+      "teardown": 2.91,
+      "overhead_excluding_display": 44.39,
+      "total": 362.42,
+      "steps": 13
+    },
+    "S1c300L1/republic-of-korea": {
+      "build": 0.0,
+      "acquisition": "published_source",
+      "sha_verify": 0.0,
+      "transfer": 0.52,
+      "open": 25.46,
+      "zoom_set": 14.44,
+      "display_window": 309.56,
+      "teardown": 2.93,
+      "overhead_excluding_display": 43.35,
+      "total": 352.91,
+      "steps": 10
+    },
+    "S1c300L1/rocky-logo": {
+      "build": 0.0,
+      "acquisition": "published_source",
+      "sha_verify": 0.0,
+      "transfer": 0.51,
+      "open": 25.52,
+      "zoom_set": 15.07,
+      "display_window": 317.98,
+      "teardown": 2.89,
+      "overhead_excluding_display": 43.99,
+      "total": 361.97,
+      "steps": 13
+    },
+    "S1c300L1/rocky-with-heart": {
+      "build": 0.0,
+      "acquisition": "published_source",
+      "sha_verify": 0.0,
+      "transfer": 0.51,
+      "open": 25.53,
+      "zoom_set": 15.05,
+      "display_window": 318.01,
+      "teardown": 2.91,
+      "overhead_excluding_display": 44.0,
+      "total": 362.01,
+      "steps": 13
+    },
+    "S1c300L1/tux": {
+      "build": 0.0,
+      "acquisition": "published_source",
+      "sha_verify": 0.0,
+      "transfer": 0.51,
+      "open": 25.51,
+      "zoom_set": 14.97,
+      "display_window": 318.08,
+      "teardown": 2.89,
+      "overhead_excluding_display": 43.88,
+      "total": 361.96,
+      "steps": 13
+    }
+  },
+  "cycles": {
+    "S1c300L1": {
+      "modes_recorded": [
+        "published"
+      ],
+      "maps_total": 2157.96,
+      "cycle_steps": 1.26,
+      "paint": 72.91,
+      "cycle_cost_seconds": 2232.13,
+      "cycles_fit_1h": 1,
+      "cycles_fit_2h": 3,
+      "cycles_fit_3h": 4
+    }
+  },
+  "scratch_paint_steps": 12,
+  "scratch_paint_seconds": 72.91,
+  "log_records": 90
+}

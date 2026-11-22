@@ -1992,3 +1992,162 @@ at the `D2` figures for every hard category, `.chk` and `.scx` intermediates 68,
 CHKs 170, upstream library 905, upstream dataset 5, probe maps 38, credential 1, compiled binaries 4.
 Inverse, `/tmp/opencode/t0042/publish/` and `d3_stage_plan.tsv` are regenerable from the scripts,
 `rm -rf` removes them, no target state was touched.
+
+## 2026-11-22 10:05 — Dispatch D3 step 3, booth repo push and remote verification (`Tails`, controller-side only, no target contact)
+
+Booth repo commit `f0255bd752b3e5f4a39f24111b82d8ccb6e28ee1` pushed onto `39f2119`, push answered
+`39f2119..f0255bd main -> main` against `metalllinux/rocky-linux-foss-for-all-2026-demonstration-
+scmdraft-2`, and `git ls-remote` reads the same hash at `refs/heads/main`. Verified from a fresh
+clone at `/tmp/opencode/t0042/booth-verify-d3` rather than from the push output, `git log` shows the
+four-commit chain, `git ls-tree -r HEAD` holds 787 paths against 606 at `D2`, `git diff
+--name-status 39f2119 HEAD` is 181 added and 4 modified with zero deletions and zero renames, the
+modified set being `DEMO-LOG.md`, `MANIFEST.md`, `PUBLISH-STATUS.md` and the TASK-0042 planning doc,
+`sha256sum` in the clone reproduces all six deliverables at recorded values and the four superseded
+builds at theirs, and `git diff --stat` for `LICENSE` and `README.md` between the two commits is
+empty. Manifest cross-check with `d2_verify.py` in the clone, 786 rows against 787 tree paths, 0
+omitted, 0 absent, 0 mismatches, PASS. API after the push answers `private true`, `visibility
+private`, `id 1455994123`, visibility unchanged. Deviation recorded rather than erased, my three
+earlier team commits in this dispatch were made with `commit.gpgsign=false` against a chain that is
+signed throughout, the booth commit was amended to carry the signature before pushing, and the
+rewriting of pushed history was declined, full account in `## Implementation`. Checks not run, no
+target contact, the published runner was not executed from a bare clone because its build step needs
+the withheld reference CHK and the withheld password, no independent read of the 165 booth-loop
+captures, no licence ruling. Inverse, the booth commit is a normal fast-forward on `main`, removing
+it would need a force-push and none was performed or is proposed, `/tmp/opencode/t0042/booth-verify-d3`
+removes with `rm -rf`.
+
+## 2026-11-22 10:45 — Dispatch S1c step 1, the published no-rebuild mode built and published, verified from a fresh remote clone (`Tails`, controller-side and repo-side, one read-only target read)
+
+The gap `D3` named is closed in code. `booth_loop.py` now has two map-acquisition modes.
+`--source rebuild` is the default and is what every measured cycle ran in, it rebuilds each map from
+the committed mask code through `build_ts.py` against `ts-harvest/ref-era6.chk`. `--source published`
+skips the rebuild, reads each map read-only from `<clone>/maps/deliverable/<name>.scm`, and drives the
+same open, display, painting-segment and teardown sequence with no save. The runner grew
+`preflight_published`, which hashes all six published maps and the published paint seed against the
+recorded SHA-256 values and names what a clone carries and what it does not, `preflight_target_run_script`,
+which compares the launch script on the target against the clone's `code/t0042-run-dos.sh`, installs the
+published copy only if the target has none and refuses to overwrite one that differs, a
+`published_source` step in place of `build`, a named refusal in rebuild mode when the reference CHK is
+absent, a seed-source switch in `run_paint`, a `mode` field in every log record, and a path model where
+`HERE` is the script's own directory and `CHAOTIX_T0042_WORK` and `CHAOTIX_T0042_INJECTOR` separate
+scratch from injector so a clone run writes nothing into the clone. Compile checked with
+`python3 -W error::SyntaxWarning -m py_compile booth_loop.py`, clean.
+
+Two tests before any publish, both against the local clone at `f0255bd` with `CHAOTIX_T0042_WORK`
+pointed at `/tmp/opencode/t0042/s1c-test` so the published step log is untouched. Test 1,
+`preflight_published` over all six maps answers PASS, `maps_checked 6`, and records the lists
+`clone_carries` and `clone_does_not_carry`. Test 2, `run_map` in rebuild mode from the clone copy logs
+`build FAIL` with `reason=rebuild mode needs the withheld reference CHK, which the published repository
+does not carry; run --source published from a clone instead`, returns False, and makes no target
+contact. Test 2 is the concrete demonstration of the `D3` gap rather than a restatement of it.
+
+Booth repo commit `dd86b46e9cc43937b05ccbfadefa29fe4e5d2e48`, signed Good, pushed `f0255bd..dd86b46`,
+carrying `code/booth_loop.py` 36458 to 47217 B and `BOOTH-RUNBOOK.md` 10472 to 14259 B with the mode
+documentation, and `MANIFEST.md` rows recomputed by `/tmp/opencode/t0042/s1c_manifest.py`, 786 rows,
+17 groups, 198390282 bytes listed, 2 rows updated and 784 rows unchanged. Credential scan reused from
+`D3`, `d3_stage.credential_scan`, 4 secret values read at run time against 5 changed files, zero hits,
+values printed nowhere.
+
+Verified from a fresh clone of the pushed repository at `/tmp/opencode/t0042/booth-clone-s1c` rather
+than from the push output, `git log` shows `dd86b46` on `f0255bd`, `git ls-tree -r HEAD` holds 787
+paths, `sha256sum` in the clone reproduces all six deliverables at their recorded values, the clone's
+`code/booth_loop.py` is byte-identical to `/tmp/opencode/t0042/booth_loop.py` at
+`38c46709c491...`, `live-segment/maps/live-demo-ice.scm` reproduces `8f338a3cea24...` which is the seed
+the painting segment needs, `python3 /tmp/opencode/t0042/d2_verify.py .` answers 786 rows against 787
+tree paths, 0 omitted, 0 absent, 0 mismatches, PASS, and the clone working tree is clean.
+
+Inverse, `/tmp/opencode/t0042/booth-clone-s1c` and `/tmp/opencode/t0042/s1c-test` remove with
+`rm -rf`, `/tmp/opencode/t0042/s1c_manifest.py` with `rm -f`, the booth commit is a normal
+fast-forward on `main` and removing it would need a force-push, which is not performed and not
+proposed. Pre-dispatch target state read read-only before any of this, through
+`sshpass -f ~/AI/secrets/scm_draft_pass.md ssh howard@192.168.1.99` with `pgrep`, `ls -l`, `sha256sum`,
+`df -B1` and `du -sb`, `NO_SCM_RUNNING`, `C:\Maps\live-demo-ice.scm` at 12502 B `f00d1f60521c...`,
+seven `Scm*.tmp` backups left by `S1b` totalling 4301926 B, `/tmp/t0042-run-dos.sh` at
+`a85bba3c89f1...`, `df -B1 /` avail 65000390656 B, `du -sb C:\Maps` 4404854 B. No target file was
+written by this step, and `preflight_target_run_script` has not run yet, it runs at the start of the
+clone run. Checks not run at this point, the measured six-map cycle in published mode, which is the
+next step, no independent read of the captures this dispatch will produce, no licence ruling.
+
+## 2026-11-22 10:50 — Dispatch S1c step 2, bounded smoke cycle in published mode from the fresh clone (`Tails`, one map, 20 s window)
+
+`cd /tmp/opencode/t0042/booth-clone-s1c && python3 code/booth_loop.py --source published --clone
+/tmp/opencode/t0042/booth-clone-s1c --maps tux --display-seconds 20 --tag-prefix S1cSmoke`, rc 0,
+30 log records, one map plus the painting segment. `preflight_published` PASS with `maps_checked 1`.
+`preflight_target_run_script` PASS, `/tmp/t0042-run-dos.sh` on the target reads `a85bba3c89f1...`,
+equal to the clone's published `code/t0042-run-dos.sh`, no install needed, read-only inverse.
+`published_source` read `/tmp/opencode/t0042/booth-clone-s1c/maps/deliverable/tux.scm` read-only at
+614552 B, `sha_verify_controller` PASS `79002eacd5d6`, transfer PASS with the target copy re-hashing to
+the same value, open on `C:\Maps\tux.scm` with the path in the title bar, zoom verified from the
+capture indicator at 216 x 96 tiles and 7.931 x 7.854 px per tile in one verification pass, teardown
+`NO_SCM_RUNNING` with the loop copy `REMOVED`. Per-map total 80.53 s, overhead excluding display
+44.12 s, which is the `S1a` and `S1b` 44 s overhead unchanged in published mode. The painting segment
+took its seed from `live-segment/maps/live-demo-ice.scm` in the clone at `8f338a3cea24...`, re-derived
+the palette by OCR at Rocky Snow 839 and High Outpost 968, and measured 42581 changed pixels at median
+WCAG 6.267 with minimum pair 1.2, identical to all three `S1b` phases. Scratch map restored to 12502 B
+`f00d1f60521c...` at teardown. Cycle cost for this smoke cycle 154.38 s. `tmp_cleanup` at cycle start
+removed the seven `Scm*.tmp` backups `S1b` had left under rule r002, named with sizes in the log,
+4301926 B, so the r002 residue from `S1b` is now gone by the runner's own documented cycle-start
+behaviour and the residue visible to the operator at the end of this dispatch is this dispatch's own.
+
+## 2026-11-22 11:28 — Dispatch S1c step 3, one full six-map cycle measured in published mode from a fresh clone at the 300 s default (`Tails`, target touched)
+
+`cd /tmp/opencode/t0042/booth-clone-s1c && python3 code/booth_loop.py --source published --clone
+/tmp/opencode/t0042/booth-clone-s1c --maps foss-for-all,rocky-logo,rocky-with-heart,tux,republic-of-korea,i-love-korea
+--loops 1 --display-seconds 300 --tag-prefix S1c300`, rc 0, 90 log records, wall clock 10:51:17 to
+11:28:34, 37 min 17 s. Report `/tmp/opencode/t0042/S1c300_cycle_report.json`, console
+`/tmp/opencode/t0042/s1c300.out`.
+
+**Measured cycle cost 2232.13 s, 37 min 12 s, against the 2232.36 s `S1b` measured in rebuild mode, a
+difference of 0.23 s or 0.01 percent.** Maps total 2157.96 s, cycle steps 1.26 s, painting segment
+72.91 s. `modes_recorded` for the cycle is `["published"]`. Complete cycles that fit, computed from
+this measurement, 1 in one hour, 3 in two, 4 in three, the same figures `S1b` produced.
+
+Per-map totals 356.69 `foss-for-all`, 361.97 `rocky-logo`, 362.01 `rocky-with-heart`, 361.96 `tux`,
+352.91 `republic-of-korea`, 362.42 `i-love-korea`. Non-display overhead 43.35 to 44.64 s per map,
+unchanged from `S1b`'s 43.86 to 44.46 s, so removing the rebuild changes nothing measurable in the
+cycle. Acquisition is `published_source` at 0.00 s on all six maps instead of a `build` at 0.04 to
+0.56 s. Transfer 0.51 to 0.54 s, open 25.46 to 26.17 s, zoom walk 14.44 to 15.10 s, teardown 2.89 to
+2.93 s. Display windows 309.56 to 318.08 s against the 300 s request, the same 3 to 6 percent
+per-frame capture overhead `S1b` recorded.
+
+Every one of the six maps passed `sha_verify_controller` against its recorded SHA-256 before transfer
+and re-matched on the target after transfer, `e856f0e1d62e`, `447360ce8077`, `b9b056c27a67`,
+`79002eacd5d6`, `c773a534a564`, `16fe455d46fd`, with target sizes 614561, 614559, 614565, 614552,
+614566 and 614561 B. All six opens carry the opened drive-qualified path in the title bar. All six
+zoom settings verified from the capture indicator at 216 x 96 tiles and 7.931 x 7.854 px per tile in
+one verification pass each, no combo readout used. 31 scripted display frames captured and measured,
+4, 6, 6, 6, 3 and 6 across the six maps, the same frame plan `S1b` used, planned from the mask code the
+clone publishes at `code/rocky.py` and `code/glyph.py`. All six teardowns answer `NO_SCM_RUNNING` with
+the loop copy `REMOVED`. The painting segment ran on the clone's seed, palette re-derived at rows 839
+and 968, 42581 changed pixels sampled at median WCAG 6.267, minimum pair 1.2. No editor save was
+performed on any map, the runner has no save step, and the six originals in `~/scmdraft-maps/` keep
+their 2026-11-20 and 2026-11-21 mtimes.
+
+Target disk for the cycle, `df -B1 /` avail 64994611200 B before and 64983736320 B after, 10874880 B
+consumed. Named items account for 11497541 B of that, the seven `Scm*.tmp` backups the cycle's seven
+opens wrote at 4301926 B, and the 52 capture PNGs the cycle left in `/tmp` on the target at 7195615 B,
+which the runner writes for scp to fetch and never deletes. The 622661 B surplus against the measured
+consumption is not attributed, recorded rather than guessed. This also names the leading candidate for
+`S1b`'s 1448858 B unattributed delta, the same target-side capture PNGs, and it is a booth-day fact
+worth knowing, a multi-hour session accumulates roughly 7.2 MB per cycle of captures on the target
+against 65 GB free.
+
+## 2026-11-22 11:35 — Dispatch S1c step 4, post-cycle verification and the runbook wording correction (`Tails`, target read-only)
+
+`python3 code/booth_loop.py --stability` from the clone, all six deliverable originals on the target at
+their recorded SHA-256 values with mtimes 2026-11-20 06:03, 2026-11-20 08:17, 2026-11-20 08:17,
+2026-11-20 20:33, 2026-11-21 10:49 and 2026-11-21 19:28, all before this cycle started, so nothing in
+the cycle wrote to them. `pgrep -af "ScmDraft[ ]2"` answers `NO_SCM_RUNNING`. `C:\Maps\` holds the
+pre-existing reference map `(2)River Crossing.scm` 90426 B, the scratch map restored at 12502 B
+`f00d1f60521c...`, and exactly seven named `Scm*.tmp` residue files, `Scm8406.tmp` 614561 B,
+`Scmf546.tmp` 614559 B, `Scm7b4a.tmp` 614565 B, `Scm199.tmp` 614552 B, `Scm87c5.tmp` 614566 B,
+`Scmf0d2.tmp` 614561 B and `Scm799f.tmp` 614562 B, 4301926 B total, left in place per rule r002,
+inverse `rm -f /home/howard/.wine-scmdraft/drive_c/Maps/Scm*.tmp` recorded in the cycle log.
+
+One accuracy correction found by checking the clone after the run. The runbook as pushed at `dd86b46`
+says a published-mode run writes nothing into the clone it runs from. That is true of captures, OCR
+crops, the run log and the reports, which all go to `CHAOTIX_T0042_WORK`, but importing the mask code
+makes Python write `code/__pycache__/` inside the clone, 67389 B of bytecode caches for `rocky`,
+`glyph`, `korea`, `korea_10m`, `rocky_svg` and `tux`. Untracked, removable with
+`rm -rf /tmp/opencode/t0042/booth-clone-s1c/code/__pycache__`, and the runbook now says that rather
+than the cleaner-sounding thing.

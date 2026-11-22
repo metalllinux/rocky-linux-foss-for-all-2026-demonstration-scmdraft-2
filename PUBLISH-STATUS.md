@@ -175,3 +175,39 @@ the planning docs and are not closed by publishing their artifacts.
 Push result, the remote commit hash, and the categories `D3` did not copy are recorded in
 `DEMO-LOG.md` and `## Implementation` of `planning/docs/TASK-0042-foss-for-all-scmdraft2-demo.md`
 in the team repository, because they cannot be written into a commit that has not happened yet.
+
+## Dispatch `S1c`, the published no-rebuild mode, and what this repository can run from a clone
+
+Dispatch `S1c` modified two published files, `code/booth_loop.py` and `BOOTH-RUNBOOK.md`, and publishes
+the run record alongside them. The runner now has two map-acquisition modes. `--source rebuild` is the
+default and is every cycle measured before this dispatch. `--source published` reads each map from
+`maps/deliverable/` in a clone of this repository, verifies it against the recorded SHA-256 in a
+preflight before any target contact, again immediately before transfer and once more on the target after
+transfer, and then runs the same open, display, painting-segment and teardown sequence with no save on
+any map. It reads no `.chk` file. `BOOTH-RUNBOOK.md` documents both modes by name.
+
+What each mode needs that this repository does not carry, in full. Both modes, the input injector binary
+`rdp-input`, whose source is published here at `code/rdp-input.c`, the file `rdp-args` that carries the
+target RDP credential, the target password file in the operator's secrets directory, Python 3 with
+Pillow and tesseract, and a writable scratch directory for captures, crops, the step log and the reports.
+Rebuild mode additionally needs `ts-harvest/ref-era6.chk`, a harvested plaintext CHK extracted from a
+shipped Blizzard map held by the hard `harvested-reference-chks` exclusion, which is precisely why
+rebuild mode runs only from a working tree that already holds it and not from a clone. Published mode
+needs nothing beyond the list above, because the six maps, the flat Ice World paint seed at
+`live-segment/maps/live-demo-ice.scm`, the mask code the frames are planned from at `code/rocky.py` and
+`code/glyph.py`, and the target launch script at `code/t0042-run-dos.sh` are all published here.
+
+Measured published mode, one full six-map cycle at the 300 s default run from a fresh clone of this
+repository at the commit this dispatch pushed, 2232.13 s against the 2232.36 s `S1b` measured in rebuild
+mode, 0.23 s apart, 0.01 percent, per-map overhead 43.35 to 44.64 s against 43.86 to 44.46 s, all six
+SHA gates passing before transfer and re-matching on the target, all six teardowns `NO_SCM_RUNNING`, all
+six deliverable originals unchanged with mtimes predating the cycle. The numbers are in
+`gate-reports/S1c300_cycle_report.json` and the `S1c300L1` records of `booth-loop/s1a-run-log.jsonl`.
+
+Exclusion rules re-applied unchanged, `S1c` copied no `.chk`, no `.scx`, no harvested reference CHK, no
+credential, no upstream library or dataset, and no compiled binary. `D3`'s credential scan ran again over
+the files this dispatch changed, 4 secret values against 5 files, zero hits. What this dispatch did not
+publish, the 69 capture frames its smoke and measured cycles produced, they live on the controller and
+publishing them belongs to a publish dispatch that re-runs the `D0` classification over a controller tree,
+not to a mode change. No licence ruling was made here, `R4` and `R5` remain open, and the review chain
+has not read this dispatch's captures.
