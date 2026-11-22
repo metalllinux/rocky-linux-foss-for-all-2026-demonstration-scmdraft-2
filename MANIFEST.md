@@ -584,8 +584,8 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | `gate-reports/S1b150_cycle_report.json` | 2097 | `6ce6e760429bd2457cf02e21e5401715ff07538012e227278cb0ad9d85cc6ee7` |
 | `gate-reports/S1b300_cycle_report.json` | 2094 | `5834c73bebaf1dff0b257cbc4a6f81851b2b2225efa9cfdcff28a3ddb9d0688a` |
 | `gate-reports/S1bA_cycle_report.json` | 1217 | `866fc4158f52a25cce466543d16fa40cd71326bc10e51061ad3fdb197c2c43e0` |
-| `gate-reports/S1c300_cycle_report.json` | 2395 | 1b56cc166c0963343f6d4b18432d285d5acd467675b6971db1002915d1077cb3 |
-| `gate-reports/S1cSmoke_cycle_report.json` | 722 | fbe88717983437afcfd89708bb80d0b246e727132186890fd66a59a98620df73 |
+| `gate-reports/S1c300_cycle_report.json` | 2395 | `1b56cc166c0963343f6d4b18432d285d5acd467675b6971db1002915d1077cb3` |
+| `gate-reports/S1cSmoke_cycle_report.json` | 722 | `fbe88717983437afcfd89708bb80d0b246e727132186890fd66a59a98620df73` |
 | `gate-reports/f2_artifact_check.json` | 6238 | `000c1307a296a1ed0525bebfdda7f41a0c10522f009b8ef268fd2811263a8371` |
 | `gate-reports/f2_control.json` | 9157 | `c75bde29df733efb6d4f5486ab8492cd37e428329c67a9793ee23b8b941c8b25` |
 | `gate-reports/i-love-korea-2line_report.json` | 18744 | `c1d94b44b974e426e814f88a843926377992f12a755933df15306a8b0c1584f6` |
