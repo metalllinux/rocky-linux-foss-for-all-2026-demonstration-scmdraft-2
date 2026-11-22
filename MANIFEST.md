@@ -4,9 +4,9 @@ Every file in this repository as published by dispatch `D3` on 2026-11-22, with 
 
 This repository was renamed by the operator between dispatches `D0` and `D2`. It is `metalllinux/rocky-linux-foss-for-all-2026-demonstration-scmdraft-2`, and `metalllinux/foss-for-all-booth-demonstration-scmdraft-2` is the same repository under its former name, not a second repo. Evidence, both API paths carry repository id `1455994123`, and the old path answers `301 Moved Permanently` pointing at `https://api.github.com/repositories/1455994123` while the new path answers `200` with the repository JSON. Dispatch `D3` used the new name for every API call and for the clone remote.
 
-`MANIFEST.md` is the only file not listed here, because a file cannot contain the hash of itself. Compare this list against `git ls-tree -r HEAD` to check it independently. Dispatch `S1c` modified `code/booth_loop.py` and `BOOTH-RUNBOOK.md` on 2026-11-22, adding the published no-rebuild mode and the mode documentation that names which mode a clone can run and that rebuild mode needs the withheld reference CHK, and published its measured cycle record in `booth-loop/s1a-run-log.jsonl`, `gate-reports/S1c300_cycle_report.json`, `gate-reports/S1cSmoke_cycle_report.json`, `DEMO-LOG.md` and the `S1c` section of `PUBLISH-STATUS.md`. Every row, directory byte sum and total below is recomputed from the tree as written, and `d2_verify.py` re-checks them against the pushed tree from a fresh clone.
+`MANIFEST.md` is the only file not listed here, because a file cannot contain the hash of itself. Compare this list against `git ls-tree -r HEAD` to check it independently. Dispatch `S1c` modified `code/booth_loop.py` and `BOOTH-RUNBOOK.md` on 2026-11-22, adding the published no-rebuild mode and the mode documentation that names which mode a clone can run and that rebuild mode needs the withheld reference CHK, and published its measured cycle record in `booth-loop/s1a-run-log.jsonl`, `gate-reports/S1c300_cycle_report.json`, `gate-reports/S1cSmoke_cycle_report.json`, `DEMO-LOG.md` and the `S1c` section of `PUBLISH-STATUS.md`. Every row, directory byte sum and total below is recomputed from the tree as written, and `d2_verify.py` re-checks them against the pushed tree from a fresh clone. Dispatch `K5` on 2026-11-22 moved the seven `M3`-era `korea-*` booth artifacts from `booth-artifacts/` to `booth-artifacts/superseded/` with their names unchanged, on `R1` finding 2, and rewrote the `republic-of-korea` booth-artifact section of `PUBLISH-STATUS.md` and a `DEMO-LOG.md` entry for it, so no superseded 64 px or 32 px artifact for that map stands at a plain name.
 
-Totals, 789 files in the repository once this manifest is written, 788 of them listed here, 198,452,355 bytes listed, `PUBLISH-STATUS.md` included, on top of the `Initial commit` at `7e0d58d`, the `D0` commit `3da0937` and the `D2` commit `39f2119`. `LICENSE` and `README.md` are byte-unchanged by all three dispatches.
+Totals, 789 files in the repository once this manifest is written, 788 of them listed here, 198,459,066 bytes listed, `PUBLISH-STATUS.md` included, on top of the `Initial commit` at `7e0d58d`, the `D0` commit `3da0937` and the `D2` commit `39f2119`. `LICENSE` and `README.md` are byte-unchanged by all three dispatches.
 
 The `i-love-korea` family, the booth-artifact provenance, the measured booth cycle cost, and the one command that starts a cycle are explained in `PUBLISH-STATUS.md` and `BOOTH-RUNBOOK.md`, both listed below like every other file.
 
@@ -15,12 +15,12 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | file | bytes | sha256 |
 |---|---|---|
 | `BOOTH-RUNBOOK.md` | 15595 | `b5a60a42d009812bd0b7c4ff9f1bbb3f80e728ff9ed45095f496c6ffa23f9bee` |
-| `DEMO-LOG.md` | 291025 | `7cb31f81863131fabb6a87a9da2d0c5b271690a702db2875d223e9d51dcc4a0e` |
+| `DEMO-LOG.md` | 294365 | `218a1899b302000a336fc8799b969e41640d1b49e071783a356bb4590786dc68` |
 | `LICENSE` | 1063 | `5c620b9317b6bb3ac68a044004751965787b3e83beea4a6d6562e33b86df8f9f` |
-| `PUBLISH-STATUS.md` | 25803 | `ed4488085034a9e67c3b8b4666955a586d99e01d8c7668c055e5d1c19bb7188c` |
+| `PUBLISH-STATUS.md` | 29174 | `ee50d85b6835efb432adfb29ee9737fbf6aac5d2b6c3b3c16261e00e15dcce46` |
 | `README.md` | 129 | `e278208f88b9b3e37b05732e53fb23dbad187843592bf0bb8113576560c32352` |
 
-## `booth-artifacts`, 64 files, 588258 bytes
+## `booth-artifacts`, 57 files, 503,410 bytes
 
 | file | bytes | sha256 |
 |---|---|---|
@@ -39,13 +39,6 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | `booth-artifacts/i-love-korea-2line-booth32.png` | 1771 | `0fdee8346af637e409ecab92c822fd66c54f8a36826b9f6b02c2ef7f296a141c` |
 | `booth-artifacts/i-love-korea-2line-booth64.png` | 2770 | `f9446f81dd86c724b110ff98df337165b2cd65d15a2016ba2607a02e41d3143c` |
 | `booth-artifacts/i-love-korea-2line-thumbnail128.png` | 778 | `2a9a0b8609675c2f61637163073b984eb7244490023a3fbba2e3e0e6cf559746` |
-| `booth-artifacts/korea-booth32.png` | 1390 | `904de60708f1f22a9031c8625864683e7d4d522a695192eed2aa7444d850df59` |
-| `booth-artifacts/korea-booth64.png` | 2998 | `951cd720adb6f576d51bb722ba4f0ba675d54e0dc6f82274bba6f88d605b636b` |
-| `booth-artifacts/korea-map-body-256.png` | 17578 | `6b8697580d949aa12f92d110e6032dec0d7f4cf29188b659536661324727b77b` |
-| `booth-artifacts/korea-map-body-2x.png` | 35409 | `3d2d86dc2471fcb03d4e7bb46750e4b5b7f3619349751242e450a9cdc1414af4` |
-| `booth-artifacts/korea-map-body.png` | 3073 | `2bba5608db16ef614ab5cd71abd061a248e96a0efc448c242076ebccb24d6d5d` |
-| `booth-artifacts/korea-mm-2x.png` | 21131 | `1631580376ca8419ca0447bca5fef72c31c505468ee3ae45af263278ba53bd8f` |
-| `booth-artifacts/korea-mm.png` | 3269 | `2176994bdcc24d8ecfc4d8d15cfc3948ae26003a910106c9ada351011ba6467d` |
 | `booth-artifacts/m5-read-booth32.png` | 2644 | `f4987e6680bb025b8ce97490e00242d2a2c6e340c6565d057ed8163fbb16d1a9` |
 | `booth-artifacts/m5-read-booth64.png` | 4339 | `c213503047d19b586ee8aa11b2777780290b2829d0d35c9e80acfa7ffcda2c9d` |
 | `booth-artifacts/m7-read-booth32.png` | 3410 | `4d09ab6bd7d0e3fce5834cfe874fb548b90fc9fe99434b82f0a42ccb7b0f2d1a` |
@@ -99,7 +92,7 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | `booth-artifacts/f2-recut/booth64_recut.png` | 2770 | `f9446f81dd86c724b110ff98df337165b2cd65d15a2016ba2607a02e41d3143c` |
 | `booth-artifacts/f2-recut/thumbnail128_recut.png` | 778 | `2a9a0b8609675c2f61637163073b984eb7244490023a3fbba2e3e0e6cf559746` |
 
-## `booth-artifacts/superseded`, 4 files, 16579 bytes
+## `booth-artifacts/superseded`, 11 files, 101,427 bytes
 
 | file | bytes | sha256 |
 |---|---|---|
@@ -107,6 +100,13 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | `booth-artifacts/superseded/i-love-korea-booth64.png` | 2918 | `49f7ad03913c349a45ed4c9992c5045e85dfe6e105c3d9466d1c3e4342d77b49` |
 | `booth-artifacts/superseded/i-love-korea-mm-2x.png` | 11183 | `1ceafc366e48bb4827966ebf9208e81913b760cf2a6cb2da2822238f359299db` |
 | `booth-artifacts/superseded/i-love-korea-mm.png` | 726 | `f4a43dc966f587d28b6c453f7cce69709719b52262c465b774ef1f19bd4d820d` |
+| `booth-artifacts/superseded/korea-booth32.png` | 1390 | `904de60708f1f22a9031c8625864683e7d4d522a695192eed2aa7444d850df59` |
+| `booth-artifacts/superseded/korea-booth64.png` | 2998 | `951cd720adb6f576d51bb722ba4f0ba675d54e0dc6f82274bba6f88d605b636b` |
+| `booth-artifacts/superseded/korea-map-body-256.png` | 17578 | `6b8697580d949aa12f92d110e6032dec0d7f4cf29188b659536661324727b77b` |
+| `booth-artifacts/superseded/korea-map-body-2x.png` | 35409 | `3d2d86dc2471fcb03d4e7bb46750e4b5b7f3619349751242e450a9cdc1414af4` |
+| `booth-artifacts/superseded/korea-map-body.png` | 3073 | `2bba5608db16ef614ab5cd71abd061a248e96a0efc448c242076ebccb24d6d5d` |
+| `booth-artifacts/superseded/korea-mm-2x.png` | 21131 | `1631580376ca8419ca0447bca5fef72c31c505468ee3ae45af263278ba53bd8f` |
+| `booth-artifacts/superseded/korea-mm.png` | 3269 | `2176994bdcc24d8ecfc4d8d15cfc3948ae26003a910106c9ada351011ba6467d` |
 
 ## `booth-loop`, 1 files, 128,888 bytes
 
