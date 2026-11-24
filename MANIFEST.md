@@ -6,7 +6,7 @@ This repository was renamed by the operator between dispatches `D0` and `D2`. It
 
 `MANIFEST.md` is the only file not listed here, because a file cannot contain the hash of itself. Compare this list against `git ls-tree -r HEAD` to check it independently. Dispatch `S1c` modified `code/booth_loop.py` and `BOOTH-RUNBOOK.md` on 2026-11-22, adding the published no-rebuild mode and the mode documentation that names which mode a clone can run and that rebuild mode needs the withheld reference CHK, and published its measured cycle record in `booth-loop/s1a-run-log.jsonl`, `gate-reports/S1c300_cycle_report.json`, `gate-reports/S1cSmoke_cycle_report.json`, `DEMO-LOG.md` and the `S1c` section of `PUBLISH-STATUS.md`. Every row, directory byte sum and total below is recomputed from the tree as written, and `d2_verify.py` re-checks them against the pushed tree from a fresh clone. Dispatch `K5` on 2026-11-22 moved the seven `M3`-era `korea-*` booth artifacts from `booth-artifacts/` to `booth-artifacts/superseded/` with their names unchanged, on `R1` finding 2, and rewrote the `republic-of-korea` booth-artifact section of `PUBLISH-STATUS.md` and a `DEMO-LOG.md` entry for it, so no superseded 64 px or 32 px artifact for that map stands at a plain name.
 
-Totals, 789 files in the repository once this manifest is written, 788 of them listed here, 198,460,299 bytes listed, `PUBLISH-STATUS.md` included, on top of the `Initial commit` at `7e0d58d`, the `D0` commit `3da0937` and the `D2` commit `39f2119`. `LICENSE` and `README.md` are byte-unchanged by all three dispatches.
+Totals, 789 files in the repository once this manifest is written, 788 of them listed here, 198,460,299 bytes listed, `PUBLISH-STATUS.md` included, on top of the `Initial commit` at `7e0d58d`, the `D0` commit `3da0937` and the `D2` commit `39f2119`. `LICENSE` and `README.md` are byte-unchanged by all three dispatches. Update 2026-11-24 10:40 JST, 01:40 UTC, `README.md` was rewritten on operator instruction to carry the run instructions, and its row above was recomputed to 16092 bytes at `2205eab6a4ce1bf2e5a3b5f6be01eed5546d8f8fce01ea4738f2432f6e427baf`, a delta of 15963 bytes, so the listed byte total for that row set is 198,476,262 and the file count is unchanged at 789. A full manifest regeneration across all 788 rows was not re-run in this pass and is named here as a check that did not run, `LICENSE` is byte-unchanged.
 
 The `i-love-korea` family, the booth-artifact provenance, the measured booth cycle cost, and the one command that starts a cycle are explained in `PUBLISH-STATUS.md` and `BOOTH-RUNBOOK.md`, both listed below like every other file.
 
@@ -18,7 +18,7 @@ The `i-love-korea` family, the booth-artifact provenance, the measured booth cyc
 | `DEMO-LOG.md` | 295467 | `6d525d7df436d46a8963e85dcd85734f9de2ca1eb826a2ee4d47aec02d68b012` |
 | `LICENSE` | 1063 | `5c620b9317b6bb3ac68a044004751965787b3e83beea4a6d6562e33b86df8f9f` |
 | `PUBLISH-STATUS.md` | 29305 | `e54f08def582915c0eeb7a728d9c0a552c57f2985cae7172bde75e9687c4c0b8` |
-| `README.md` | 129 | `e278208f88b9b3e37b05732e53fb23dbad187843592bf0bb8113576560c32352` |
+| `README.md` | 16092 | `2205eab6a4ce1bf2e5a3b5f6be01eed5546d8f8fce01ea4738f2432f6e427baf` |
 
 ## `booth-artifacts`, 57 files, 503,410 bytes
 
