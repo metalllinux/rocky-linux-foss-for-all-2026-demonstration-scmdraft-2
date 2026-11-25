@@ -46,11 +46,13 @@ Usage:
   python3 booth_loop.py --summary [--tag-prefix <phase>]
 """
 import argparse
+import atexit
 import hashlib
 import json
 import os
 import subprocess
 import sys
+import tempfile
 import time
 
 # HERE is the directory holding this script: the controller working tree when run there, or
@@ -89,8 +91,64 @@ TARGET_RUN_SCRIPT = "/tmp/t0042-run-dos.sh"
 SSH_PASS = os.path.expanduser("~/AI/secrets/scm_draft_pass.md")   # read at run time by sshpass -f
 RDP_PASS = os.path.expanduser("~/AI/secrets/scm_draft_rdp_pass.md")  # read at run time by rdp_args()
 HOST = "howard@192.168.1.99"
-SSH = ["sshpass", "-f", SSH_PASS, "ssh", "-o", "StrictHostKeyChecking=no", HOST]
-SCP = ["sshpass", "-f", SSH_PASS, "scp", "-o", "StrictHostKeyChecking=no"]
+# Pinned target host keys, `## Security` R2 finding 1, closed by dispatch K6. A host public key is not
+# a credential: it is what proves who is answering port 22. With verification switched off, anything on
+# the controller-to-target path could answer for 192.168.1.99 with its own key, `sshpass -f` then handed
+# it the target SSH password, and that password is passwordless sudo on the target. Verification is on
+# and it reads only the file this runner writes from the three keys below, so a key that is not one of
+# them fails the connection before any authentication and the credential is never sent.
+# Seeded 2026-11-25 from the operator's own ~/.ssh/known_hosts entry for 192.168.1.99 and re-checked in
+# the same pass against `ssh-keyscan -t ed25519,ecdsa-sha2-nistp256,rsa 192.168.1.99`, which returned the
+# identical three keys. `ssh-keygen -l` fingerprints: ED25519 SHA256:S81ZRoHpyZgZAPPZ0UKNKaIL+Rp33Pes2Dc9dZfk1R0,
+# RSA SHA256:UPQQkc+zZIVM2flYhxT0Q9qEzdZDjc9vWoauXyh9AVc, ECDSA SHA256:hQKRUU6XD0olZFFH/X/1GiBpN/GdftXae6NcU9Fn+nY.
+# Trust origin stated honestly: the seeded entry comes from connections made while verification was off,
+# so it is the operator's own record, not an out-of-band attestation. The same three keys are published
+# at scripts/remote/known_hosts in the team repository. If the target's host key legitimately changes,
+# read the new key on the target itself and re-publish both.
+TARGET_HOST_KEYS = (
+    "192.168.1.99 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG5/fH96iHOqxpvEXNzZ2G2QPMGsFpTc7lOpRVDvLAG2\n"
+    "192.168.1.99 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCVtENBvUCK0n4f9LTJuGo4ic4j52uvS0ddAIa0HPgIt36"
+    "3EIqLkhQPXazsvB6HfFr42T4Z3x2dCnIsmDxENId/zMqADpHeucjEgXcSHqt5OXfQeq+mnS8tiZFZXXbqHTMGppq5L2GpAVt"
+    "8wppGgP6nfdCKO+kwbHwo4W53ykE6Zwh3amb0MF2R6ThEFZvxXGwolOWQO7d136A0iHURMdCbi3N3eof+NDDbYSqCFe1hDLUh"
+    "Psi/OsINqXeWDwzzWoOmEfrfixRNI4qGPlbbONmN6OGGos9k6Ez1I7XRid7/WxzDLuHCq/2YuWBwbZROz9Netd50dLmualIbB"
+    "ZsL+5+nPfADwDOA/IxCVrCIqrptyUxnQtRdQ60J3pUvkf5a0IuYKDRtmLOHSEn4V+4PTyDKsmdHdi2f/52Yv59VeIdN6kj2JS"
+    "S4LH+k8usptEN9YVYeemeIFEllvN3c5REhjJXJ8JgWXQTpY4DEaWjaP4bR2oYXHnj1yEoXu/Izv/bAwg0=\n"
+    "192.168.1.99 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP5Pzvemvvi1"
+    "xpoZJKcmc/Y0To9H/ugKJHDApPWWHnjf19BPLCsJGWM5vYBAZYGBVbUCcPw+ldzDAkuqp9lQfVk=\n"
+)
+
+
+def _drop_pinned_known_hosts(path):
+    """Remove the pinned known-hosts file on any exit path. A host-key artifact does not outlive the run."""
+    try:
+        os.unlink(path)
+    except OSError:
+        pass
+
+
+def pinned_known_hosts():
+    """Write TARGET_HOST_KEYS to a mode 600 file under WORK_DIR and return its path.
+
+    OpenSSH 9.9 takes a comma inside one -o UserKnownHostsFile as a literal file name (verified on this
+    host), so a pin can only be carried as a file, not as an option list. mkstemp creates it 0600, the
+    chmod states the intent, and atexit removes it. The file holds no credential.
+    """
+    os.makedirs(WORK_DIR, exist_ok=True)
+    fd, path = tempfile.mkstemp(prefix="known-hosts-pinned-", dir=WORK_DIR)
+    with os.fdopen(fd, "w") as fh:
+        fh.write(TARGET_HOST_KEYS)
+    os.chmod(path, 0o600)
+    atexit.register(_drop_pinned_known_hosts, path)
+    return path
+
+
+# Verified form: StrictHostKeyChecking=yes plus a known-hosts file that holds only the pinned keys.
+# GlobalKnownHostsFile=/dev/null closes the system-wide file too, so nothing outside the pin is trusted.
+# ConnectTimeout is new here and only bounds the TCP connect, not a command's runtime.
+SSH_OPTS = ["-o", "StrictHostKeyChecking=yes", f"-o", f"UserKnownHostsFile={pinned_known_hosts()}",
+            "-o", "GlobalKnownHostsFile=/dev/null", "-o", "ConnectTimeout=10"]
+SSH = ["sshpass", "-f", SSH_PASS, "ssh"] + SSH_OPTS + [HOST]
+SCP = ["sshpass", "-f", SSH_PASS, "scp"] + SSH_OPTS
 # Injector FreeRDP geometry, the seat0 panel the loop drives (measured 1920x1080, L5).
 RDP_WIDTH, RDP_HEIGHT = 1920, 1080
 
