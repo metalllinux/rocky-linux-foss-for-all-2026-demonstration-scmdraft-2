@@ -57,12 +57,20 @@ import time
 # `<clone>/code` when run from a clone of the booth repo. The mask code the frame planner imports
 # (`rocky.py`, `glyph.py`) lives here in both cases, because the repository publishes it in `code/`.
 HERE = os.path.dirname(os.path.abspath(__file__))
-# WORK_DIR is machine-local scratch: captures, OCR crops, the run log, the cycle reports. It is not
-# part of the repository, and a published-mode run writes nothing into the clone it runs from.
-WORK_DIR = os.environ.get("CHAOTIX_T0042_WORK", "/tmp/opencode/t0042")
-# INJECTOR_DIR is machine-local and deliberately unpublished: `rdp-input` is a compiled binary and
-# `rdp-args` carries the target RDP credential, both withheld by the D0 exclusion rules.
-INJECTOR_DIR = os.environ.get("CHAOTIX_T0042_INJECTOR", "/tmp/opencode/t0042")
+# DURABLE_DIR is the machine-local controller working tree that outlives /tmp age-cleaning. The host's
+# /usr/lib/tmpfiles.d/tmp.conf:11 cleans /tmp at 10 days, which is why the working set lives under
+# /home/howard/AI/booth-2026 rather than /tmp/opencode. It is not a git repository and is not pushed
+# anywhere, so the withheld artifacts it carries (the reference CHK, the injector binary, mkmpq) never
+# sit in a git-tracked path.
+DURABLE_DIR = "/home/howard/AI/booth-2026/t0042"
+# WORK_DIR is machine-local scratch: captures, OCR crops, the run log, the cycle reports. It defaults
+# inside the durable tree so a run survives a cleaned /tmp, and it is created at start. It is not part
+# of the repository, and a published-mode run writes nothing into the clone it runs from.
+WORK_DIR = os.environ.get("CHAOTIX_T0042_WORK", f"{DURABLE_DIR}/work")
+# INJECTOR_DIR is machine-local and deliberately unpublished: `rdp-input` is a compiled binary,
+# withheld by the D0 exclusion rules, built from the copy the repository publishes at code/rdp-input.c.
+# The RDP credential is not stored here (or anywhere else outside ~/AI/secrets): see rdp_args().
+INJECTOR_DIR = os.environ.get("CHAOTIX_T0042_INJECTOR", DURABLE_DIR)
 BUILD_DIR = f"{WORK_DIR}/s1a-build"
 LOG_PATH = f"{WORK_DIR}/s1a-run-log.jsonl"
 SUMMARY_PATH = f"{WORK_DIR}/s1a_cycle_report.json"
@@ -79,9 +87,12 @@ PUBLISHED_RUN_SCRIPT = "code/t0042-run-dos.sh"
 TARGET_RUN_SCRIPT = "/tmp/t0042-run-dos.sh"
 
 SSH_PASS = os.path.expanduser("~/AI/secrets/scm_draft_pass.md")   # read at run time by sshpass -f
+RDP_PASS = os.path.expanduser("~/AI/secrets/scm_draft_rdp_pass.md")  # read at run time by rdp_args()
 HOST = "howard@192.168.1.99"
 SSH = ["sshpass", "-f", SSH_PASS, "ssh", "-o", "StrictHostKeyChecking=no", HOST]
 SCP = ["sshpass", "-f", SSH_PASS, "scp", "-o", "StrictHostKeyChecking=no"]
+# Injector FreeRDP geometry, the seat0 panel the loop drives (measured 1920x1080, L5).
+RDP_WIDTH, RDP_HEIGHT = 1920, 1080
 
 # Deliverable originals on the target, never written by this runner (byte-stability gate).
 DELIVERABLE_DIR = "/home/howard/scmdraft-maps"
@@ -187,8 +198,26 @@ def capture(name, tag):
     return local
 
 
+def rdp_args():
+    """The injector's FreeRDP argument lines, assembled at run time from the machine-local secret file.
+
+    The runner stores no copy of the credential and never puts it in a command line: rdp-input is given
+    argv[1] = /dev/stdin and reads these lines from its standard input, which its parse_args_file reads
+    with fgets until EOF. Same semantics as the `sshpass -f` path, the first line of the secret file
+    with only the trailing newline removed. This replaces the `rdp-args` file the earlier runner needed
+    in INJECTOR_DIR, an artifact /tmp age-cleaning destroyed.
+    """
+    user, _, host = HOST.partition("@")
+    if not os.path.exists(RDP_PASS):
+        raise SystemExit(f"missing RDP password file {RDP_PASS} (machine-local, never published)")
+    with open(RDP_PASS) as fh:
+        password = fh.readline().rstrip("\r\n")
+    return (f"/v:{host}\n/u:{user}\n/p:{password}\n/cert:ignore\n"
+            f"/w:{RDP_WIDTH}\n/h:{RDP_HEIGHT}\n")
+
+
 def rdpev(events):
-    r = sh(["./rdp-input", "rdp-args"] + [str(e) for e in events], cwd=INJECTOR_DIR)
+    r = sh(["./rdp-input", "/dev/stdin"] + [str(e) for e in events], cwd=INJECTOR_DIR, input=rdp_args())
     if r.returncode:
         print("   rdp rc", r.returncode, (r.stderr or "").strip()[:200])
     return r.returncode
@@ -546,11 +575,12 @@ def preflight_published(names):
     t0 = time.monotonic()
     problems = []
     inj = f"{INJECTOR_DIR}/rdp-input"
-    args_file = f"{INJECTOR_DIR}/rdp-args"
     if not (os.path.exists(inj) and os.access(inj, os.X_OK)):
-        problems.append(f"injector binary missing or not executable: {inj}")
-    if not os.path.exists(args_file):
-        problems.append(f"RDP args file missing: {args_file}")
+        problems.append(f"injector binary missing or not executable: {inj}. Build it with "
+                        "gcc -O2 -Wall -o rdp-input code/rdp-input.c "
+                        "$(pkg-config --cflags --libs freerdp-client3)")
+    if not os.path.exists(RDP_PASS):
+        problems.append(f"RDP password file missing: {RDP_PASS}, machine-local and never published")
     if not os.path.exists(SSH_PASS):
         problems.append(f"target password file missing: {SSH_PASS}, machine-local and never published")
     if not os.path.isdir(f"{CLONE}/{PUBLISHED_MAP_SUBDIR}"):
@@ -581,7 +611,8 @@ def preflight_published(names):
         clone_carries=[f"{PUBLISHED_MAP_SUBDIR}/<name>.scm", PUBLISHED_SCRATCH_SEED,
                        "code/rocky.py", "code/glyph.py", PUBLISHED_RUN_SCRIPT],
         clone_does_not_carry=["rdp-input (compiled binary, withheld)",
-                              "rdp-args (carries the target RDP credential, withheld)",
+                              "target RDP credential (read from ~/AI/secrets at run time by rdp_args, "
+                              "never stored by the runner)",
                               "target password file (credential, withheld)",
                               "ts-harvest/ref-era6.chk (harvested Blizzard CHK, withheld, "
                               "not read in this mode)"],
@@ -589,15 +620,23 @@ def preflight_published(names):
     return True
 
 
+def run_script_source():
+    """Which controller-side copy of the target launch script a mode installs from: the clone's
+    published `code/t0042-run-dos.sh` in published mode, the working tree's own copy in rebuild mode.
+    On this controller both read the same SHA-256, a85bba3c89f1."""
+    return f"{CLONE}/{PUBLISHED_RUN_SCRIPT}" if SOURCE == "published" else f"{HERE}/t0042-run-dos.sh"
+
+
 def preflight_target_run_script():
-    """Check the target-side launch script against the copy the clone publishes, before the first
-    open. Installs the published copy if the target has none, and names the removal inverse. If the
-    target carries a script that differs, aborts rather than overwriting machine state silently."""
+    """Check the target-side launch script against the copy the runner installs from, before the first
+    open. Installs that copy if the target has none, which is what survives a cleaned /tmp on the
+    target, and names the removal inverse. If the target carries a script that differs, aborts rather
+    than overwriting machine state silently."""
     t0 = time.monotonic()
-    pub = f"{CLONE}/{PUBLISHED_RUN_SCRIPT}"
+    pub = run_script_source()
     if not os.path.exists(pub):
         log("preflight", "cycle", "preflight_target_run_script", time.monotonic() - t0, status="FAIL",
-            reason=f"clone carries no {PUBLISHED_RUN_SCRIPT}", inverse="no target change")
+            reason=f"no local copy of the target launch script at {pub}", inverse="no target change")
         return False
     want = sha256(pub)
     t = parse_stat(tscript(f'if [ -f "{TARGET_RUN_SCRIPT}" ]; then sha256sum "{TARGET_RUN_SCRIPT}"; '
@@ -619,6 +658,47 @@ def preflight_target_run_script():
         print(f"PREFLIGHT FAIL {TARGET_RUN_SCRIPT} does not match the published "
               f"{PUBLISHED_RUN_SCRIPT}, refusing to overwrite it")
     return ok
+
+
+def preflight_rebuild():
+    """Rebuild-mode gate, controller-side only, run once per invocation before any target contact.
+
+    Rebuild mode needs four things a clone does not carry: the injector binary, the StormLib map writer
+    `mkmpq` that build_ts.py calls to wrap the CHK, the withheld reference CHK, and the mask code frame
+    planning imports. All four now live in the durable working tree, so a cleaned /tmp no longer decides
+    whether the booth run can start. Anything missing aborts the invocation and names where it comes from.
+    """
+    t0 = time.monotonic()
+    problems = []
+    inj = f"{INJECTOR_DIR}/rdp-input"
+    if not (os.path.exists(inj) and os.access(inj, os.X_OK)):
+        problems.append(f"injector binary missing or not executable: {inj}. Build it with "
+                        "gcc -O2 -Wall -o rdp-input code/rdp-input.c "
+                        "$(pkg-config --cflags --libs freerdp-client3)")
+    mk = f"{HERE}/mkmpq"
+    if not (os.path.exists(mk) and os.access(mk, os.X_OK)):
+        problems.append(f"map writer missing or not executable: {mk}. Rebuild it with "
+                        "gcc -O2 -Wall -I stormlib/include -o mkmpq mkmpq.c stormlib/lib/libstorm.a "
+                        "-lstdc++ -lm")
+    ref_chk = f"{HERE}/ts-harvest/ref-era6.chk"
+    if not os.path.exists(ref_chk):
+        problems.append(f"reference CHK absent: {ref_chk}, withheld from the repository")
+    for src in ("rocky.py", "glyph.py"):
+        if not os.path.exists(f"{HERE}/{src}"):
+            problems.append(f"mask code absent from the working tree: {HERE}/{src}")
+    for secret in (SSH_PASS, RDP_PASS):
+        if not os.path.exists(secret):
+            problems.append(f"secret file absent: {secret}, machine-local and never published")
+    if problems:
+        log("preflight", "cycle", "preflight_rebuild", time.monotonic() - t0, status="FAIL",
+            problems=problems, inverse="read-only checks, nothing written, no target contact")
+        for p in problems:
+            print(f"PREFLIGHT FAIL {p}")
+        return False
+    log("preflight", "cycle", "preflight_rebuild", time.monotonic() - t0, status="PASS", injector=inj,
+        mkmpq=mk, ref_chk=ref_chk, work_dir=WORK_DIR, injector_dir=INJECTOR_DIR,
+        inverse="read-only checks, nothing written, no target contact")
+    return True
 
 
 # --- the cycle -------------------------------------------------------------
@@ -946,6 +1026,9 @@ def summary(tag_prefix=None):
 
 
 def main():
+    # Scratch defaults inside the durable tree and is created here, so a cleaned /tmp cannot break the
+    # run log or a capture transfer. An explicit CHAOTIX_T0042_WORK override is created the same way.
+    os.makedirs(WORK_DIR, exist_ok=True)
     ap = argparse.ArgumentParser()
     ap.add_argument("--maps", default="")
     ap.add_argument("--loops", type=int, default=1)
@@ -986,8 +1069,10 @@ def main():
     if SOURCE == "published":
         if not preflight_published(names):
             return 4
-        if not preflight_target_run_script():
-            return 5
+    elif not preflight_rebuild():
+        return 4
+    if not preflight_target_run_script():
+        return 5
     for loop_i in range(1, max(1, args.loops) + 1):
         tag = f"{args.tag_prefix}L{loop_i}"
         cleanup_tmp(tag)
