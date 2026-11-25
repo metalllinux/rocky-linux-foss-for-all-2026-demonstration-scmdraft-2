@@ -204,15 +204,23 @@ CHK, and no credential in any form. That is the operator's standing rule of 2026
 manifest names each withheld category with its reason. The sweep that proves it against the published tree
 is recorded as owed to the licence review, and an unreadable sweep counts as a failure.
 
-Licence posture in short form, with detail in `PUBLISH-STATUS.md` and in the team repository's licence
-section. Maps are the team's own work. Terrain tones are renders of Blizzard tileset values, which is the
-question the licence review rules on before this repository can go public. The shipped
-`republic-of-korea` mask derives from the Natural Earth 10 m admin-0 dataset at
-`github.com/nvkelso/natural-earth-vector` tag `v5.1.2`, declared public domain upstream. The map writer
-uses StormLib at commit `d60b7e6d3501474f4d92c7b9c752a37e78385f67`, MIT. `code/rdp-input.c` and
-`code/rdp-pointer.c` link FreeRDP, LGPL-2.1+, and `scripts/remote/NOTICE` in the team repository records
-that. The Rocky logo art shipped in the booth artifacts comes from the `rocky-logos-100.5-3.el10` package.
-This repository is currently private, and the visibility decision is the operator's.
+Licence posture in short form, with full detail in the root `NOTICE` in this repository, in
+`PUBLISH-STATUS.md`, and in the team repository's licence section. Maps are the team's own work. Terrain
+tones are renders of Blizzard tileset values. The shipped `republic-of-korea` mask derives from the Natural
+Earth 10 m admin-0 dataset at `github.com/nvkelso/natural-earth-vector` tag `v5.1.2`, declared public
+domain upstream. The map writer uses StormLib at commit `d60b7e6d3501474f4d92c7b9c752a37e78385f67`, MIT.
+`code/rdp-input.c`, `code/rdp-shot.c` and `code/rdp-shot-probe.c` link FreeRDP dynamically. Upstream
+FreeRDP is dual-licensed Apache-2.0 or GPL-2.0+, the distro package `freerdp-libs-3.32.2` carries
+Apache-2.0 with HPND and LGPL-2.1-or-later terms, and the team takes the Apache-2.0 option for the library
+it links while its own sources stay MIT. The Rocky logo art shipped in the booth artifacts comes from the
+`rocky-logos-100.5-3.el10` package, which grants use only during normal operation of the software that
+calls upon it and grants no trademark licence.
+
+The licence review `R4` returned FAIL on this repository as published at commit `7c4fa16`, on two findings
+reserved to the operator and both still open, `C2`, the Rocky Linux mark carried in the booth artifacts and
+maps, and `C3`, the renders of Blizzard tileset tones the audience sees. Booth `main` now reads `b56d1df`
+and that does not change the verdict. This repository is private and stays private, nothing clears a public
+flip, and it must not be read as publishable. The visibility decision is the operator's to make.
 
 ## 8. Honest limits
 
