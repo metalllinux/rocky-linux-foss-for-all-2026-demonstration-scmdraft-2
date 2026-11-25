@@ -35,12 +35,14 @@ python3 booth/code/booth_loop.py \
 **Rebuild mode, `--source rebuild`, the default.** It rebuilds each map from the committed mask code
 through `code/build_ts.py` against `ts-harvest/ref-era6.chk`, a harvested plaintext CHK extracted
 from a shipped Blizzard map. That file is withheld from this repository for licence reasons and stays
-withheld, so this mode runs only from a working tree that already holds it, which today is the
-controller working tree `/tmp/opencode/t0042`. Every cycle whose cost is measured in this runbook
-and every cycle `S1a` and `S1b` ran was a rebuild-mode cycle.
+withheld, so this mode runs only from a working tree that already holds it, which today is the durable
+controller working tree `/home/howard/AI/booth-2026/t0042`. That tree also carries `mkmpq`, the map writer
+`build_ts.py` calls, and the mask modules, all named by `preflight_rebuild` before any target contact.
+Every cycle whose cost is measured in this runbook and every cycle `S1a` and `S1b` ran was a rebuild-mode
+cycle.
 
 ```
-python3 /tmp/opencode/t0042/booth_loop.py \
+python3 /home/howard/AI/booth-2026/t0042/booth_loop.py \
   --maps foss-for-all,rocky-logo,rocky-with-heart,tux,republic-of-korea,i-love-korea \
   --loops 1 --display-seconds 300
 ```
@@ -63,21 +65,32 @@ recorded nowhere in this task and nothing in the runner presumes it.
 
 Neither mode runs from this repository alone, and the two need different things outside it.
 
-Both modes need three machine-local things that this repository does not carry and will not. The
-input injector `rdp-input` is a compiled binary, withheld under the compiled-binary exclusion rule
-(source published at `code/rdp-input.c`). The file `rdp-args` that carries the target RDP credential
-is withheld as a credential. The target password file `~/AI/secrets/scm_draft_pass.md` is a credential
-in the operator's secrets directory, file mode 600 or stricter, never published. Both modes also need
-Python 3 with Pillow and the `tesseract` OCR binary on the controller, and a writable scratch
-directory for captures, crops, the run log and the cycle reports, defaulting to `/tmp/opencode/t0042`
-and overridable with `CHAOTIX_T0042_WORK`. A published-mode run writes its captures, crops, step log
-and reports there rather than into the clone it runs from, and the one thing a run does add to a clone
-is Python's own `code/__pycache__/` bytecode cache for the mask modules, untracked, 67389 B after one
-six-map cycle, removable with `rm -rf`.
+Both modes need machine-local things this repository does not carry and will not. The input injector
+`rdp-input` is a compiled binary, withheld under the compiled-binary exclusion rule (source published at
+`code/rdp-input.c`), and the runner looks for it in `CHAOTIX_T0042_INJECTOR`, which defaults to the durable
+controller working tree. The target RDP credential lives only in the operator's secrets directory at
+`~/AI/secrets/scm_draft_rdp_pass.md`, file mode 600. The runner reads it at run time and hands the injector
+its FreeRDP arguments on standard input, so no `rdp-args` file exists on disk, which is what let the injector
+survive the `/tmp` age-cleaning that would otherwise have removed it before 2026-11-28. The target password
+file `~/AI/secrets/scm_draft_pass.md` is a credential in the operator's secrets directory, file mode 600 or
+stricter, never published. Both modes also need Python 3 with Pillow and the `tesseract` OCR binary on the
+controller, and a writable scratch directory for captures, crops, the run log and the cycle reports,
+defaulting to `work/` inside the durable working tree and overridable with `CHAOTIX_T0042_WORK`. The runner
+creates that directory when it is absent, so a cleaned `/tmp` cannot break a run. A published-mode run writes
+its captures, crops, step log and reports there rather than into the clone it runs from, and the one thing a
+run does add to a clone is Python's own `code/__pycache__/` bytecode cache for the mask modules, untracked,
+67389 B after one six-map cycle, removable with `rm -rf`.
 
-Rebuild mode additionally needs `ts-harvest/ref-era6.chk`, the harvested reference CHK named above.
-That is the single thing that makes rebuild mode unrunnable from a clone, and it is withheld
-correctly: it is an extract of a shipped Blizzard map, not this team's authorship.
+Rebuild mode needs three further things in the working tree, and `preflight_rebuild` checks each of them
+before any target contact, aborting with exit code 4 rather than failing mid-cycle in front of an audience.
+The first is `ts-harvest/ref-era6.chk`, the harvested reference CHK named above, withheld correctly because it
+is an extract of a shipped Blizzard map and not this team's authorship. The second is `mkmpq`, the StormLib
+map writer `build_ts.py` calls to wrap the built CHK into the map MPQ, resolved relative to `build_ts.py`
+itself, so it has to sit beside that script. The third is the mask code, `rocky.py` and `glyph.py`, that the
+frame planner imports. On this controller all three sit in `/home/howard/AI/booth-2026/t0042` alongside the
+`mkmpq.c` and the `stormlib/` headers and `libstorm.a` that rebuild `mkmpq` from source. The older working
+tree at `/tmp/opencode/t0042` is still in place because earlier records cite its paths, but it is age-cleaned
+at 10 days by `/usr/lib/tmpfiles.d/tmp.conf:11` and nothing in the loop depends on it any more.
 
 Published mode needs nothing beyond those four things that is not already in this repository. The six
 maps, the flat Ice World scratch seed at `live-segment/maps/live-demo-ice.scm`, the mask code the

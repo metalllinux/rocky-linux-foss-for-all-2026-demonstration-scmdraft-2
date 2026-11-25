@@ -107,21 +107,37 @@ Prerequisites, in order. Each one is checkable.
 2. Build the input injector, either from the copy published here or through the packaged team tooling.
    `gcc -O2 -Wall -o rdp-input code/rdp-input.c $(pkg-config --cflags --libs freerdp-client3)`
    The packaged equivalent is `scripts/remote/rt-build` in `metalllinux/team-chaotix-MoE`.
-3. Place the injector binary and the RDP argument file where the runner looks for them. The runner reads
-   `CHAOTIX_T0042_INJECTOR`, defaulting to `/tmp/opencode/t0042`, and expects `rdp-input` executable and
-   `rdp-args` mode 600 in that directory. `rdp-args` carries the target RDP credential and is never
-   published here.
-4. Confirm the target password file exists at `~/AI/secrets/scm_draft_pass.md`, read at run time by
-   `sshpass -f`, mode 600, never in a command line argument.
-5. Confirm the target is reachable and idle, `NO_SCM_RUNNING`, `NO_STARCRAFT_RUNNING`, `NO_WINESERVER`,
-   and that `/tmp/t0042-run-dos.sh` is present. Published mode uploads `code/t0042-run-dos.sh` there
-   during preflight.
-6. For rebuild mode only, confirm the working tree holds `ts-harvest/ref-era6.chk`. On the team controller
-   the durable copy is `/home/howard/AI/booth-2026/t0042/`, created 2026-11-24 with `booth_loop.py`,
-   `build_ts.py`, `mask_png.py`, `t0042-run-dos.sh` and `ts-harvest/`, because `/tmp` on that host is
-   age-cleaned at 10 days by `/usr/lib/tmpfiles.d/tmp.conf:11`. The reference CHK there reads
-   `d7afd6a53cd3664a822485cffc21f8502e584e7738e35b9835840782c621057b`. That directory is not a git
-   repository and it is not pushed anywhere.
+3. Place the injector binary where the runner looks for it. The runner reads `CHAOTIX_T0042_INJECTOR`,
+   defaulting to the durable controller working tree `/home/howard/AI/booth-2026/t0042`, and expects
+   `rdp-input` executable there. There is no `rdp-args` file. The runner assembles the injector's FreeRDP
+   arguments at run time from `~/AI/secrets/scm_draft_rdp_pass.md` and hands them to `rdp-input` on its
+   standard input, so the target RDP credential is stored nowhere by the runner and never appears in a
+   command line, a log or this repository.
+4. Confirm both target password files exist, `~/AI/secrets/scm_draft_pass.md` for the `sshpass -f` path and
+   `~/AI/secrets/scm_draft_rdp_pass.md` for the injector, mode 600, each read at run time only.
+5. Confirm the target is reachable and idle, `NO_SCM_RUNNING`, `NO_STARCRAFT_RUNNING`, `NO_WINESERVER`. The
+   target-side launch script no longer has to survive cleaning of the target's own `/tmp`. In both modes
+   `preflight_target_run_script` compares the target copy against the controller copy, `code/t0042-run-dos.sh`
+   from a clone or `t0042-run-dos.sh` in the working tree, both reading `a85bba3c89f1`, installs it when the
+   target has none, names `rm -f /tmp/t0042-run-dos.sh` as the inverse, and refuses to overwrite a target
+   script that differs.
+6. For rebuild mode only, `preflight_rebuild` checks four things a clone does not carry before any target
+   contact and aborts with exit code 4 if any is missing: the reference CHK `ts-harvest/ref-era6.chk`, the map
+   writer `mkmpq`, the mask code `rocky.py` and `glyph.py`, and the two secret files named above. On the team
+   controller the durable working tree is `/home/howard/AI/booth-2026/t0042/`, created 2026-11-24 and completed
+   2026-11-25 with `booth_loop.py`, `build_ts.py`, `build_map.py`, `mask_png.py`, the six mask modules,
+   `t0042-run-dos.sh`, `ts-harvest/`, `mkmpq` beside `mkmpq.c` and the `stormlib/` headers and `libstorm.a` it
+   builds against, `rdp-input`, and `work/` as the default scratch directory. The reference CHK there reads
+   `d7afd6a53cd3664a822485cffc21f8502e584e7738e35b9835840782c621057b`. That directory is not a git repository
+   and it is not pushed anywhere, which is why no credential and no withheld artifact sits in a git-tracked
+   path.
+7. `mkmpq` is the prerequisite this README omitted until 2026-11-25. Rebuild mode cannot produce a map without
+   it, because `build_ts.py` calls `<working tree>/mkmpq` to wrap the built CHK into the map MPQ, and the path
+   it uses is relative to the script itself. The durable copy on this controller was rebuilt in place from the
+   recipe `gcc -O2 -Wall -I stormlib/include -o mkmpq mkmpq.c stormlib/lib/libstorm.a -lstdc++ -lm`, against
+   StormLib at the commit named in section 7 with its MIT `LICENSE` carried beside the library, and it
+   reproduces the recorded `tux` SHA-256 `79002eacd5d6` from a cold start on 2026-11-25. Without it the run
+   fails at the `build` step of the first map.
 
 Commands, as run and measured.
 
