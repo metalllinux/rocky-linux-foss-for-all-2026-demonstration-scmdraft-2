@@ -14,7 +14,12 @@
  *     move <x> <y> | click <x> <y> | key <scancode> | keyx <scancode>
  *     keydown <scancode> | keyup <scancode> | type <text> | wait <ms>
  *
- * License: Apache-2.0 (links libfreerdp3 / libfreerdp-client3, Apache-2.0).
+ * Copyright (c) 2026 Howard.
+ * SPDX-License-Identifier: MIT
+ * Team-authored code under this repository's root licence (MIT, LICENSE at
+ * repo root). It links against libfreerdp3 / libfreerdp-client3, which carry
+ * their own Apache-2.0 licence; that link is dynamic against the unmodified
+ * distro library, and no FreeRDP source is vendored or compiled in.
  * Build: gcc -w -o rdp-shot rdp-shot.c $(pkg-config --cflags --libs freerdp3 freerdp-client3)
  */
 

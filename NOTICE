@@ -1,0 +1,104 @@
+NOTICE -- licence record for third-party sources, data and marks in this
+repository. Written on finding C6 of the TASK-0042 licence review.
+
+This repository's own code is MIT, Copyright (c) 2026 Howard, under the root
+LICENSE (MIT). Each team-authored C file carries its own
+SPDX-License-Identifier: MIT header naming that copyright. This file names
+every upstream the published tree relates to, each with the ref actually
+used. Every ref below was verified against the upstream source repository at
+that ref by Charmy in the review recorded in the booth copy of
+`planning/TASK-0042-foss-for-all-scmdraft2-demo.md`, `## License (Charmy)`.
+
+Visibility, stated plainly. This repository is private and stays private.
+The licence review's `R4` verdict is FAIL on the tree as published at commit
+`7c4fa1658276c5de9b85d70f09952b98171d7f27`, on findings C2 (the Rocky Linux
+mark) and C3 (renders of Blizzard content) below, both reserved to the
+operator. Nothing in this file clears a public flip, and this repository must
+not be read as publishable.
+
+--- StormLib (MIT) -----------------------------------------------------------
+
+Copyright (c) 1999-2013 Ladislav Zezula.
+https://github.com/ladislav-zezula/StormLib at commit
+`d60b7e6d3501474f4d92c7b9c752a37e78385f67`, whose `LICENSE` blob
+`2cb432d4ec85706acfb1a606bcc010a70b96ed86` (1108 B) is the MIT License.
+No StormLib source is vendored in this tree; the checkout is withheld
+(`MANIFEST.md`, category `upstream-library`). `code/mkmpq.c` and
+`code/chkdump.c` are team-authored wrappers that include StormLib headers and
+link a locally built libstorm; MIT's notice obligation attaches to copies of
+StormLib, and no copy of StormLib is distributed here. The compiled binaries
+are withheld.
+
+--- Natural Earth 10 m Admin-0 Countries (public domain) --------------------
+
+https://github.com/nvkelso/natural-earth-vector at tag `v5.1.2`, commit
+`f1890d9f152c896d250a77557a5751a93d494776`. `LICENSE.md` at that commit:
+"Everything here is public domain." No obligation is required; crediting is
+recorded anyway. The 17 MB dataset itself is withheld (`MANIFEST.md`,
+category `upstream-dataset`); `code/korea_10m.py` names the repo, tag,
+commit, dataset blob sha `5ebc66e25fc1af01edaebe9375c546655e04cf1e` and
+sha256, enough to fetch and verify the same bytes. It is the mask input for
+the `republic-of-korea` map.
+
+--- johan/world.geo.json 110 m Korea record (public domain dedication) ------
+
+https://github.com/johan/world.geo.json at `master`, tree
+`34c96bba9c07d2ceb30696c599bb51a5b939b20f`, `countries/KOR.geo.json`. The
+repo's `UNLICENSE` blob `cb93bd385ea436549d8278112f7944cc8f9873f8` (1270 B)
+is a public-domain dedication. Provenance of
+`maps/superseded/superseded-republic-of-korea-110m.scm`, the earlier build
+this tree replaces.
+
+--- rocky-logos-100.5-3.el10 (not an open source licence) --------------------
+
+Distro package `rocky-logos-100.5-3.el10`, licence field "Licensed only for
+approved usage, see COPYING for details." The shipped asset
+`/usr/share/icons/hicolor/scalable/apps/start-here.svg` is the raster source
+of the `rocky-logo` and `rocky-with-heart` mask geometry (`code/rocky_svg.py`).
+The COPYING that ships with the package grants use "only during the normal
+operation of software programs that call upon the Package. No other copyright
+or trademark license is granted herein." Maps and renders of the mark in this
+tree are outside that grant. Finding C2 of the review, an operator decision,
+and one of the two reasons this repository stays private.
+
+--- FreeRDP (link only, Apache-2.0 option) -----------------------------------
+
+`code/rdp-input.c`, `code/rdp-shot.c` and `code/rdp-shot-probe.c` link
+dynamically against libfreerdp3 and libfreerdp-client3 from the distro
+package `freerdp-libs-3.32.2-1.el10_2`. Upstream
+https://github.com/FreeRDP/FreeRDP at tag `3.32.2` is dual-licensed
+Apache-2.0 or GPL-2.0+ and the team takes the Apache-2.0 option, which
+governs the library only. No FreeRDP source is vendored, compiled in, or
+distributed here; the team's sources stay MIT. Copyright of FreeRDP rests
+with the FreeRDP project authors.
+
+--- StarCraft and Blizzard (no licence granted) ------------------------------
+
+Game-data source: archive.org item `starcraft-anthology-original-installer`,
+`StarCraft_Anthology.iso`, creator and publisher both "Blizzard
+Entertainment". A preservation item of proprietary software, not a grant of
+any right. Nothing from the ISO is in this tree. The `ERA`-patched era-6
+reference and the `.chk` extracts of Blizzard campaign maps that the maps in
+this tree relate to live outside git, on the controller and the target only.
+The captures and booth artifacts are downscaled renders of Blizzard tileset
+tones, and the four silhouette maps and the live seed reuse a Blizzard map
+container skeleton. Finding C3 of the review, an operator decision, the
+second reason this repository stays private.
+
+--- SCMDraft 2 (no licence grant published) ----------------------------------
+
+http://www.stormcoast-fortress.net/cntt/software/scmdraft, "All content
+copyright (c) 2001-2019 Stormcoast Fortress". No licence grant is published
+at that ref. No SCMDraft executable is in this tree, verified by the review
+sweep at `7c4fa16` over 789 paths: zero game-data pattern matches, zero
+paths ending `.exe`, `.dll`, `.zip`, `.tar`, `.7z` or `.bin`. SCMDraft 2
+itself runs on the target, not here.
+
+--- Ar3sgice starcraft-tools mirror (no licence file upstream) ---------------
+
+https://github.com/Ar3sgice/starcraft-tools at `master`, tree
+`00b5fb512d475420b8f50715978ad4a0394d2937`, carries no `LICENSE`, no
+`COPYING`, no licence text. Named as a source only (the `bmp2scx` archive
+`colorbase.bin` was extracted from it for calibration); no binary from it is
+carried or published here, and `colorbase.bin` is withheld (`MANIFEST.md`,
+category `undocumented-binary`).
