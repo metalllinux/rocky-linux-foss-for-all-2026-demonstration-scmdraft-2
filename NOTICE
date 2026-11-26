@@ -66,9 +66,10 @@ and one of the two reasons this repository stays private.
 `code/rdp-input.c`, `code/rdp-shot.c` and `code/rdp-shot-probe.c` link
 dynamically against libfreerdp3 and libfreerdp-client3 from the distro
 package `freerdp-libs-3.32.2-1.el10_2`. Upstream
-https://github.com/FreeRDP/FreeRDP at tag `3.32.2` is dual-licensed
-Apache-2.0 or GPL-2.0+ and the team takes the Apache-2.0 option, which
-governs the library only. No FreeRDP source is vendored, compiled in, or
+https://github.com/FreeRDP/FreeRDP at tag `3.32.2` is Apache-2.0 only, read
+on 2026-11-26 from the upstream `LICENSE` blob
+`d645695673349e3947e8e5ae42332d0ac3164cd7` at that tag, and the team takes
+the Apache-2.0 option, which governs the library only. No FreeRDP source is vendored, compiled in, or
 distributed here; the team's sources stay MIT. Copyright of FreeRDP rests
 with the FreeRDP project authors.
 

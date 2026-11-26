@@ -210,7 +210,7 @@ tones are renders of Blizzard tileset values. The shipped `republic-of-korea` ma
 Earth 10 m admin-0 dataset at `github.com/nvkelso/natural-earth-vector` tag `v5.1.2`, declared public
 domain upstream. The map writer uses StormLib at commit `d60b7e6d3501474f4d92c7b9c752a37e78385f67`, MIT.
 `code/rdp-input.c`, `code/rdp-shot.c` and `code/rdp-shot-probe.c` link FreeRDP dynamically. Upstream
-FreeRDP is dual-licensed Apache-2.0 or GPL-2.0+, the distro package `freerdp-libs-3.32.2` carries
+FreeRDP at tag `3.32.2` is Apache-2.0 only, its `LICENSE` blob is `d645695673349e3947e8e5ae42332d0ac3164cd7`, the distro package `freerdp-libs-3.32.2` carries
 Apache-2.0 with HPND and LGPL-2.1-or-later terms, and the team takes the Apache-2.0 option for the library
 it links while its own sources stay MIT. The Rocky logo art shipped in the booth artifacts comes from the
 `rocky-logos-100.5-3.el10` package, which grants use only during normal operation of the software that
