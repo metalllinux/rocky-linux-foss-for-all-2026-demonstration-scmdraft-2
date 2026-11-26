@@ -12,11 +12,25 @@ HOST=howard@192.168.1.99
 SEED='/home/howard/game-data/sc-clean/Starcraft/maps/(2)River Crossing.scm'
 LIVE=/home/howard/scmdraft-maps/live-demo/live-demo.scm
 
+# `## Security` finding 2, `Omega`'s `O1` ruling 2026-11-26: pinned certificate fingerprint, read from
+# the one file this repository publishes at code/rdp-cert-pin.txt. See the note in mkargs.sh.
+# Named, not changed here: the ssh calls below still carry the L1-era unpinned host-key posture, which
+# `R2` finding 1 closed for the packaged tools and for booth_loop.py, not for this archived script.
+RDP_PIN="${CHAOTIX_T0042_RDP_CERT_PIN:-}"
+if [ -z "$RDP_PIN" ]; then
+  for _pin in "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/rdp-cert-pin.txt" \
+              /home/howard/AI/booth-2026/t0042/rdp-cert-pin.txt; do
+    if [ -f "$_pin" ]; then RDP_PIN="$(head -n 1 "$_pin")"; break; fi
+  done
+fi
+[ "${#RDP_PIN}" -eq 64 ] \
+  || { echo "no 64-hex RDP certificate pin found: refusing to build args without one" >&2; exit 1; }
+
 # 1. args file: fixed lines then the credential read via redirection (not argv), one line
 {
   printf '/v:192.168.1.99\n/u:howard\n/p:'
   tr -d '\n\r' < "$RDP_SECRET"
-  printf '\n/cert:ignore\n/w:1920\n/h:1080\n+disp\n'
+  printf '\n/cert:fingerprint:sha256:%s\n/w:1920\n/h:1080\n+disp\n' "$RDP_PIN"
 } > "$HERE/rdp-args"
 chmod 600 "$HERE/rdp-args"
 echo "rdp-args written ($(wc -l < "$HERE/rdp-args") lines, $(stat -c '%a' "$HERE/rdp-args"))"

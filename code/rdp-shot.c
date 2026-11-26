@@ -8,7 +8,7 @@
  * as rdp-input.c (same team, same license).
  *
  * Usage: rdp-shot <argsfile> <out.ppm> [<event> ...]
- *   <argsfile>  xfreerdp-style arguments, one per line (/v:/u:/p:/cert:ignore/w:/h:)
+ *   <argsfile>  xfreerdp-style arguments, one per line (/v:/u:/p:/cert:fingerprint:sha256:<hex>/w:/h:)
  *   <out.ppm>   P6 PPM file written from the decoded primary surface
  *   events (played after connect, before capture):
  *     move <x> <y> | click <x> <y> | key <scancode> | keyx <scancode>

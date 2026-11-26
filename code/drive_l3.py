@@ -69,7 +69,23 @@ print("=== SETUP ===")
 rdp_secret_path = os.path.expanduser("~/AI/secrets/scm_draft_rdp_pass.md")
 with open(rdp_secret_path) as f:
     rdp_pass = f.read().strip().replace("\n", "").replace("\r", "")
-rdp_args_content = f"/v:192.168.1.99\n/u:howard\n/p:{rdp_pass}\n/cert:ignore\n/w:1920\n/h:1080\n+disp\n"
+# `## Security` finding 2, `Omega`'s `O1` ruling 2026-11-26: the server certificate is pinned by its
+# SHA-256 fingerprint, read from the one file this repository publishes, never accepted blindly. This
+# L3-era probe dials the listener directly, which is the posture `O1` endorses as the fallback; the
+# pinned-SSH-forward posture is in booth_loop.py.
+PIN_CANDIDATES = [os.path.join(os.path.dirname(os.path.abspath(__file__)), "rdp-cert-pin.txt"),
+                  "/home/howard/AI/booth-2026/t0042/rdp-cert-pin.txt"]
+rdp_cert_pin = os.environ.get("CHAOTIX_T0042_RDP_CERT_PIN", "")
+for _pin_path in PIN_CANDIDATES:
+    if rdp_cert_pin:
+        break
+    if os.path.exists(_pin_path):
+        with open(_pin_path) as _pin_fh:
+            rdp_cert_pin = _pin_fh.readline().strip()
+if len(rdp_cert_pin) != 64:
+    raise SystemExit("no 64-hex RDP certificate pin found: refusing to connect without one")
+rdp_args_content = (f"/v:192.168.1.99\n/u:howard\n/p:{rdp_pass}\n"
+                    f"/cert:fingerprint:sha256:{rdp_cert_pin}\n/w:1920\n/h:1080\n+disp\n")
 rdp_args_path = f"{HERE}/rdp-args"
 with open(rdp_args_path, "w") as f:
     f.write(rdp_args_content)

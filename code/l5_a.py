@@ -98,11 +98,25 @@ def diff_pair(a, b):
 
 # ---- 1. regenerate the mode-600 RDP args file from ~/AI/secrets (never on a command line) ----
 os.umask(0o077)
+# `## Security` finding 2, `Omega`'s `O1` ruling 2026-11-26: pinned certificate fingerprint, read from
+# the one file this repository publishes. Direct-dial posture with the pin, the `O1` fallback shape;
+# the pinned-SSH-forward posture is in booth_loop.py.
+PIN_CANDIDATES = [os.path.join(os.path.dirname(os.path.abspath(__file__)), "rdp-cert-pin.txt"),
+                  "/home/howard/AI/booth-2026/t0042/rdp-cert-pin.txt"]
+rdp_cert_pin = os.environ.get("CHAOTIX_T0042_RDP_CERT_PIN", "")
+for _pin_path in PIN_CANDIDATES:
+    if rdp_cert_pin:
+        break
+    if os.path.exists(_pin_path):
+        with open(_pin_path) as _pin_fh:
+            rdp_cert_pin = _pin_fh.readline().strip()
+if len(rdp_cert_pin) != 64:
+    raise SystemExit("no 64-hex RDP certificate pin found: refusing to connect without one")
 with open(f"{HERE}/rdp-args", "w") as f:
     f.write("/v:192.168.1.99\n/u:howard\n/p:")
     with open(RDP_PASS) as s:
         f.write(s.read().strip("\r\n"))
-    f.write("\n/cert:ignore\n/w:1920\n/h:1080\n+disp\n")
+    f.write(f"\n/cert:fingerprint:sha256:{rdp_cert_pin}\n/w:1920\n/h:1080\n+disp\n")
 os.chmod(f"{HERE}/rdp-args", 0o600)
 print("rdp-args written, mode", oct(os.stat(f"{HERE}/rdp-args").st_mode & 0o777))
 

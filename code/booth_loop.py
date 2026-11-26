@@ -152,6 +152,126 @@ SCP = ["sshpass", "-f", SSH_PASS, "scp"] + SSH_OPTS
 # Injector FreeRDP geometry, the seat0 panel the loop drives (measured 1920x1080, L5).
 RDP_WIDTH, RDP_HEIGHT = 1920, 1080
 
+# --- RDP channel posture: pinned SSH forward plus a pinned server certificate ---------------------
+# `## Security` finding 2, `Omega`'s `O1` ruling 2026-11-26 00:06 UTC. The target's gnome-remote-desktop
+# daemon answers 3389 with a self-issued certificate that carries no Subject Alternative Name, so name
+# matching against it can never succeed and `/cert:deny` aborts against it: the fingerprint pin is the
+# correct client-side mechanism for this daemon, not a fallback. The verify-and-continue option this
+# finding is about is not used in this tree, and it is what let a client accept a lookalike certificate
+# silently in the `T6` measurement. The certificate line below is the only certificate option this
+# runner emits, in one named value so re-keying the daemon is a one-line change. A certificate
+# fingerprint is public data, not a credential: the pin rests on the private key staying unreadable.
+#
+# The forward is the other half of the ruling: RDP runs inside the SSH connection whose host key is
+# pinned above, from 127.0.0.1:3401 here to 127.0.0.1:3389 on the target, so no 3389 packet crosses the
+# LAN and the target's rich rule (which admits 192.168.1.102 only) stops being a booth-day blocker.
+# Measured end to end by `T6` at t0042/t6_ssh_tunnel_test.sh and again through the packaged tools by
+# `T7` (TASK-0041 `## Implementation`). The overrides are CHAOTIX_* like the rest of this runner;
+# CHAOTIX_T0042_RDP_TUNNEL=0 restores the direct-dial posture with the pin still applied, which is the
+# fallback `O1` endorses.
+RDP_CERT_PIN_FILE = f"{HERE}/rdp-cert-pin.txt"   # one named place for the pin, published in this tree
+
+
+def rdp_cert_pin():
+    """The SHA-256 fingerprint of the target daemon's RDP TLS certificate, read from the one file this
+    repository publishes. CHAOTIX_T0042_RDP_CERT_PIN overrides it for a re-key without an edit. A
+    certificate fingerprint is public data, not a credential, so it is safe to publish and safe to log.
+    """
+    override = os.environ.get("CHAOTIX_T0042_RDP_CERT_PIN", "").strip().lower()
+    if override:
+        pin = override
+    else:
+        try:
+            with open(RDP_CERT_PIN_FILE) as fh:
+                pin = fh.readline().strip().lower()
+        except OSError:
+            raise SystemExit(f"missing the RDP certificate pin file {RDP_CERT_PIN_FILE}")
+    if len(pin) != 64 or any(c not in "0123456789abcdef" for c in pin):
+        raise SystemExit(f"RDP certificate pin is not 64 hex characters: {pin!r}")
+    return pin
+
+
+RDP_TARGET_PORT = int(os.environ.get("CHAOTIX_T0042_RDP_TARGET_PORT", "3389"))
+RDP_TUNNEL_PORT = int(os.environ.get("CHAOTIX_T0042_RDP_TUNNEL_PORT", "3401"))
+RDP_TUNNEL = os.environ.get("CHAOTIX_T0042_RDP_TUNNEL", "1") != "0"
+TUNNEL_PROC = None
+TUNNEL_LOG = ""
+
+
+def tunnel_forward_spec():
+    """The -L argument: our loopback port to the target's loopback port."""
+    return f"127.0.0.1:{RDP_TUNNEL_PORT}:127.0.0.1:{RDP_TARGET_PORT}"
+
+
+def tunnel_listening():
+    """True when something is listening on our loopback port. `ss` reads the socket table without
+    dialing the target; a plain connect is the fallback and it does open an RDP connection attempt."""
+    try:
+        r = subprocess.run(["ss", "-tln"], capture_output=True, text=True)
+        if any(f"127.0.0.1:{RDP_TUNNEL_PORT}" in line for line in r.stdout.splitlines()):
+            return True
+    except FileNotFoundError:
+        pass
+    import socket
+    try:
+        with socket.create_connection(("127.0.0.1", RDP_TUNNEL_PORT), timeout=1):
+            return True
+    except OSError:
+        return False
+
+
+def drop_rdp_tunnel():
+    """Kill the forward this run started. Registered with atexit so no exit path leaves it behind."""
+    global TUNNEL_PROC
+    if TUNNEL_PROC is not None:
+        if TUNNEL_PROC.poll() is None:
+            TUNNEL_PROC.terminate()
+            try:
+                TUNNEL_PROC.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                TUNNEL_PROC.kill()
+                TUNNEL_PROC.wait(timeout=5)
+        TUNNEL_PROC = None
+        print(f"rdp tunnel closed (log: {TUNNEL_LOG})")
+
+
+def start_rdp_tunnel():
+    """Open the forward once for the whole run. Returns False when it cannot be established, and the
+    caller refuses to run rather than falling back to an unauthenticated LAN path by accident."""
+    global TUNNEL_PROC, TUNNEL_LOG
+    if not RDP_TUNNEL:
+        print(f"RDP_TUNNEL=0: dialing {HOST.split('@')[1]}:{RDP_TARGET_PORT} directly, certificate pin still applied")
+        return True
+    os.makedirs(WORK_DIR, exist_ok=True)
+    TUNNEL_LOG = f"{WORK_DIR}/rdp-tunnel.log"
+    cmd = (["sshpass", "-f", SSH_PASS, "ssh"] + SSH_OPTS
+           + ["-N", "-o", "ExitOnForwardFailure=yes", "-o", "ServerAliveInterval=20",
+              "-o", "ServerAliveCountMax=3", "-L", tunnel_forward_spec(), HOST])
+    with open(TUNNEL_LOG, "w") as log_fh:
+        TUNNEL_PROC = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=log_fh, text=True)
+    atexit.register(drop_rdp_tunnel)
+    for _ in range(20):
+        time.sleep(0.25)
+        if tunnel_listening():
+            print(f"rdp tunnel up: 127.0.0.1:{RDP_TUNNEL_PORT} -> {HOST} 127.0.0.1:{RDP_TARGET_PORT} "
+                  f"(pid {TUNNEL_PROC.pid}, pinned host keys, inverse: atexit teardown)")
+            return True
+        if TUNNEL_PROC.poll() is not None:
+            reason = ""
+            try:
+                with open(TUNNEL_LOG) as fh:
+                    reason = fh.read().strip()[:300]
+            except OSError:
+                pass
+            TUNNEL_PROC = None
+            print(f"rdp tunnel failed to open 127.0.0.1:{RDP_TUNNEL_PORT}: {reason or 'no output'}",
+                  file=sys.stderr)
+            return False
+    reason = "the forward never opened the port"
+    drop_rdp_tunnel()
+    print(f"rdp tunnel failed: {reason}", file=sys.stderr)
+    return False
+
 # Deliverable originals on the target, never written by this runner (byte-stability gate).
 DELIVERABLE_DIR = "/home/howard/scmdraft-maps"
 # Loop transfer destination inside the Wine prefix, i.e. C:\Maps\ as the 22:05 decision states.
@@ -270,7 +390,10 @@ def rdp_args():
         raise SystemExit(f"missing RDP password file {RDP_PASS} (machine-local, never published)")
     with open(RDP_PASS) as fh:
         password = fh.readline().rstrip("\r\n")
-    return (f"/v:{host}\n/u:{user}\n/p:{password}\n/cert:ignore\n"
+    # The endpoint is the loopback end of the pinned forward unless the direct posture was asked for,
+    # and the certificate identity is the pinned fingerprint in both postures (finding 2, `O1`).
+    v = f"127.0.0.1:{RDP_TUNNEL_PORT}" if RDP_TUNNEL else f"{host}:{RDP_TARGET_PORT}"
+    return (f"/v:{v}\n/u:{user}\n/p:{password}\n/cert:fingerprint:sha256:{rdp_cert_pin()}\n"
             f"/w:{RDP_WIDTH}\n/h:{RDP_HEIGHT}\n")
 
 
@@ -1131,6 +1254,10 @@ def main():
         return 4
     if not preflight_target_run_script():
         return 5
+    # The RDP channel is opened once for the whole run and torn down by atexit: see the channel posture
+    # block above. A run refuses to start when the forward cannot be established.
+    if not start_rdp_tunnel():
+        return 6
     for loop_i in range(1, max(1, args.loops) + 1):
         tag = f"{args.tag_prefix}L{loop_i}"
         cleanup_tmp(tag)
